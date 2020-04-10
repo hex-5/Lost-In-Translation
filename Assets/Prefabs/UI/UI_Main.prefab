@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -341,7 +341,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 50
+  m_Value: 89
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -462,6 +462,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProgressBarObject: {fileID: 2404355118968718631}
   TimeRemainingTextObject: {fileID: 0}
+  TimeProgressBadColor: {r: 1, g: 0, b: 0, a: 1}
+  TimeProgressGoodColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &5398584225990452573
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,7 +826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

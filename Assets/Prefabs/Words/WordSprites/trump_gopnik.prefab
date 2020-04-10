@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8612930155761541402}
   - component: {fileID: 7933144062138201288}
   - component: {fileID: 6849896723285460454}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: trump_gopnik
   m_TagString: Untagged
   m_Icon: {fileID: 0}

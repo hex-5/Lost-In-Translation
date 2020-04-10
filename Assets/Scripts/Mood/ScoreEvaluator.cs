@@ -40,6 +40,14 @@ public class ScoreEvaluator : MonoBehaviour
         edgeCollider.points = tmpVec2;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            CountBlocksInside();
+        }
+    }
+
     public void CountBlocksInside()
     {
         ConnotationsCount connotationsCount = new ConnotationsCount();
@@ -51,7 +59,7 @@ public class ScoreEvaluator : MonoBehaviour
             // If they are not on the edge of my trigger, increment connotation values
             if (!Physics2D.IsTouching(c, edgeCollider))
             {
-                Word word = c.GetComponent<Word>();
+                Word word = c.GetComponentInParent<Word>();
 
                 switch (word.connotation)
                 {
@@ -71,6 +79,8 @@ public class ScoreEvaluator : MonoBehaviour
             }
         }
 
+        Debug.Log(connotationsCount.neutralCount + " " + connotationsCount.insultingCount + " " + connotationsCount.flatteringCount + " " + connotationsCount.challengingCount);
+
         moodManager.AdjustMood(connotationsCount, essentialsInside);
     }
 
@@ -78,6 +88,7 @@ public class ScoreEvaluator : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Word") && !collidersInside.Contains(collision))
         {
+            Debug.Log(collision.name + " entered Trigger");
             collidersInside.Add(collision);
         }
     }
@@ -86,6 +97,7 @@ public class ScoreEvaluator : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Word") && collidersInside.Contains(collision))
         {
+            Debug.Log(collision.name + " exited Trigger");
             collidersInside.Remove(collision);
         }
     }

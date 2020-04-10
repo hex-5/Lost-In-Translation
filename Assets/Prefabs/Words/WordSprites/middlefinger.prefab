@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 576786287294830797}
   - component: {fileID: 1269555753590705439}
   - component: {fileID: 2521277268942575121}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: middlefinger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
