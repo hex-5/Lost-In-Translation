@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3450419891342074850}
   - component: {fileID: 4597840566043957705}
   - component: {fileID: 4286572260116614467}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: all_seeing_eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 3450419891346343158}
   - component: {fileID: 3450419891346343157}
   - component: {fileID: 3450419891346343159}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: edge_collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

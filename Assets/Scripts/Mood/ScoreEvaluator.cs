@@ -79,7 +79,7 @@ public class ScoreEvaluator : MonoBehaviour
             }
         }
 
-        Debug.Log(connotationsCount.neutralCount + " " + connotationsCount.insultingCount + " " + connotationsCount.flatteringCount + " " + connotationsCount.challengingCount);
+        //Debug.Log(connotationsCount.neutralCount + " " + connotationsCount.insultingCount + " " + connotationsCount.flatteringCount + " " + connotationsCount.challengingCount);
 
         moodManager.AdjustMood(connotationsCount, essentialsInside);
     }
@@ -88,7 +88,6 @@ public class ScoreEvaluator : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Word") && !collidersInside.Contains(collision))
         {
-            Debug.Log(collision.name + " entered Trigger");
             collidersInside.Add(collision);
         }
     }
@@ -97,7 +96,6 @@ public class ScoreEvaluator : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Word") && collidersInside.Contains(collision))
         {
-            Debug.Log(collision.name + " exited Trigger");
             collidersInside.Remove(collision);
         }
     }
