@@ -107,7 +107,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -16.294}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.1, y: 17.9}
+  m_AnchoredPosition: {x: 1.1, y: -17.9}
   m_SizeDelta: {x: 0, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2276243393287356843
@@ -180,7 +180,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.2, y: -108.4}
+  m_AnchoredPosition: {x: 9.2, y: -143.9}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4140604029671427291
@@ -265,6 +265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3392116785795796089}
   - component: {fileID: 960224852367861810}
+  - component: {fileID: 7484068855065903162}
   m_Layer: 0
   m_Name: TrumpSlider
   m_TagString: Untagged
@@ -292,7 +293,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -348.7, y: -74.2}
+  m_AnchoredPosition: {x: -348.7, y: -60.8}
   m_SizeDelta: {x: 20, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &960224852367861810
@@ -337,14 +338,33 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8225251697018521454}
   m_FillRect: {fileID: 4002378582558240714}
   m_HandleRect: {fileID: 8546553738312676279}
-  m_Direction: 3
+  m_Direction: 2
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 89
+  m_Value: 50
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7484068855065903162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4799506664005152444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f96be83832210924ea39e2bfc7c3370d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOurLeader: 1
+  angerThreshold: 90
+  neutralValue: 5
+  insultingValue: -10
+  flatteringValue: 10
+  challengingValue: -5
+  unusedEssentialPenaltyValue: -10
 --- !u!1 &5398584225451589767
 GameObject:
   m_ObjectHideFlags: 0

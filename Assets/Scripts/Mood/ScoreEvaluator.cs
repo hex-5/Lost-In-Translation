@@ -60,6 +60,7 @@ public class ScoreEvaluator : MonoBehaviour
             if (!Physics2D.IsTouching(c, edgeCollider))
             {
                 Word word = c.GetComponentInParent<Word>();
+                if (word.isEssential) essentialsInside++;
 
                 switch (word.connotation)
                 {

@@ -33,6 +33,7 @@ public class MoodManager : MonoBehaviour
 
         moodSlider = GetComponent<Slider>();
         initialMoodScore = moodSlider.value;
+        currentMoodScore = initialMoodScore;
     }
 
     public void AdjustMood(ScoreEvaluator.ConnotationsCount connotations, int essentialsInside)
