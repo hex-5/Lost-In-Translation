@@ -6,8 +6,13 @@ using Words;
 public class GameManager : MonoBehaviour
 {
     [field: SerializeField] public float SecondsPerCycle { get; } = 10.0f;
+<<<<<<< HEAD
     [SerializeField] float WordsPerSecond = 0.33333f;
 
+=======
+    [SerializeField] float TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue = 0.33333f;
+    [SerializeField] GameObject WordSpawner = null;
+>>>>>>> aab00f0ebd811340e2753a20b6c3e2f752074210
     public enum RESULTS
     {
         GOOD,
@@ -39,7 +44,7 @@ public class GameManager : MonoBehaviour
         {
             currentCycle = new GameCycle();
             currentCycle.Countdown = SecondsPerCycle;
-            currentCycle.WordCountdown = 1.0f / WordsPerSecond;
+            currentCycle.WordCountdown = TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue;
             //currentCycle.Points = 0;
             onGameCycleUpdated(this, currentCycle);
         }
@@ -51,7 +56,7 @@ public class GameManager : MonoBehaviour
     {
         //only reset countdown
         currentCycle.Countdown = SecondsPerCycle;
-        currentCycle.WordCountdown = 1.0f / WordsPerSecond;
+        currentCycle.WordCountdown = TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue;
         //Todo: reset words
         WordManager.Instance.NextConversation();
         Debug.Log("Resetted words and started a new cycle with existing points. [todo: getPointsFromSomewhere()]");
@@ -82,7 +87,7 @@ public class GameManager : MonoBehaviour
         currentCycle.WordCountdown -= Time.unscaledDeltaTime;
         if (currentCycle.WordCountdown < 0)
         {
-            currentCycle.WordCountdown = 1.0f / WordsPerSecond;
+            currentCycle.WordCountdown = TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue;
             SpawnWord();
         }
 

@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class MoodManager : MonoBehaviour
 {
     [SerializeField]
-    private bool isOurSupervisor;
+    private bool isOurLeader;
+
+    private int amountOfUnusedEssentials = 0;
 
     private float currentMoodScore;
     private Slider moodSlider;
@@ -19,31 +21,50 @@ public class MoodManager : MonoBehaviour
     public float insultingValue;
     public float flatteringValue;
     public float challengingValue;
+    public float unusedEssentialPenaltyValue;
+
+    private GameManager gameManager;
+    private Words.WordManager wordManager;
 
     private void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
+        wordManager = Words.WordManager.Instance;
+
         moodSlider = GetComponent<Slider>();
         initialMoodScore = moodSlider.value;
     }
 
-    public void AdjustMood(ScoreEvaluator.ConnotationsCount connotations)
+    public void AdjustMood(ScoreEvaluator.ConnotationsCount connotations, int essentialsInside)
     {
+        int essentialsOutside = 0;
+
+        foreach (Words.Word w in wordManager.wordList)
+        {
+            if (w.isEssential)
+            {
+                essentialsOutside++;
+            }
+        }
+        essentialsOutside -= essentialsInside;
+
         currentMoodScore += connotations.neutralCount * neutralValue;
         currentMoodScore += connotations.insultingCount * insultingValue;
         currentMoodScore += connotations.flatteringCount * flatteringValue;
         currentMoodScore += connotations.challengingCount * challengingValue;
+        currentMoodScore += essentialsOutside * unusedEssentialPenaltyValue;
 
         moodSlider.value = currentMoodScore;
 
         if (currentMoodScore < angerThreshold)
         {
-            if (isOurSupervisor)
+            if (isOurLeader)
             {
-                // GameManager EndCurrentCycle Bad Ending 1
+                gameManager.EndCurrentCycle(GameManager.RESULTS.BAD_ENDING_1);
             }
             else
             {
-                // GameManager EndCurrentCycle Bad Ending 2
+                gameManager.EndCurrentCycle(GameManager.RESULTS.BAD_ENDING_2);
             }
         }
     }
@@ -51,5 +72,6 @@ public class MoodManager : MonoBehaviour
     public void ResetMoodScore()
     {
         moodSlider.value = initialMoodScore;
+        amountOfUnusedEssentials = 0;
     }
 }
