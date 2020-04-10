@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] float SecondsPerCycle = 10.0f;
+    [field: SerializeField] public float SecondsPerCycle { get; } = 10.0f;
     [SerializeField] float WordsPerSecond = 0.33333f;
     [SerializeField] GameObject WordSpawner = null;
     public enum RESULTS
@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     }
     //[SerializeField] ...
 
-    class GameCycle
+    public class GameCycle
     {
         public float Countdown
         {
@@ -27,7 +27,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public delegate void GameCycleDelegate(GameManager manager, GameCycle cycle);
+
     GameCycle currentCycle;
+    public GameCycleDelegate onGameCycleUpdated;
 
     public void StartNewCycle()
     {
@@ -37,6 +40,7 @@ public class GameManager : MonoBehaviour
             currentCycle.Countdown = SecondsPerCycle;
             currentCycle.WordCountdown = 1.0f / WordsPerSecond;
             //currentCycle.Points = 0;
+            onGameCycleUpdated(this, currentCycle);
         }
         //Todo: Reset everything for a new cycle
 
@@ -49,6 +53,7 @@ public class GameManager : MonoBehaviour
         currentCycle.WordCountdown = 1.0f / WordsPerSecond;
         //Todo: reset words
         Debug.Log("Resetted words and started a new cycle with existing points. [todo: getPointsFromSomewhere()]");
+        onGameCycleUpdated(this, currentCycle);
     }
     public void EndCurrentCycle(RESULTS result)
     {
@@ -78,6 +83,8 @@ public class GameManager : MonoBehaviour
             currentCycle.WordCountdown = 1.0f / WordsPerSecond;
             SpawnWord();
         }
+
+        onGameCycleUpdated(this, currentCycle);
     }
 
     public void SpawnWord()

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5398584225451589786}
   - component: {fileID: 5398584225451589765}
   - component: {fileID: 5398584225451589764}
+  - component: {fileID: 1641821816000465505}
   m_Layer: 5
   m_Name: UI_Main
   m_TagString: Untagged
@@ -31,7 +32,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 5398584227042677374}
-  - {fileID: 5398584225797700070}
+  - {fileID: 5776641282215693493}
   - {fileID: 5398584225990452562}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -101,6 +102,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1641821816000465505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5398584225451589767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a559c293e5e575b46b76159f104d171d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProgressBarObject: {fileID: 2404355118968718631}
 --- !u!1 &5398584225990452573
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,12 +385,48 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Vladimir Putin
+--- !u!1 &6733655119675095898
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5776641282215693493}
+  m_Layer: 5
+  m_Name: ProgressbarContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5776641282215693493
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6733655119675095898}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 100}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5398584225797700070}
+  m_Father: {fileID: 5398584225451589787}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 40}
+  m_SizeDelta: {x: -600, y: 30}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!1001 &9139478101367115598
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 5398584225451589787}
+    m_TransformParent: {fileID: 5776641282215693493}
     m_Modifications:
     - target: {fileID: 3764566361871759016, guid: be8ad147373c24347a452868cace810e,
         type: 3}
@@ -391,22 +441,22 @@ PrefabInstance:
     - target: {fileID: 3764566361871759016, guid: be8ad147373c24347a452868cace810e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3764566361871759016, guid: be8ad147373c24347a452868cace810e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3764566361871759016, guid: be8ad147373c24347a452868cace810e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3764566361871759016, guid: be8ad147373c24347a452868cace810e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3764566361871759016, guid: be8ad147373c24347a452868cace810e,
         type: 3}
@@ -416,7 +466,7 @@ PrefabInstance:
     - target: {fileID: 3764566361871759016, guid: be8ad147373c24347a452868cace810e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3764566361871759016, guid: be8ad147373c24347a452868cace810e,
         type: 3}
@@ -441,17 +491,17 @@ PrefabInstance:
     - target: {fileID: 3764566361871759016, guid: be8ad147373c24347a452868cace810e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3764566361871759016, guid: be8ad147373c24347a452868cace810e,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: -609.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3764566361871759016, guid: be8ad147373c24347a452868cace810e,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 32.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3764566361871759016, guid: be8ad147373c24347a452868cace810e,
         type: 3}
@@ -471,7 +521,7 @@ PrefabInstance:
     - target: {fileID: 3764566361871759016, guid: be8ad147373c24347a452868cace810e,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3764566361871759016, guid: be8ad147373c24347a452868cace810e,
         type: 3}
@@ -486,7 +536,12 @@ PrefabInstance:
     - target: {fileID: 3764566361871759023, guid: be8ad147373c24347a452868cace810e,
         type: 3}
       propertyPath: m_Name
-      value: ProgressBarContainer
+      value: TimerProgress
+      objectReference: {fileID: 0}
+    - target: {fileID: 6883768338098883177, guid: be8ad147373c24347a452868cace810e,
+        type: 3}
+      propertyPath: ProgressDirection
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be8ad147373c24347a452868cace810e, type: 3}
@@ -496,3 +551,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 9139478101367115598}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2404355118968718631 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6883768338098883177, guid: be8ad147373c24347a452868cace810e,
+    type: 3}
+  m_PrefabInstance: {fileID: 9139478101367115598}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d1ccb9da351f8740b48e63876a30a14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
