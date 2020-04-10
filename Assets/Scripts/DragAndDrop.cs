@@ -22,18 +22,25 @@ public class DragAndDrop : MonoBehaviour
     }
     private void OnMouseDrag()
     {
-        if (dragging && Input.GetMouseButtonDown(1))
+        if (dragging)
         {
-            Rotate();
+            if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.LeftArrow))
+                RotateRight();
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetMouseButtonDown(1))
+                RotateLeft();
         }
     }
     private void OnMouseOver()
     {
     }
 
-    private void Rotate()
+    private void RotateLeft()
     {
         transform.localRotation = Quaternion.AngleAxis(transform.localRotation.eulerAngles.z - 30.0f, Vector3.forward);
+    }
+    private void RotateRight()
+    {
+        transform.localRotation = Quaternion.AngleAxis(transform.localRotation.eulerAngles.z + 30.0f, Vector3.forward);
     }
 
     private Camera cam;
