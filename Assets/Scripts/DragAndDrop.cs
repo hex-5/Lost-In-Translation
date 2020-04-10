@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class DragAndDrop : MonoBehaviour
 {
     bool dragging;
@@ -40,6 +41,8 @@ public class DragAndDrop : MonoBehaviour
     {
         cam = Camera.main;
         rigidBody = this.GetComponent<Rigidbody2D>();
+        rigidBody.gravityScale = 0;
+        rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
     public void FixedUpdate()
