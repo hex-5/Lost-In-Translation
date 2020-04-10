@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class DragAndDrop : MonoBehaviour
 {
+    [SerializeField] float rotationDegrees = 22.5f;
     bool dragging;
     Vector3 offset;
     Rigidbody2D rigidBody;
@@ -36,11 +37,11 @@ public class DragAndDrop : MonoBehaviour
 
     private void RotateLeft()
     {
-        transform.localRotation = Quaternion.AngleAxis(transform.localRotation.eulerAngles.z - 30.0f, Vector3.forward);
+        transform.localRotation = Quaternion.AngleAxis(transform.localRotation.eulerAngles.z - rotationDegrees, Vector3.forward);
     }
     private void RotateRight()
     {
-        transform.localRotation = Quaternion.AngleAxis(transform.localRotation.eulerAngles.z + 30.0f, Vector3.forward);
+        transform.localRotation = Quaternion.AngleAxis(transform.localRotation.eulerAngles.z + rotationDegrees, Vector3.forward);
     }
 
     private Camera cam;
