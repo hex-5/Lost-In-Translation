@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Image = UnityEngine.UI.Image;
 
 public class ProgressBar : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class ProgressBar : MonoBehaviour
 
     [SerializeField, Range(0,1)]
     private float _progress;
+
+    private Color _progressBarColor;
 
     public float Progress
     {
@@ -36,6 +39,12 @@ public class ProgressBar : MonoBehaviour
                 ProgressImage.GetComponent<RectTransform>().anchorMax = new Vector2(_progress, 1);
             }
         }
+    }
+
+    public Color ProgressBarColor
+    {
+        get => ProgressImage.GetComponent<Image>().color; 
+        set { ProgressImage.GetComponent<Image>().color = value; }
     }
 
     // Start is called before the first frame update

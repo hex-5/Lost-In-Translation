@@ -9,6 +9,9 @@ public class UIController : MonoBehaviour
     public ProgressBar ProgressBarObject;
     public UnityEngine.UI.Text TimeRemainingTextObject;
 
+    public Color TimeProgressBadColor = Color.red;
+    public Color TimeProgressGoodColor = Color.white;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,8 +29,10 @@ public class UIController : MonoBehaviour
 
     private void OnGameCycleUpdated(GameManager manager, GameManager.GameCycle cycle)
     {
-        ProgressBarObject.Progress = 1 - (cycle.Countdown / manager.SecondsPerCycle);
-        TimeRemainingTextObject.text = $"{cycle.Countdown % 60:00.0}s";
+        float progress = 1 - (cycle.Countdown / manager.SecondsPerCycle);
+        ProgressBarObject.Progress = progress;
+        ProgressBarObject.ProgressBarColor = Color.Lerp(TimeProgressGoodColor, TimeProgressBadColor, progress*progress);
+        TimeRemainingTextObject.text = $"{cycle.Countdown % 60:0.00}s";
     }
 
     // Update is called once per frame
