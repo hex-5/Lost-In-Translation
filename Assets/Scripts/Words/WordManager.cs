@@ -134,12 +134,7 @@ namespace Words
                 Debug.Log("Every Word was spawned // No Word in Wordlist");
             }
         }
-
-        public void SpawnWordButton()
-        {
-            WordManager.Instance.SpawnWord();
-        }
-
+        
         private IEnumerator ScaleWord(Word word)
         {
             float i = 0;
@@ -216,7 +211,7 @@ namespace Words
                 yield break;
             Vector3 initialScale = word.transform.localScale;
             float i = 0;
-            float rate = 1 / 0.5f;
+            float rate = 1 / 0.2f;
             while (i < 1)
             {
                 i += rate * Time.deltaTime;
