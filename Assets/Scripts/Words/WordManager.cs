@@ -83,7 +83,7 @@ namespace Words
 
             // Adjust Word-Shape
             SpriteRenderer spriteRenderer = wordSprite.GetComponent<SpriteRenderer>();
-
+            /*
             switch (connotation)
             {
                 case Connotation.Neutral:
@@ -101,7 +101,7 @@ namespace Words
                 default:
                     spriteRenderer.color = Color.white;
                     break;
-            }
+            }*/
             return wordComponent;
         }
 
