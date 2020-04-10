@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     [field: SerializeField] public float SecondsPerCycle { get; } = 10.0f;
 
-    [SerializeField] float TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue = 0.33333f;
+    [SerializeField] public float TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue = 0.33333f;
 
     public enum RESULTS
     {
@@ -45,11 +45,18 @@ public class GameManager : MonoBehaviour
             onGameCycleUpdated(this, currentCycle);
         }
         //Todo: Reset everything for a new cycle
-
+        WordManager.Instance.RestartConversaitons();
         Debug.Log("Resetted everything and started a new cycle with new points.");
     }
     public void StartNextCycle()
     {
+        if (!WordManager.Instance.CheckNextConversation())
+        {
+            WordManager.Instance.ResetWordsAndLeaders();
+            Debug.Log("Letzte Conversation ist fertig!!!");
+            return;
+        }
+
         //only reset countdown
         currentCycle.Countdown = SecondsPerCycle;
         currentCycle.WordCountdown = TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue;

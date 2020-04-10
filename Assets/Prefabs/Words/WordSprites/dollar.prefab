@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 3326445178846023225}
   - component: {fileID: 4014570312446778347}
   - component: {fileID: 9839314173302762}
-  - component: {fileID: 2497413668761710534}
-  - component: {fileID: 3016430763673870024}
   m_Layer: 0
   m_Name: dollar
   m_TagString: Untagged
@@ -101,7 +99,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.91, y: 0.91}
+    oldSize: {x: 1.92, y: 0.92}
     newSize: {x: 1.91, y: 0.91}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -113,37 +111,3 @@ PolygonCollider2D:
       - {x: -0.955, y: -0.45499998}
       - {x: 0.955, y: -0.45499998}
       - {x: 0.955, y: 0.45499998}
---- !u!50 &2497413668761710534
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6459848581847928811}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &3016430763673870024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6459848581847928811}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cec9b34e34772f84a8e370258de81b44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationDegrees: 22.5

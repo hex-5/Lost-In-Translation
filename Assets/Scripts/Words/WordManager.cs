@@ -42,9 +42,9 @@ namespace Words
         [SerializeField]
         AnimationCurve WordMove;
         [SerializeField]
-        float initialWordScale;
+        float initialWordScale = 0F;
         [SerializeField]
-        float targetWordScale;
+        float targetWordScale = 1F;
         [SerializeField]
         float time = 0.5f;
         [SerializeField]
@@ -72,7 +72,7 @@ namespace Words
 
         private Word SpawnWord(Connotation connotation, GameObject spritePrefab, GameObject parent, bool isEssential)
         {
-            Word wordComponent = Instantiate(WordPrefab, parent.transform).GetComponent<Word>();
+            Word wordComponent = Instantiate(WordPrefab).GetComponent<Word>();
             wordComponent.transform.position = parent.transform.GetChild(0).transform.position;
 
             // Set Word Parameters
@@ -118,6 +118,7 @@ namespace Words
                 wordList.Add(Instance.SpawnWord(obj.conversationData[i].connotation, obj.conversationData[i].spritePrefab, speaker, obj.conversationData[i].isEssential));
                 wordList[i].spritePrefab.GetComponent<SpriteRenderer>().enabled = false;
             }
+            GetComponent<GameManager>().TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue = GetComponent<GameManager>().SecondsPerCycle / wordList.Count;
         }
 
         public void SpawnWord()
@@ -171,16 +172,59 @@ namespace Words
             return SpeechBubblePositions[RandomOption];
         }
 
+        public bool CheckNextConversation()
+        {
+            if (currentConversation + 1 < Conversations.Length)
+                return true;
+            else return false;
+        }
+
         public void NextConversation()
         {
-            foreach(Word word in wordList)
-            {
-                Destroy(word.gameObject);
-            }
-            Destroy(speaker);
-            Destroy(listener);
+            ResetWordsAndLeaders();
             currentConversation++;
+            currentWord = 0;
             ConvertConversation(Conversations[currentConversation]);
+        }
+
+        public void RestartConversaitons()
+        {
+            ResetWordsAndLeaders();
+            currentConversation = 0;
+            currentWord = 0;
+            ConvertConversation(Conversations[currentConversation]);
+        }
+
+        public void ResetWordsAndLeaders()
+        {
+            if (wordList.Count > 0)
+            {
+                foreach (Word word in wordList)
+                {
+                    StartCoroutine(DissolveWord(word.gameObject));
+                }
+            }
+            if(speaker)
+                Destroy(speaker);
+            if (listener)
+                Destroy(listener);
+        }
+
+        private IEnumerator DissolveWord(GameObject word)
+        {
+            if (!word)
+                yield break;
+            Vector3 initialScale = word.transform.localScale;
+            float i = 0;
+            float rate = 1 / 0.5f;
+            while (i < 1)
+            {
+                i += rate * Time.deltaTime;
+                word.transform.localScale = Vector3.Lerp(initialScale, Vector3.zero, WordScale.Evaluate(i));
+                yield return 0;
+            }
+            Destroy(word.gameObject);
+            yield return 0;
         }
     }
 }

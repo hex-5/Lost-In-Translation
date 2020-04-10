@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 8612930155761541402}
   - component: {fileID: 7933144062138201288}
   - component: {fileID: 6849896723285460454}
-  - component: {fileID: 8716775841117605992}
-  - component: {fileID: 3528730250852910998}
   m_Layer: 0
   m_Name: trump_gopnik
   m_TagString: Untagged
@@ -101,7 +99,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.13, y: 1.34}
+    oldSize: {x: 1.45, y: 1.37}
     newSize: {x: 1.13, y: 1.34}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -137,37 +135,3 @@ PolygonCollider2D:
       - {x: 0.565, y: -0.42999998}
       - {x: 0.565, y: -0.19999999}
       - {x: 0.49499997, y: 0.01}
---- !u!50 &8716775841117605992
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3184309412061384}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &3528730250852910998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3184309412061384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cec9b34e34772f84a8e370258de81b44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationDegrees: 22.5
