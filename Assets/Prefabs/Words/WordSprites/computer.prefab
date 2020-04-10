@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3563303739917435003}
   - component: {fileID: 2948753805623956905}
   - component: {fileID: 4019048536716974130}
+  - component: {fileID: 2401488085242933274}
+  - component: {fileID: 6595897619280376228}
   m_Layer: 0
   m_Name: computer
   m_TagString: Untagged
@@ -123,3 +125,37 @@ PolygonCollider2D:
       - {x: 0.53, y: -0.415}
       - {x: 0.59999996, y: -0.325}
       - {x: 0.61, y: -0.24499999}
+--- !u!50 &2401488085242933274
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5115934782998397353}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &6595897619280376228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5115934782998397353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cec9b34e34772f84a8e370258de81b44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationDegrees: 22.5

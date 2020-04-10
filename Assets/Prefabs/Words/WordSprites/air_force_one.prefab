@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8707080223583208219}
   - component: {fileID: 7010615318621198025}
   - component: {fileID: 1734963111803457928}
+  - component: {fileID: 2980872982577810731}
+  - component: {fileID: 3927533959136691775}
   m_Layer: 0
   m_Name: air_force_one
   m_TagString: Untagged
@@ -130,3 +132,37 @@ PolygonCollider2D:
       - {x: 0.74, y: -0.315}
       - {x: 0.81, y: -0.265}
       - {x: 0.84, y: -0.225}
+--- !u!50 &2980872982577810731
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106149516571525833}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &3927533959136691775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106149516571525833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cec9b34e34772f84a8e370258de81b44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationDegrees: 22.5

@@ -51,6 +51,7 @@ namespace Words
         Transform[] SpeechBubblePositions;
 
         private List<Word> wordList = new List<Word>();
+        private int currentConversation = 0;
         private int currentWord = 0;
         private Vector3 wordSpawnPosition;
         private GameObject speaker;
@@ -60,7 +61,7 @@ namespace Words
 
         void Start()
         {
-            ConvertConversation(Conversations[0]);
+            ConvertConversation(Conversations[currentConversation]);
             initialWordScaleVector = new Vector3(initialWordScale, initialWordScale, initialWordScale);
             targetWordScaleVector = new Vector3(targetWordScale, targetWordScale, targetWordScale);
         }
@@ -121,14 +122,16 @@ namespace Words
 
         public void SpawnWord()
         {
-            if (wordList.Count > 0)
+            if (wordList.Count > 0 && currentWord < wordList.Count)
             {
                 wordList[currentWord].spritePrefab.GetComponent<SpriteRenderer>().enabled = true;
                 StartCoroutine(ScaleWord(wordList[currentWord]));
                 StartCoroutine(MoveWord(wordList[currentWord]));
             }
             else
-                Debug.LogError("NO WORD LOADED!");
+            {
+                Debug.Log("Every Word was spawned // No Word in Wordlist");
+            }
         }
 
         public void SpawnWordButton()
@@ -150,6 +153,7 @@ namespace Words
 
         private IEnumerator MoveWord(Word word)
         {
+            currentWord++;
             float i = 0;
             float rate = 1 / time;
             Vector3 targetPosition = SelectionFreeBubbleSpace().position;
@@ -159,13 +163,24 @@ namespace Words
                 word.transform.position = Vector3.Lerp(speaker.transform.GetChild(0).transform.position, targetPosition, WordMove.Evaluate(i));
                 yield return 0;
             }
-            currentWord++;
         }
 
         private Transform SelectionFreeBubbleSpace()
         {
             int RandomOption = UnityEngine.Random.Range(0, SpeechBubblePositions.Length);
             return SpeechBubblePositions[RandomOption];
+        }
+
+        public void NextConversation()
+        {
+            foreach(Word word in wordList)
+            {
+                Destroy(word.gameObject);
+            }
+            Destroy(speaker);
+            Destroy(listener);
+            currentConversation++;
+            ConvertConversation(Conversations[currentConversation]);
         }
     }
 }

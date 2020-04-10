@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1561591984934670916}
   - component: {fileID: 879492252499789718}
   - component: {fileID: 3914466265381127628}
+  - component: {fileID: 8290442055205767757}
+  - component: {fileID: 1110272623108489579}
   m_Layer: 0
   m_Name: eagle
   m_TagString: Untagged
@@ -126,3 +128,37 @@ PolygonCollider2D:
       - {x: 0.235, y: -0.71999997}
       - {x: 0.24499999, y: -0.65999997}
       - {x: 0.45499998, y: -0.59}
+--- !u!50 &8290442055205767757
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7072892124577272726}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &1110272623108489579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7072892124577272726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cec9b34e34772f84a8e370258de81b44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationDegrees: 22.5

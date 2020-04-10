@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Words;
 
 public class GameManager : MonoBehaviour
 {
     [field: SerializeField] public float SecondsPerCycle { get; } = 10.0f;
     [SerializeField] float WordsPerSecond = 0.33333f;
-    [SerializeField] GameObject WordSpawner = null;
+
     public enum RESULTS
     {
         GOOD,
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour
         currentCycle.Countdown = SecondsPerCycle;
         currentCycle.WordCountdown = 1.0f / WordsPerSecond;
         //Todo: reset words
+        WordManager.Instance.NextConversation();
         Debug.Log("Resetted words and started a new cycle with existing points. [todo: getPointsFromSomewhere()]");
         onGameCycleUpdated(this, currentCycle);
     }
@@ -90,8 +92,7 @@ public class GameManager : MonoBehaviour
     public void SpawnWord()
     {
         Debug.Log("Spawned new word!");
-        //WordSpawner.GetComponent<Spawner>().Spawn(); or sth
-        //Todo: Spawn Word
+        WordManager.Instance.SpawnWord();
     }
 
     // Start is called before the first frame update
