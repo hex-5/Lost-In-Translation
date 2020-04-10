@@ -5,9 +5,10 @@ using UnityEngine;
 public class DragAndDrop : MonoBehaviour
 {
     bool dragging;
-
+    Vector3 offset;
     private void OnMouseDown()
     {
+        offset = cam.ScreenToWorldPoint(Input.mousePosition) - transform.localPosition;
         dragging = true;
     }
 
@@ -15,15 +16,13 @@ public class DragAndDrop : MonoBehaviour
     {
         dragging = false;
     }
-
-    private void Update()
+    private void OnMouseDrag()
     {
         if (dragging)
         {
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            transform.Translate(mousePos);
-            Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-            Debug.DrawLine(transform.position, mousePos, Color.red, 5.0f);
+            Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition) - offset;// - transform.position;
+            mousePos.z = 0;
+            transform.localPosition = mousePos;
 
             if (Input.GetMouseButtonDown(1))
             {
@@ -31,9 +30,22 @@ public class DragAndDrop : MonoBehaviour
             }
         }
     }
+    private void OnMouseOver()
+    {
+    }
 
     private void Rotate()
     {
-        transform.GetChild(0).Rotate(Vector3.forward, -30.0f);
+        transform.localRotation = Quaternion.AngleAxis(transform.localRotation.eulerAngles.z - 30.0f, Vector3.forward);
     }
+
+    private Camera cam;
+    public void Start()
+    {
+        cam = Camera.main;
+    }
+    private void Update()
+    {
+    }
+
 }
