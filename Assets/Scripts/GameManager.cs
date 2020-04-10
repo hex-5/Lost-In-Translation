@@ -6,13 +6,10 @@ using Words;
 public class GameManager : MonoBehaviour
 {
     [field: SerializeField] public float SecondsPerCycle { get; } = 10.0f;
-<<<<<<< HEAD
-    [SerializeField] float WordsPerSecond = 0.33333f;
 
-=======
     [SerializeField] float TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue = 0.33333f;
     [SerializeField] GameObject WordSpawner = null;
->>>>>>> aab00f0ebd811340e2753a20b6c3e2f752074210
+
     public enum RESULTS
     {
         GOOD,
