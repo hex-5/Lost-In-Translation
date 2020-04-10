@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public float SecondsPerCycle { get; } = 10.0f;
 
     [SerializeField] float TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue = 0.33333f;
-    [SerializeField] GameObject WordSpawner = null;
 
     public enum RESULTS
     {

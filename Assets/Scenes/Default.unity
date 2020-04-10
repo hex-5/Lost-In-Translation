@@ -209,7 +209,7 @@ PrefabInstance:
     - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
         type: 3}
       propertyPath: Conversations.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
         type: 3}
@@ -267,6 +267,12 @@ PrefabInstance:
       propertyPath: SpeechBubblePositions.Array.data[2]
       value: 
       objectReference: {fileID: 897443958}
+    - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
+        type: 3}
+      propertyPath: Conversations.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: b85b155fabcc83b478ab65c1f5657ddb,
+        type: 2}
     - target: {fileID: 8624425707250606995, guid: 85bd6a3c26556a640a2e141b3e83d929,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -325,7 +331,7 @@ PrefabInstance:
     - target: {fileID: 8624425707250606997, guid: 85bd6a3c26556a640a2e141b3e83d929,
         type: 3}
       propertyPath: m_Name
-      value: WordManager
+      value: Managers
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85bd6a3c26556a640a2e141b3e83d929, type: 3}
@@ -456,6 +462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec9b34e34772f84a8e370258de81b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationDegrees: 22.5
 --- !u!1 &614494431
 GameObject:
   m_ObjectHideFlags: 0
@@ -1304,3 +1311,22 @@ Transform:
   m_Father: {fileID: 108445750}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2030336394 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8624425707250606997, guid: 85bd6a3c26556a640a2e141b3e83d929,
+    type: 3}
+  m_PrefabInstance: {fileID: 463566150}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2030336397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030336394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0738b2eacb3ba2c4fad6c165bef745e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue: 0.33333

@@ -13,23 +13,14 @@ MonoBehaviour:
   m_Name: Level_1_Trump_2
   m_EditorClassIdentifier: 
   conversationData:
-  - connotation: 0
-    sprite: {fileID: -8476044083614416924, guid: 1b75a63882b42c44e9dfd23c06f155fa,
+  - connotation: 2
+    spritePrefab: {fileID: 5977845852317813597, guid: c74426e507a68b140904fd457c938b9a,
       type: 3}
     isEssential: 1
   - connotation: 1
-    sprite: {fileID: -2479046135300248059, guid: 1b75a63882b42c44e9dfd23c06f155fa,
+    spritePrefab: {fileID: 4632402304004834354, guid: a8d47143938603a4d8c89d486f9fa933,
       type: 3}
     isEssential: 0
-  - connotation: 2
-    sprite: {fileID: -5536345340400769029, guid: 1b75a63882b42c44e9dfd23c06f155fa,
-      type: 3}
-    isEssential: 1
-  - connotation: 3
-    sprite: {fileID: 2337254253927600879, guid: 1b75a63882b42c44e9dfd23c06f155fa,
-      type: 3}
-    isEssential: 0
-  - connotation: 0
-    sprite: {fileID: 2441583104936150541, guid: 1b75a63882b42c44e9dfd23c06f155fa,
-      type: 3}
-    isEssential: 1
+  speaker: {fileID: 5485975503034837554, guid: b5bc53b4c80ff4c4ab7e0089c57b7ad3, type: 3}
+  listener: {fileID: 4698890508207760895, guid: b642b51700ac6284b8c840d0ed7ec45d,
+    type: 3}
