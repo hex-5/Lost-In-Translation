@@ -30,17 +30,17 @@ namespace Words
         }
 
         [SerializeField]
-        GameObject WordPrefab;
+        GameObject WordPrefab = null;
         [SerializeField]
-        ConversationScriptableObject[] Conversations;
+        ConversationScriptableObject[] Conversations = null;
         [SerializeField]
-        Transform Leader1Pos;
+        Transform Leader1Pos = null;
         [SerializeField]
-        Transform Leader2Pos;
+        Transform Leader2Pos = null;
         [SerializeField]
-        AnimationCurve WordScale;
+        AnimationCurve WordScale = null;
         [SerializeField]
-        AnimationCurve WordMove;
+        AnimationCurve WordMove = null;
         [SerializeField]
         float initialWordScale = 0F;
         [SerializeField]
@@ -48,7 +48,7 @@ namespace Words
         [SerializeField]
         float time = 0.5f;
         [SerializeField]
-        Transform[] SpeechBubblePositions;
+        Transform[] SpeechBubblePositions = null;
         
         private int currentConversation = 0;
         public List<Word> wordList = new List<Word>();
@@ -197,7 +197,8 @@ namespace Words
                 foreach (Word word in wordList)
                 {
                     if(word != null)
-                        StartCoroutine(DissolveWord(word.gameObject));
+                        Destroy(word.gameObject);
+                        //StartCoroutine(DissolveWord(word.gameObject));
                 }
             }
             if(speaker)
@@ -206,21 +207,21 @@ namespace Words
                 Destroy(listener);
         }
 
-        private IEnumerator DissolveWord(GameObject word)
-        {
-            if (!word)
-                yield break;
-            Vector3 initialScale = word.transform.localScale;
-            float i = 0;
-            float rate = 1 / 0.3f;
-            while (i < 1)
-            {
-                i += rate * Time.deltaTime;
-                word.transform.localScale = Vector3.Lerp(initialScale, Vector3.zero, WordScale.Evaluate(i));
-                yield return 0;
-            }
-            Destroy(word.gameObject);
-            yield return 0;
-        }
+        //private IEnumerator DissolveWord(GameObject word)
+        //{
+        //    if (!word)
+        //        yield break;
+        //    Vector3 initialScale = word.transform.localScale;
+        //    float i = 0;
+        //    float rate = 1 / 0.3f;
+        //    while (i < 1)
+        //    {
+        //        i += rate * Time.deltaTime;
+        //        word.transform.localScale = Vector3.Lerp(initialScale, Vector3.zero, WordScale.Evaluate(i));
+        //        yield return 0;
+        //    }
+        //    Destroy(word.gameObject);
+        //    yield return 0;
+        //}
     }
 }
