@@ -7,6 +7,7 @@ public class UIController : MonoBehaviour
 {
 
     public ProgressBar ProgressBarObject;
+    public UnityEngine.UI.Text TimeRemainingTextObject;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,7 @@ public class UIController : MonoBehaviour
     private void OnGameCycleUpdated(GameManager manager, GameManager.GameCycle cycle)
     {
         ProgressBarObject.Progress = 1 - (cycle.Countdown / manager.SecondsPerCycle);
+        TimeRemainingTextObject.text = $"{cycle.Countdown % 60:00.0}s";
     }
 
     // Update is called once per frame
