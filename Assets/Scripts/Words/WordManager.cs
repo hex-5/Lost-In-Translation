@@ -50,7 +50,7 @@ namespace Words
         [SerializeField]
         Transform[] SpeechBubblePositions;
 
-        private Word[] wordList = null;
+        private List<Word> wordList = new List<Word>();
         private int currentWord = 0;
         private Vector3 wordSpawnPosition;
         private GameObject speaker;
@@ -111,20 +111,17 @@ namespace Words
             listener = Instantiate(obj.listener, Leader2Pos);
 
             //Spawn Words
-            wordList = new Word[obj.conversationData.Length];
-
+            wordList.Clear();
             for (int i = 0; i < obj.conversationData.Length; i++)
             {
-                wordList[i] = Instance.SpawnWord(obj.conversationData[i].connotation, obj.conversationData[i].spritePrefab, speaker, obj.conversationData[i].isEssential);
+                wordList.Add(Instance.SpawnWord(obj.conversationData[i].connotation, obj.conversationData[i].spritePrefab, speaker, obj.conversationData[i].isEssential));
                 wordList[i].spritePrefab.GetComponent<SpriteRenderer>().enabled = false;
             }
         }
 
         public void SpawnWord()
         {
-            Debug.LogError(wordList[0]);
-            Debug.LogError(wordList.Length);
-            if (true)
+            if (wordList.Count > 0)
             {
                 wordList[currentWord].spritePrefab.GetComponent<SpriteRenderer>().enabled = true;
                 StartCoroutine(ScaleWord(wordList[currentWord]));
@@ -132,6 +129,11 @@ namespace Words
             }
             else
                 Debug.LogError("NO WORD LOADED!");
+        }
+
+        public void SpawnWordButton()
+        {
+            WordManager.Instance.SpawnWord();
         }
 
         private IEnumerator ScaleWord(Word word)
@@ -150,10 +152,11 @@ namespace Words
         {
             float i = 0;
             float rate = 1 / time;
+            Vector3 targetPosition = SelectionFreeBubbleSpace().position;
             while (i < 1)
             {
                 i += rate * Time.deltaTime;
-                word.transform.localScale = Vector3.Lerp(speaker.transform.GetChild(0).transform.position, SelectionFreeBubbleSpace().position, WordMove.Evaluate(i));
+                word.transform.position = Vector3.Lerp(speaker.transform.GetChild(0).transform.position, targetPosition, WordMove.Evaluate(i));
                 yield return 0;
             }
             currentWord++;
@@ -161,7 +164,8 @@ namespace Words
 
         private Transform SelectionFreeBubbleSpace()
         {
-            return SpeechBubblePositions[0];
+            int RandomOption = UnityEngine.Random.Range(0, SpeechBubblePositions.Length);
+            return SpeechBubblePositions[RandomOption];
         }
     }
 }
