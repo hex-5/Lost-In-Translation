@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4334016396307565178}
   - component: {fileID: 3430302025863407060}
-  - component: {fileID: 7489201593521483243}
-  - component: {fileID: -277849313971515995}
+  - component: {fileID: -958317557204690513}
+  - component: {fileID: 7907331076931114013}
   m_Layer: 8
   m_Name: Word
   m_TagString: Untagged
@@ -48,7 +48,7 @@ MonoBehaviour:
   spritePrefab: {fileID: 0}
   connotation: 1
   isEssential: 0
---- !u!50 &7489201593521483243
+--- !u!50 &-958317557204690513
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -69,7 +69,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-277849313971515995
+--- !u!114 &7907331076931114013
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

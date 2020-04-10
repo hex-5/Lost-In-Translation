@@ -5,7 +5,7 @@ using Words;
 
 public class GameManager : MonoBehaviour
 {
-    [field: SerializeField] public float SecondsPerCycle { get; } = 10.0f;
+    [field: SerializeField] public float SecondsPerCycle { get; } = 60.0f;
 
     [SerializeField] public float TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue = 0.33333f;
 
@@ -81,13 +81,13 @@ public class GameManager : MonoBehaviour
     }
     public void UpdateRunningCycle()
     {
-        currentCycle.Countdown -= Time.unscaledDeltaTime;
+        currentCycle.Countdown -= Time.deltaTime;
         if(currentCycle.Countdown < 0)
         {
             //countdown is over, cycle isnt stopped anywhere else in the game, so it was successful.
             EndCurrentCycle(RESULTS.GOOD);
         }
-        currentCycle.WordCountdown -= Time.unscaledDeltaTime;
+        currentCycle.WordCountdown -= Time.deltaTime;
         if (currentCycle.WordCountdown < 0)
         {
             currentCycle.WordCountdown = TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue;
