@@ -6,28 +6,24 @@ public class DragAndDrop : MonoBehaviour
 {
     bool dragging;
     Vector3 offset;
+    Rigidbody2D rigidBody;
     private void OnMouseDown()
     {
         offset = cam.ScreenToWorldPoint(Input.mousePosition) - transform.localPosition;
         dragging = true;
+        rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     private void OnMouseUp()
     {
         dragging = false;
+        rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
     }
     private void OnMouseDrag()
     {
-        if (dragging)
+        if (dragging && Input.GetMouseButtonDown(1))
         {
-            Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition) - offset;// - transform.position;
-            mousePos.z = 0;
-            transform.localPosition = mousePos;
-
-            if (Input.GetMouseButtonDown(1))
-            {
-                Rotate();
-            }
+            Rotate();
         }
     }
     private void OnMouseOver()
@@ -43,9 +39,18 @@ public class DragAndDrop : MonoBehaviour
     public void Start()
     {
         cam = Camera.main;
+        rigidBody = this.GetComponent<Rigidbody2D>();
     }
-    private void Update()
+
+    public void FixedUpdate()
     {
+        if (!dragging)
+        {
+            return;
+        }
+        Vector3 mousePos = Input.mousePosition;
+        Vector3 move = cam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, cam.transform.position.y - transform.position.y)) - transform.position - offset;
+        rigidBody.MovePosition(rigidBody.position + new Vector2(move.x, move.y));
     }
 
 }
