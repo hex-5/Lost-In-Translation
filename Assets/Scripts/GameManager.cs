@@ -85,7 +85,10 @@ public class GameManager : MonoBehaviour
         if(currentCycle.Countdown < 0)
         {
             //countdown is over, cycle isnt stopped anywhere else in the game, so it was successful.
+            currentCycle.Countdown = 0;
+            onGameCycleUpdated(this, currentCycle);
             EndCurrentCycle(RESULTS.GOOD);
+            return;
         }
         currentCycle.WordCountdown -= Time.deltaTime;
         if (currentCycle.WordCountdown < 0)
@@ -93,8 +96,10 @@ public class GameManager : MonoBehaviour
             currentCycle.WordCountdown = TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue;
             SpawnWord();
         }
-
-        onGameCycleUpdated(this, currentCycle);
+        if (currentCycle.Countdown > 0)
+        {
+            onGameCycleUpdated(this, currentCycle);
+        }
     }
 
     public void SpawnWord()
