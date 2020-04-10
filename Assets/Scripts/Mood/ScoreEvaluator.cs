@@ -80,8 +80,6 @@ public class ScoreEvaluator : MonoBehaviour
             }
         }
 
-        //Debug.Log(connotationsCount.neutralCount + " " + connotationsCount.insultingCount + " " + connotationsCount.flatteringCount + " " + connotationsCount.challengingCount);
-
         moodManager.AdjustMood(connotationsCount, essentialsInside);
     }
 

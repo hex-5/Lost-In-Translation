@@ -26,6 +26,9 @@ public class MoodManager : MonoBehaviour
     private GameManager gameManager;
     private Words.WordManager wordManager;
 
+    [SerializeField]
+    private float interpolationSpeed = 1;
+
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
@@ -55,7 +58,7 @@ public class MoodManager : MonoBehaviour
         currentMoodScore += connotations.challengingCount * challengingValue;
         currentMoodScore += essentialsOutside * unusedEssentialPenaltyValue;
 
-        moodSlider.value = currentMoodScore;
+        StartCoroutine("SliderInterpolation");
 
         if (currentMoodScore < angerThreshold)
         {
@@ -68,6 +71,22 @@ public class MoodManager : MonoBehaviour
                 gameManager.EndCurrentCycle(GameManager.RESULTS.BAD_ENDING_2);
             }
         }
+    }
+    
+    // For smooth movement of the finger from the old slider value to the new slider value.
+    IEnumerator SliderInterpolation()
+    {
+        float tmp = moodSlider.value;
+        float interpolationTime = 0;
+
+        while (interpolationTime <= 1)
+        {
+            moodSlider.value = Mathf.Lerp(tmp, currentMoodScore, interpolationTime);
+            interpolationTime += Time.deltaTime * interpolationSpeed;
+
+            yield return new WaitForEndOfFrame();
+        }
+        moodSlider.value = currentMoodScore;
     }
 
     public void ResetMoodScore()
