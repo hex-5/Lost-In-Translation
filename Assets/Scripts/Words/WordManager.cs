@@ -50,7 +50,7 @@ namespace Words
         [SerializeField]
         Transform[] SpeechBubblePositions;
 
-        private List<Word> wordList = new List<Word>();
+        public List<Word> wordList = new List<Word>();
         private int currentWord = 0;
         private Vector3 wordSpawnPosition;
         private GameObject speaker;

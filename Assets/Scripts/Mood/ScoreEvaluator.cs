@@ -20,6 +20,8 @@ public class ScoreEvaluator : MonoBehaviour
     // List of Colliders that are inside our object
     private List<Collider2D> collidersInside = new List<Collider2D>();
 
+    public MoodManager moodManager;
+
     private void Start()
     {
         // Filling the edge collider with the same points as our polygon collider. First point has to be added twice to receive a closed edge.
@@ -38,17 +40,10 @@ public class ScoreEvaluator : MonoBehaviour
         edgeCollider.points = tmpVec2;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            CountBlocksInside();
-        }
-    }
-
     public void CountBlocksInside()
     {
         ConnotationsCount connotationsCount = new ConnotationsCount();
+        int essentialsInside = 0;
 
         // Go through all objects that are within my trigger
         foreach (Collider2D c in collidersInside)
@@ -75,8 +70,8 @@ public class ScoreEvaluator : MonoBehaviour
                 }
             }
         }
-        
-        // TODO connotationsCount weitergeben
+
+        moodManager.AdjustMood(connotationsCount, essentialsInside);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
