@@ -118,7 +118,7 @@ namespace Words
                 wordList.Add(Instance.SpawnWord(obj.conversationData[i].connotation, obj.conversationData[i].spritePrefab, speaker, obj.conversationData[i].isEssential));
                 wordList[i].spritePrefab.GetComponent<SpriteRenderer>().enabled = false;
             }
-            GetComponent<GameManager>().TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue = GetComponent<GameManager>().SecondsPerCycle / wordList.Count;
+            //GetComponent<GameManager>().TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue = GetComponent<GameManager>().SecondsPerCycle / wordList.Count;
         }
 
         public void SpawnWord()
@@ -196,7 +196,8 @@ namespace Words
             {
                 foreach (Word word in wordList)
                 {
-                    StartCoroutine(DissolveWord(word.gameObject));
+                    if(word != null)
+                        StartCoroutine(DissolveWord(word.gameObject));
                 }
             }
             if(speaker)
@@ -211,7 +212,7 @@ namespace Words
                 yield break;
             Vector3 initialScale = word.transform.localScale;
             float i = 0;
-            float rate = 1 / 0.2f;
+            float rate = 1 / 0.3f;
             while (i < 1)
             {
                 i += rate * Time.deltaTime;
