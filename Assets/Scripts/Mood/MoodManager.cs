@@ -6,16 +6,14 @@ using UnityEngine.UI;
 public class MoodManager : MonoBehaviour
 {
     [SerializeField]
-    private bool isOurLeader;
-
-    private int amountOfUnusedEssentials = 0;
+    private bool isOurLeader = true;
 
     private float currentMoodScore;
     private Slider moodSlider;
     private float initialMoodScore;
 
     [SerializeField]
-    private float angerThreshold;
+    private float angerThreshold = 90;
 
     public float neutralValue;
     public float insultingValue;
@@ -26,6 +24,9 @@ public class MoodManager : MonoBehaviour
     private GameManager gameManager;
     private Words.WordManager wordManager;
 
+    [SerializeField]
+    private float interpolationSpeed = 1;
+
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
@@ -33,6 +34,7 @@ public class MoodManager : MonoBehaviour
 
         moodSlider = GetComponent<Slider>();
         initialMoodScore = moodSlider.value;
+        currentMoodScore = initialMoodScore;
     }
 
     public void AdjustMood(ScoreEvaluator.ConnotationsCount connotations, int essentialsInside)
@@ -54,7 +56,7 @@ public class MoodManager : MonoBehaviour
         currentMoodScore += connotations.challengingCount * challengingValue;
         currentMoodScore += essentialsOutside * unusedEssentialPenaltyValue;
 
-        moodSlider.value = currentMoodScore;
+        StartCoroutine("SliderInterpolation");
 
         if (currentMoodScore < angerThreshold)
         {
@@ -68,10 +70,25 @@ public class MoodManager : MonoBehaviour
             }
         }
     }
+    
+    // For smooth movement of the finger from the old slider value to the new slider value.
+    IEnumerator SliderInterpolation()
+    {
+        float tmp = moodSlider.value;
+        float interpolationTime = 0;
+
+        while (interpolationTime <= 1)
+        {
+            moodSlider.value = Mathf.Lerp(tmp, currentMoodScore, interpolationTime);
+            interpolationTime += Time.deltaTime * interpolationSpeed;
+
+            yield return new WaitForEndOfFrame();
+        }
+        moodSlider.value = currentMoodScore;
+    }
 
     public void ResetMoodScore()
     {
         moodSlider.value = initialMoodScore;
-        amountOfUnusedEssentials = 0;
     }
 }

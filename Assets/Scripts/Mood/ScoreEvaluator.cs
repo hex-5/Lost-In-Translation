@@ -20,7 +20,8 @@ public class ScoreEvaluator : MonoBehaviour
     // List of Colliders that are inside our object
     private List<Collider2D> collidersInside = new List<Collider2D>();
 
-    public MoodManager moodManager;
+    public MoodManager moodManagerLeader1;
+    public MoodManager moodManagerLeader2;
 
     private void Start()
     {
@@ -60,6 +61,7 @@ public class ScoreEvaluator : MonoBehaviour
             if (!Physics2D.IsTouching(c, edgeCollider))
             {
                 Word word = c.GetComponentInParent<Word>();
+                if (word.isEssential) essentialsInside++;
 
                 switch (word.connotation)
                 {
@@ -79,9 +81,8 @@ public class ScoreEvaluator : MonoBehaviour
             }
         }
 
-        //Debug.Log(connotationsCount.neutralCount + " " + connotationsCount.insultingCount + " " + connotationsCount.flatteringCount + " " + connotationsCount.challengingCount);
-
-        moodManager.AdjustMood(connotationsCount, essentialsInside);
+        moodManagerLeader1.AdjustMood(connotationsCount, essentialsInside);
+        moodManagerLeader2.AdjustMood(connotationsCount, essentialsInside);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
