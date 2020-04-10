@@ -6,16 +6,14 @@ using UnityEngine.UI;
 public class MoodManager : MonoBehaviour
 {
     [SerializeField]
-    private bool isOurLeader;
-
-    private int amountOfUnusedEssentials = 0;
+    private bool isOurLeader = true;
 
     private float currentMoodScore;
     private Slider moodSlider;
     private float initialMoodScore;
 
     [SerializeField]
-    private float angerThreshold;
+    private float angerThreshold = 90;
 
     public float neutralValue;
     public float insultingValue;
@@ -92,6 +90,5 @@ public class MoodManager : MonoBehaviour
     public void ResetMoodScore()
     {
         moodSlider.value = initialMoodScore;
-        amountOfUnusedEssentials = 0;
     }
 }
