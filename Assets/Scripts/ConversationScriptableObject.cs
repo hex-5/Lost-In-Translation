@@ -11,11 +11,13 @@ public class ConversationScriptableObject : ScriptableObject
     public struct ConversationData
     {
         public Connotation connotation;
-        public Sprite sprite;
+        public GameObject spritePrefab;
         public bool isEssential;
     }
 
     public ConversationData[] conversationData;
+    public GameObject speaker;
+    public GameObject listener;
 
     public void DontPressMe()
     {

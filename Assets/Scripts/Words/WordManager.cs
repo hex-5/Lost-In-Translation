@@ -32,24 +32,35 @@ namespace Words
         [SerializeField]
         GameObject WordPrefab;
 
+        [SerializeField]
+        ConversationScriptableObject[] Conversations;
+
+        private int conversationIndex = 0;
+        private GameObject mainCanvas;
+        private Vector3 wordSpawnPosition;
+        private GameObject speaker;
+
         void Start()
         {
+            mainCanvas = GameObject.Find("Main_Canvas");
         }
 
         void Update()
         {
         }
 
-        public Word SpawnWord(Connotation connotation, Sprite sprite, Transform position, bool isEssential)
+        private Word SpawnWord(Connotation connotation, GameObject spritePrefab, Vector3 position, bool isEssential)
         {
-            Word wordComponent = Instantiate(WordPrefab, position).GetComponent<Word>();
+            Word wordComponent = Instantiate(WordPrefab, mainCanvas.transform).GetComponent<Word>();
+            wordComponent.transform.position = position;
 
             // Set Word Parameters
             wordComponent.connotation = connotation;
             wordComponent.isEssential = isEssential;
+            GameObject wordSprite = Instantiate(spritePrefab, wordComponent.transform);
+
             // Adjust Word-Shape
-            SpriteRenderer spriteRenderer = wordComponent.GetComponent<SpriteRenderer>();
-            spriteRenderer.sprite = sprite;
+            SpriteRenderer spriteRenderer = wordSprite.GetComponent<SpriteRenderer>();
 
             switch (connotation)
             {
@@ -75,11 +86,14 @@ namespace Words
         public void ConvertConversationToWords(ConversationScriptableObject obj)
         {
             Word[] words = new Word[obj.conversationData.Length];
+            speaker = obj.speaker;
 
             for (int i = 0; i < obj.conversationData.Length; i++)
             {
-                words[i] = Instance.SpawnWord(obj.conversationData[i].connotation, obj.conversationData[i].sprite, transform, obj.conversationData[i].isEssential);
+                words[i] = Instance.SpawnWord(obj.conversationData[i].connotation, obj.conversationData[i].spritePrefab, obj.speaker.transform.GetChild(0).transform.position, obj.conversationData[i].isEssential);
             }
         }
+
+
     }
 }

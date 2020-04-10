@@ -7,7 +7,7 @@ namespace Words
 
     public class Word : MonoBehaviour
     {
-        public GameObject shape;
+        public GameObject spritePrefab;
         public Connotation connotation;
         public bool isEssential;
 
