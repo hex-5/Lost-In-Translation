@@ -77,6 +77,11 @@ public class GameManager : MonoBehaviour
     public void EndCurrentCycle(RESULTS result)
     {
         onEndCycleUpdated(this, result);
+
+        // Start leader 2 talk animation
+        leader2Pos.GetComponentInChildren<Animator>().SetTrigger("Talk");
+        // Start leader 2 talk sound
+
         Debug.Log("Cycle ended with [todo: getPointsFromSomewhere()] Points.");
         switch (result)
         {
@@ -116,9 +121,9 @@ public class GameManager : MonoBehaviour
     {
         if (WordManager.Instance.SpawnWord())
         {
-            // Starting leader1 talk animation
+            // Start leader 1 talk animation
             leader1Pos.GetComponentInChildren<Animator>().SetTrigger("Talk");
-            // Start talk sound
+            // Start leader 1 talk sound
 
             Debug.Log("Spawned new word!");
         }
