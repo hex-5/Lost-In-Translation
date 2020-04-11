@@ -9,22 +9,21 @@ public class DragAndDrop : MonoBehaviour
     bool dragging;
     Vector3 offset;
     Rigidbody2D rigidBody;
-
-    //delegate void OnSelect(Collider2D coll);
-    //OnSelect onSelect;
-
+    
     private void OnMouseDown()
     {
         offset = cam.ScreenToWorldPoint(Input.mousePosition) - transform.localPosition;
         dragging = true;
         rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
-        //onSelect(GetComponent<Collider2D>());
+        GameObject.Find("all_seeing_eye").GetComponent<ShineBrightLikeADiamond>().dragging = true;
+        GameObject.Find("all_seeing_eye").GetComponent<ShineBrightLikeADiamond>().currentCollider = transform.GetChild(0).GetComponent<Collider2D>();
     }
 
     private void OnMouseUp()
     {
         dragging = false;
         rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
+        GameObject.Find("all_seeing_eye").GetComponent<ShineBrightLikeADiamond>().dragging = false;
     }
     private void OnMouseDrag()
     {
