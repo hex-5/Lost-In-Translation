@@ -12,8 +12,8 @@ public class MoodManager : MonoBehaviour
     private Slider moodSlider;
     private float initialMoodScore;
 
-    [SerializeField]
-    private float angerThreshold = 90;
+    [SerializeField, Tooltip("When Mood sinks under this value the leader will be angry")]
+    private float angerThreshold = 40;
 
     public float neutralValue;
     public float insultingValue;
@@ -26,6 +26,9 @@ public class MoodManager : MonoBehaviour
 
     [SerializeField]
     private float interpolationSpeed = 1;
+
+    [Tooltip("0 = calm, 1 = angry")]
+    public int mood = 0;
 
     private void Start()
     {
@@ -57,17 +60,28 @@ public class MoodManager : MonoBehaviour
         currentMoodScore += essentialsOutside * unusedEssentialPenaltyValue;
 
         StartCoroutine("SliderInterpolation");
-
         if (currentMoodScore < angerThreshold)
+        {
+            mood = 1;
+        }
+        else
+        {
+            mood = 0;
+        }
+
+        if (currentMoodScore < 1)
         {
             if (isOurLeader)
             {
+                currentMoodScore = 0;
                 gameManager.EndCurrentCycle(GameManager.RESULTS.BAD_ENDING_1);
             }
             else
             {
+                currentMoodScore = 0;
                 gameManager.EndCurrentCycle(GameManager.RESULTS.BAD_ENDING_2);
             }
+
         }
     }
     
@@ -90,5 +104,6 @@ public class MoodManager : MonoBehaviour
     public void ResetMoodScore()
     {
         moodSlider.value = initialMoodScore;
+        currentMoodScore = moodSlider.value;
     }
 }

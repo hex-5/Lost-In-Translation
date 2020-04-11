@@ -477,6 +477,11 @@ PrefabInstance:
       propertyPath: unusedEssentialPenaltyValue
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 916143941731787880, guid: 7dac0628a745e0544b86999f7bf18924,
+        type: 3}
+      propertyPath: angerThreshold
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 2157639428466661349, guid: 7dac0628a745e0544b86999f7bf18924,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -642,6 +647,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 61098785333358660}
     m_Modifications:
+    - target: {fileID: 916143941731787880, guid: 7dac0628a745e0544b86999f7bf18924,
+        type: 3}
+      propertyPath: angerThreshold
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 2157639428466661349, guid: 7dac0628a745e0544b86999f7bf18924,
         type: 3}
       propertyPath: m_AnchorMin.y

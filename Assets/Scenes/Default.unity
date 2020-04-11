@@ -1003,6 +1003,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 375782348271621617, guid: 56cf978df23af4845bc494dcbfdbe0cd,
+        type: 3}
+      propertyPath: leaderPosition
+      value: 
+      objectReference: {fileID: 614494432}
     - target: {fileID: 1472881180377015932, guid: 56cf978df23af4845bc494dcbfdbe0cd,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1178,6 +1183,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7484068855065903162, guid: 56cf978df23af4845bc494dcbfdbe0cd,
+        type: 3}
+      propertyPath: leaderPosition
+      value: 
+      objectReference: {fileID: 1424066819}
     - target: {fileID: 8056311651993839199, guid: 56cf978df23af4845bc494dcbfdbe0cd,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1364,6 +1374,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue: 1
+  leader1Pos: {fileID: 1424066819}
+  leader2Pos: {fileID: 614494432}
 --- !u!4 &2097552311 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2612225481745681789, guid: 9983e3d6b06c17e4084a3a60c308dcaf,

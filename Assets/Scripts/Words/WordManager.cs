@@ -121,17 +121,19 @@ namespace Words
             //GetComponent<GameManager>().TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue = GetComponent<GameManager>().SecondsPerCycle / wordList.Count;
         }
 
-        public void SpawnWord()
+        public bool SpawnWord()
         {
             if (wordList.Count > 0 && currentWord < wordList.Count)
             {
                 wordList[currentWord].spritePrefab.GetComponent<SpriteRenderer>().enabled = true;
                 StartCoroutine(ScaleWord(wordList[currentWord]));
                 StartCoroutine(MoveWord(wordList[currentWord]));
+                return true;
             }
             else
             {
                 Debug.Log("Every Word was spawned // No Word in Wordlist");
+                return false;
             }
         }
         
