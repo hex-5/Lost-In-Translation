@@ -34,6 +34,8 @@ namespace Words
         [SerializeField]
         ConversationScriptableObject[] Conversations = null;
         [SerializeField]
+        List<Material> ConnotationMats = null;
+        [SerializeField]
         Transform Leader1Pos = null;
         [SerializeField]
         Transform Leader2Pos = null;
@@ -84,25 +86,25 @@ namespace Words
 
             // Adjust Word-Shape
             SpriteRenderer spriteRenderer = wordSprite.GetComponent<SpriteRenderer>();
-            /*
+            
             switch (connotation)
             {
                 case Connotation.Neutral:
-                    spriteRenderer.color = Color.blue;
+                    spriteRenderer.material = ConnotationMats.Find(x => x.name.Contains("Neutral"));
                     break;
                 case Connotation.Insulting:
-                    spriteRenderer.color = Color.red;
+                    spriteRenderer.material = ConnotationMats.Find(x => x.name.Contains("Insulting"));
                     break;
                 case Connotation.Flattering:
-                    spriteRenderer.color = Color.magenta;
+                    spriteRenderer.material = ConnotationMats.Find(x => x.name.Contains("Flattering"));
                     break;
                 case Connotation.Challenging:
-                    spriteRenderer.color = Color.yellow;
+                    spriteRenderer.material = ConnotationMats.Find(x => x.name.Contains("Challenging"));
                     break;
                 default:
-                    spriteRenderer.color = Color.white;
+                    spriteRenderer.material = ConnotationMats.Find(x => x.name.Contains("Neutral"));
                     break;
-            }*/
+            }
             return wordComponent;
         }
 
