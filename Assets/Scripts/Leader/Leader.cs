@@ -11,7 +11,7 @@ public class Leader : MonoBehaviour
         set
         {
             _isAngry = value;
-            _animator.SetBool("isAngry",value);
+            _animator.SetBool("IsAngry",value);
         }
     }
 
