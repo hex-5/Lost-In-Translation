@@ -9,10 +9,10 @@ public class ShineBrightLikeADiamond : MonoBehaviour
 
     [SerializeField]
     [ColorUsage(true, true)]
-    Color good;
+    Color good = new Color(0,0,0,0);
     [SerializeField]
     [ColorUsage(true, true)]
-    Color bad;
+    Color bad = new Color(0, 0, 0, 0);
     [SerializeField]
     GameManager gameManager;
 
