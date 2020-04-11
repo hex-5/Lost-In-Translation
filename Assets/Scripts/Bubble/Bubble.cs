@@ -15,13 +15,8 @@ public class Bubble : MonoBehaviour
     
     void Update()
     {
-        
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
         int amount = CountObjectsInside();
-        if(amount == 0)
+        if (amount == 0)
         {
             animator.SetBool("isOpen", false);
         }
@@ -48,11 +43,6 @@ public class Bubble : MonoBehaviour
     public void onCloseFinished()
     {
         gameObject.SetActive(false);
-    }
-
-    void Update(float DeltaSeconds)
-    {
-        
     }
 
 
