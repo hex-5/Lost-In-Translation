@@ -200,6 +200,7 @@ namespace Words
                         Destroy(word.gameObject);
                         //StartCoroutine(DissolveWord(word.gameObject));
                 }
+                wordList.Clear();
             }
             if(speaker)
                 Destroy(speaker);
