@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d2b5ad6be5a964a9bcf5f959f35b31, type: 3}
   m_Name: Haltone Renderpass
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   halftoneMaterial: {fileID: 2100000, guid: 079bbfe3edb02914a8866ab2e5b37427, type: 2}
 --- !u!114 &11400000
 MonoBehaviour:

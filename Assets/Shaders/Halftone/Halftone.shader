@@ -105,10 +105,10 @@
                 SURROUNDING_POINTS sampledPoints;
                 for (int i = -1; i <= 1; ++i)
                 {
-                    float sampleX = _gridSizeX * i;
+                    float sampleX = _gridSizeX/2 * i;
                     for (int j = -1; j <= 1; ++j)
                     {
-                        float sampleY = _gridSizeY * j;
+                        float sampleY = _gridSizeY/2 * j;
                         float2 uvSampleOffset = center + float2(sampleX, sampleY);
                         int tapIndex = (i + 1) * 3 + j + 1;
 
@@ -123,7 +123,7 @@
                 float2 localUV = ((sampleToUse.uv - fragUV)/sampleToUse.pointSize)+float2(0.5,0.5);
                 const fixed4 alphaColor = tex2D(_CircleTex, localUV);
                 const float alpha = sampleToUse.fragmentIsInside?alphaColor.r:0;
-                return alpha;
+                return sampleToUse.fragmentIsInside?alpha:0;
             }
 
             fixed4 frag(v2f frag) : SV_Target
@@ -131,10 +131,7 @@
                 float2 closestUVcenter = GetClosesUVGridCenter(frag.uv,float2(0,0));
                 SURROUNDING_POINTS surrounding = GetSurroundingPoints(closestUVcenter, frag.uv);
                 
-                POINT_SAMPLE sampleToUse;
-                sampleToUse.pointSize = 99999;
-                sampleToUse.fragmentIsInside = false;
-                sampleToUse.col = fixed4(0, 1, 1, 1);
+                POINT_SAMPLE sampleToUse = surrounding.taps[5];
                 for (int i = 0; i < 9; ++i)
                 {
                     if (surrounding.taps[i].fragmentIsInside && (sampleToUse.pointSize > surrounding.taps[i].pointSize))
