@@ -92,19 +92,22 @@ public class ShineBrightLikeADiamond : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            if (CheckWordOnLine(lastCollider))
+            if (lastCollider != null)
             {
-                GetComponent<SpriteRenderer>().material.SetInt("_Active", 1);
-                GetComponent<SpriteRenderer>().material.SetColor("_ShineColor", bad);
-                lastCollider.GetComponent<SpriteRenderer>().material.SetColor("_TintRGBA_Color_1", bad);
-            }
-            else
-            {
-                if (objectsOnBorder.Count == 0)
+                if (CheckWordOnLine(lastCollider))
                 {
-                    GetComponent<SpriteRenderer>().material.SetInt("_Active", 0);
+                    GetComponent<SpriteRenderer>().material.SetInt("_Active", 1);
+                    GetComponent<SpriteRenderer>().material.SetColor("_ShineColor", bad);
+                    lastCollider.GetComponent<SpriteRenderer>().material.SetColor("_TintRGBA_Color_1", bad);
                 }
-                lastCollider.GetComponent<SpriteRenderer>().material.SetColor("_TintRGBA_Color_1", new Color(0, 0, 0, 0));
+                else
+                {
+                    if (objectsOnBorder.Count == 0)
+                    {
+                        GetComponent<SpriteRenderer>().material.SetInt("_Active", 0);
+                    }
+                    lastCollider.GetComponent<SpriteRenderer>().material.SetColor("_TintRGBA_Color_1", new Color(0, 0, 0, 0));
+                }
             }
         }
     }
@@ -171,9 +174,6 @@ public class ShineBrightLikeADiamond : MonoBehaviour
         {
             insideTriangle = true;
             //lastCollider = collision;
-            Debug.LogWarning("STAYING");
         }
     }
-
-
 }
