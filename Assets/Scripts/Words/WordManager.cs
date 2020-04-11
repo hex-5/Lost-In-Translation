@@ -105,6 +105,10 @@ namespace Words
                     spriteRenderer.material = ConnotationMats.Find(x => x.name.Contains("Neutral"));
                     break;
             }
+
+            if (isEssential)
+                spriteRenderer.material = ConnotationMats.Find(x => x.name.Contains("Essential"));
+
             return wordComponent;
         }
 
