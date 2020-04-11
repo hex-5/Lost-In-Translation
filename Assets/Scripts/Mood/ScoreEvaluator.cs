@@ -36,9 +36,20 @@ public class ScoreEvaluator : MonoBehaviour
             tmpVec2[i] = polyCollider.points[i];
         }
         tmpVec2[tmpVec2.Length - 1] = tmpVec2[0];
-
-
+        
         edgeCollider.points = tmpVec2;
+
+
+        GameManager gameManager = FindObjectOfType<GameManager>();
+
+        if (gameManager != null)
+        {
+            gameManager.onEndCycleUpdated += OnEndCycleUpdated;
+        }
+        else
+        {
+            Debug.LogWarning("ScoreEvaluator: Could not find GameManager.");
+        }
     }
 
     private void Update()
@@ -98,6 +109,14 @@ public class ScoreEvaluator : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Word") && collidersInside.Contains(collision))
         {
             collidersInside.Remove(collision);
+        }
+    }
+
+    private void OnEndCycleUpdated(GameManager manager, GameManager.RESULTS result)
+    {
+        if(result == GameManager.RESULTS.GOOD)
+        {
+            CountBlocksInside();
         }
     }
 }

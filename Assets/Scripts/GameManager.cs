@@ -30,9 +30,11 @@ public class GameManager : MonoBehaviour
     }
 
     public delegate void GameCycleDelegate(GameManager manager, GameCycle cycle);
+    public delegate void EndCycleDelegate(GameManager manager, RESULTS result);
 
     GameCycle currentCycle;
     public GameCycleDelegate onGameCycleUpdated;
+    public EndCycleDelegate onEndCycleUpdated;
 
     public void StartNewCycle()
     {
@@ -67,6 +69,7 @@ public class GameManager : MonoBehaviour
     }
     public void EndCurrentCycle(RESULTS result)
     {
+        onEndCycleUpdated(this, result);
         Debug.Log("Cycle ended with [todo: getPointsFromSomewhere()] Points.");
         switch (result)
         {
