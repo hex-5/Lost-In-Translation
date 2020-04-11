@@ -6,7 +6,7 @@ using Words;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] public float SecondsPerSection = 20f;
+    [field: SerializeField] public float SecondsPerSection { get; } = 20.0f;
 
     [SerializeField] public float TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue = 0.33333f;
 
@@ -82,16 +82,8 @@ public class GameManager : MonoBehaviour
         WordManager.Instance.NextConversation();
         onGameSectionUpdated(this, currentSection);
     }
-    public void EndCurrentSection(RESULTS result)
+    public void EndGame(RESULTS result)
     {
-        onEndSectionUpdated(this, result);
-
-        // Start leader 2 talk animation
-        leader2Pos.GetComponentInChildren<Animator>().SetTrigger("Talk");
-        // Start leader 2 talk sound
-        SoundController.Instance.PlayRandomSound(SoundController.audio_id.ID_PUTIN_1, SoundController.audio_id.ID_PUTIN_5);
-
-
         lastResult = result;
         switch (result)
         {
@@ -110,19 +102,27 @@ public class GameManager : MonoBehaviour
                     onEndGame(this, RESULTS.GOOD);
                     gameEnded = true;
                 }
-                else
-                {
-                    StartNextSection();
-                }
                 break;
             default:
-                onEndGame(this, RESULTS.GOOD);
+                Debug.LogError("This shouldnt happen.");
                 break;
         }
     }
+    public void EndCurrentSection(RESULTS result)
+    {
+        onEndSectionUpdated(this, result);
+
+        // Start leader 2 talk animation
+        leader2Pos.GetComponentInChildren<Animator>().SetTrigger("Talk");
+        // Start leader 2 talk sound
+        SoundController.Instance.PlayRandomSound(SoundController.audio_id.ID_PUTIN_1, SoundController.audio_id.ID_PUTIN_5);
+
+        EndGame(RESULTS.GOOD);
+
+        if(!gameEnded) StartNextSection();
+    }
     public void UpdateRunningSection()
     {
-        if (gameEnded) return;
         currentSection.Countdown -= Time.deltaTime;
         if (currentSection.Countdown < 0)
         {
