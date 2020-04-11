@@ -25,6 +25,6 @@ public class EyeFollowCursor : MonoBehaviour
     {
         Transform eyeTransform = _skin.boneTransforms[eyeBoneIndex];
         Vector3 cursorLocalPosition = eyeTransform.InverseTransformPoint(cam.ScreenToWorldPoint(Input.mousePosition));
-        eyeTransform.localPosition = _eyeLocalRestPosition + Vector3.ClampMagnitude(cursorLocalPosition, eyeMaxOffset);
+        eyeTransform.localPosition = _eyeLocalRestPosition + Vector3.ClampMagnitude(cursorLocalPosition*3, eyeMaxOffset);
     }
 }
