@@ -122,6 +122,7 @@ public class GameManager : MonoBehaviour
     }
     public void UpdateRunningSection()
     {
+        if (gameEnded) return;
         currentSection.Countdown -= Time.deltaTime;
         if (currentSection.Countdown < 0)
         {
