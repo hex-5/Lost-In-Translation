@@ -9,11 +9,16 @@ public class DragAndDrop : MonoBehaviour
     bool dragging;
     Vector3 offset;
     Rigidbody2D rigidBody;
+
+    //delegate void OnSelect(Collider2D coll);
+    //OnSelect onSelect;
+
     private void OnMouseDown()
     {
         offset = cam.ScreenToWorldPoint(Input.mousePosition) - transform.localPosition;
         dragging = true;
         rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        //onSelect(GetComponent<Collider2D>());
     }
 
     private void OnMouseUp()

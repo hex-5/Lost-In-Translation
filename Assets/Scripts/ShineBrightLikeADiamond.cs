@@ -13,10 +13,27 @@ public class ShineBrightLikeADiamond : MonoBehaviour
     [SerializeField]
     [ColorUsage(true, true)]
     Color bad;
+    [SerializeField]
+    GameManager gameManager;
 
+    public List<Collider2D> objectsOnBorder = null;
     private bool insideTriangle = false;
     private Collider2D lastCollider = null;
 
+    private void Start()
+    {
+        objectsOnBorder = new List<Collider2D>();
+
+        //if (gameManager != null)
+        //{
+        //    gameManager.onNewCycle += RegisterAllWords;
+        //}
+    }
+
+    //private void RegisterAllWords(GameManager manager, bool newGame)
+    //{
+
+    //}
 
     private void Update()
     {
@@ -24,10 +41,12 @@ public class ShineBrightLikeADiamond : MonoBehaviour
         {
             if (lastCollider != null)
             {
-                if (!CheckWordOnLine(lastCollider))
+                objectsOnBorder.Remove(lastCollider);
+                if (CheckWordOnLinePure(lastCollider))
                 {
                     GetComponent<SpriteRenderer>().material.SetInt("_Active", 1);
                     GetComponent<SpriteRenderer>().material.SetColor("_ShineColor", bad);
+                    lastCollider.GetComponent<SpriteRenderer>().material.SetColor("_TintRGBA_Color_1", bad);
                 }
                 else
                 {
@@ -48,10 +67,11 @@ public class ShineBrightLikeADiamond : MonoBehaviour
         {
             if (lastCollider != null)
             {
-                if (!CheckWordOnLine(lastCollider))
+                if (CheckWordOnLinePure(lastCollider) || objectsOnBorder.Count > 0)
                 {
                     GetComponent<SpriteRenderer>().material.SetInt("_Active", 1);
                     GetComponent<SpriteRenderer>().material.SetColor("_ShineColor", bad);
+                    lastCollider.GetComponent<SpriteRenderer>().material.SetColor("_TintRGBA_Color_1", bad);
                 }
                 else
                 {
@@ -59,10 +79,12 @@ public class ShineBrightLikeADiamond : MonoBehaviour
                     {
                         GetComponent<SpriteRenderer>().material.SetInt("_Active", 1);
                         GetComponent<SpriteRenderer>().material.SetColor("_ShineColor", good);
+                        lastCollider.GetComponent<SpriteRenderer>().material.SetColor("_TintRGBA_Color_1", new Color(0, 0, 0, 0));
                     }
                     else
                     {
                         GetComponent<SpriteRenderer>().material.SetInt("_Active", 0);
+                        lastCollider.GetComponent<SpriteRenderer>().material.SetColor("_TintRGBA_Color_1", new Color(0, 0, 0, 0));
                     }
                 }
             }
@@ -70,23 +92,28 @@ public class ShineBrightLikeADiamond : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            if (!CheckWordOnLine(lastCollider))
+            if (CheckWordOnLine(lastCollider))
             {
                 GetComponent<SpriteRenderer>().material.SetInt("_Active", 1);
                 GetComponent<SpriteRenderer>().material.SetColor("_ShineColor", bad);
+                lastCollider.GetComponent<SpriteRenderer>().material.SetColor("_TintRGBA_Color_1", bad);
             }
             else
             {
-                GetComponent<SpriteRenderer>().material.SetInt("_Active", 0);
+                if (objectsOnBorder.Count == 0)
+                {
+                    GetComponent<SpriteRenderer>().material.SetInt("_Active", 0);
+                }
+                lastCollider.GetComponent<SpriteRenderer>().material.SetColor("_TintRGBA_Color_1", new Color(0, 0, 0, 0));
             }
         }
     }
 
-    public bool CheckWordOnLine(Collider2D collider)
+    public bool CheckWordOnLinePure(Collider2D collider)
     {
         if (lastCollider != null)
         {
-            if (!Physics2D.IsTouching(collider, edgeCollider))
+            if (Physics2D.IsTouching(collider, edgeCollider))
             {
                 return true;
             }
@@ -95,6 +122,29 @@ public class ShineBrightLikeADiamond : MonoBehaviour
         else return false;
     }
 
+    public bool CheckWordOnLine(Collider2D collider)
+    {
+        if (lastCollider != null)
+        {
+            if (Physics2D.IsTouching(collider, edgeCollider))
+            {
+                if (!objectsOnBorder.Contains(collider))
+                {
+                    objectsOnBorder.Add(collider);
+                }
+                return true;
+            }
+            else
+            {
+                if (objectsOnBorder.Contains(collider))
+                {
+                    objectsOnBorder.Remove(collider);
+                }
+                return false;
+            }
+        }
+        else return false;
+    }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -115,14 +165,15 @@ public class ShineBrightLikeADiamond : MonoBehaviour
         }
     }
 
-    //private void OnTriggerStay2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.layer == LayerMask.NameToLayer("Word"))
-    //    {
-    //        insideTriangle = true;
-    //        Debug.LogWarning("STAYING");
-    //    }
-    //}
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Word"))
+        {
+            insideTriangle = true;
+            //lastCollider = collision;
+            Debug.LogWarning("STAYING");
+        }
+    }
 
 
 }
