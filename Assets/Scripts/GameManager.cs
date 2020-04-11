@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
         {
             // Start leader 1 talk animation
             leader1Pos.GetComponentInChildren<Animator>().SetTrigger("Talk");
-            SoundController.Instance.PlayRandomSound(SoundController.audio_id.ID_TRUMP_1, SoundController.audio_id.ID_TRUMP_4);
+            SoundController.Instance.PlayRandomSound(SoundController.audio_id.ID_TRUMP_SHORT_1, SoundController.audio_id.ID_TRUMP_SHORT_7);
             // Start talk sound
 
             Debug.Log("Spawned new word!");
