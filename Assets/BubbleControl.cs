@@ -8,8 +8,8 @@ public class BubbleControl : MonoBehaviour
 
     void Start()
     {
+        GameObject.FindObjectOfType<GameManager>().onNewCycle += onNewCycle;
         ani = GetComponent<Animator>();
-        ani.Play("open");
     }
     
     void Update()
@@ -21,5 +21,19 @@ public class BubbleControl : MonoBehaviour
     {
         collision.isTrigger = false;
 
+        int amount = 0;
+        foreach(var word in Words.WordManager.Instance.wordList)
+        {
+            if ((!word.GetComponentInChildren<Collider2D>().isTrigger))
+                amount++;
+        }
+        if(amount >= Words.WordManager.Instance.wordList.Count)
+        {
+            ani.Play("close");
+        }
+    }
+    public void onNewCycle(GameManager manager, bool newGame)
+    {
+        ani.Play("open");
     }
 }
