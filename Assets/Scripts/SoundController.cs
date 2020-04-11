@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundController : MonoBehaviour
 {
-    
+    public AudioMixer mixer = null;
+    public AudioMixerGroup mixerGroup = null;
+
     public List<AudioClip> audios = new List<AudioClip>();
     private List<AudioSource> audioSources = new List<AudioSource>();
     public enum audio_id
@@ -70,6 +73,7 @@ public class SoundController : MonoBehaviour
             AudioSource audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.clip = AC;
             audioSource.playOnAwake = false;
+            audioSource.outputAudioMixerGroup = mixerGroup;
             audioSources.Add(audioSource);
         }
     }
