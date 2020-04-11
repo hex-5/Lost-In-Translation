@@ -151,6 +151,9 @@ Transform:
   - {fileID: 108802118}
   - {fileID: 1797142468}
   - {fileID: 897443958}
+  - {fileID: 457150804}
+  - {fileID: 2048364463}
+  - {fileID: 898340392}
   m_Father: {fileID: 263843206}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -178,7 +181,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108802117}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 0, z: 0}
+  m_LocalPosition: {x: -1.342, y: -0.554, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 108445750}
@@ -350,6 +353,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.5250144, y: 2.4487715}
   m_EdgeRadius: 0
+--- !u!1 &457150803
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 457150804}
+  m_Layer: 0
+  m_Name: Pos1 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &457150804
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457150803}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.3419995, y: 0.6919999, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 108445750}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &463566150
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -370,7 +403,7 @@ PrefabInstance:
     - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
         type: 3}
       propertyPath: SpeechBubblePositions.Array.size
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
         type: 3}
@@ -405,7 +438,7 @@ PrefabInstance:
     - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
         type: 3}
       propertyPath: targetWordScale
-      value: 1
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
         type: 3}
@@ -464,6 +497,21 @@ PrefabInstance:
       propertyPath: ConnotationMats.Array.data[3]
       value: 
       objectReference: {fileID: 2100000, guid: 4bc52de14921de04ab73d0c1b7b26085, type: 2}
+    - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
+        type: 3}
+      propertyPath: SpeechBubblePositions.Array.data[3]
+      value: 
+      objectReference: {fileID: 457150804}
+    - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
+        type: 3}
+      propertyPath: SpeechBubblePositions.Array.data[4]
+      value: 
+      objectReference: {fileID: 2048364463}
+    - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
+        type: 3}
+      propertyPath: SpeechBubblePositions.Array.data[5]
+      value: 
+      objectReference: {fileID: 898340392}
     - target: {fileID: 8624425707250606995, guid: 85bd6a3c26556a640a2e141b3e83d929,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -726,11 +774,41 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897443957}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 0, z: 0}
+  m_LocalPosition: {x: 1.372, y: -0.55400014, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 108445750}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &898340391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 898340392}
+  m_Layer: 0
+  m_Name: Pos3 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &898340392
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898340391}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.3720002, y: 0.692, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 108445750}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &902314754
 GameObject:
@@ -1352,7 +1430,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797142467}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.55400014, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 108445750}
@@ -1389,8 +1467,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue: 1
-  leader1Pos: {fileID: 0}
-  leader2Pos: {fileID: 0}
+  leader1Pos: {fileID: 1424066819}
+  leader2Pos: {fileID: 614494432}
+--- !u!1 &2048364462
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2048364463}
+  m_Layer: 0
+  m_Name: Pos2 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2048364463
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2048364462}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.6919999, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 108445750}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3450419892482615336
 PrefabInstance:
   m_ObjectHideFlags: 0
