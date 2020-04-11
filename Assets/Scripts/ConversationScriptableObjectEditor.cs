@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(ConversationScriptableObject))]
-public class ConversationScriptableObjectEditor : Editor
+public class ConversationScriptableObjectEditor : UnityEditor.Editor
 {
     public override void OnInspectorGUI()
     {
@@ -19,3 +20,4 @@ public class ConversationScriptableObjectEditor : Editor
 
     }
 }
+#endif
