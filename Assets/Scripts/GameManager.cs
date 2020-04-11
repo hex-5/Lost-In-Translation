@@ -118,6 +118,7 @@ public class GameManager : MonoBehaviour
         {
             // Starting leader1 talk animation
             leader1Pos.GetComponentInChildren<Animator>().SetTrigger("Talk");
+            SoundController.Instance.PlayRandomSound(SoundController.audio_id.ID_TRUMP_1, SoundController.audio_id.ID_TRUMP_4);
             // Start talk sound
 
             Debug.Log("Spawned new word!");
