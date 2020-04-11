@@ -1669,6 +1669,11 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 664227552}
+    - target: {fileID: 4286572260116614467, guid: 9983e3d6b06c17e4084a3a60c308dcaf,
+        type: 3}
+      propertyPath: eyeMaxOffset
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4597840566043957705, guid: 9983e3d6b06c17e4084a3a60c308dcaf,
         type: 3}
       propertyPath: m_BoneTransforms.Array.size
