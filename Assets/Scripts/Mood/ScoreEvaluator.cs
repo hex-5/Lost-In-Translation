@@ -59,7 +59,7 @@ public class ScoreEvaluator : MonoBehaviour
             CountBlocksInside();
         }
     }
-
+    
     public void CountBlocksInside()
     {
         ConnotationsCount connotationsCount = new ConnotationsCount();
@@ -111,6 +111,7 @@ public class ScoreEvaluator : MonoBehaviour
             collidersInside.Remove(collision);
         }
     }
+
 
     private void OnEndCycleUpdated(GameManager manager, GameManager.RESULTS result)
     {
