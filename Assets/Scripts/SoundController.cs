@@ -6,7 +6,7 @@ public class SoundController : MonoBehaviour
 {
     
     public List<AudioClip> audios = new List<AudioClip>();
-    public List<AudioSource> audioSources = new List<AudioSource>();
+    private List<AudioSource> audioSources = new List<AudioSource>();
     public enum audio_id
     {
         ID_TRUMP_1,
