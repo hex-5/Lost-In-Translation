@@ -60,13 +60,28 @@ public class MoodManager : MonoBehaviour
         currentMoodScore += essentialsOutside * unusedEssentialPenaltyValue;
 
         StartCoroutine("SliderInterpolation");
+
         if (currentMoodScore < angerThreshold)
         {
-            mood = 1;
+            if (isOurLeader)
+            {
+                Words.WordManager.Instance.moodLeader1 = 1;
+            }
+            else
+            {
+                Words.WordManager.Instance.moodLeader2 = 1;
+            }
         }
         else
         {
-            mood = 0;
+            if (isOurLeader)
+            {
+                Words.WordManager.Instance.moodLeader1 = 0;
+            }
+            else
+            {
+                Words.WordManager.Instance.moodLeader2 = 0;
+            }
         }
 
         if (currentMoodScore < 1)

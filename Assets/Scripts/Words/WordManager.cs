@@ -59,6 +59,9 @@ namespace Words
         private Vector3 initialWordScaleVector;
         private Vector3 targetWordScaleVector;
 
+        public int moodLeader1 = 0;
+        public int moodLeader2 = 0;
+
         void Start()
         {
             ConvertConversation(Conversations[currentConversation]);
@@ -109,7 +112,9 @@ namespace Words
         {
             //Spawn Leaders
             speaker = Instantiate(obj.speaker, Leader1Pos);
+            speaker.GetComponent<Animator>().SetInteger("Mood", moodLeader1);
             listener = Instantiate(obj.listener, Leader2Pos);
+            listener.GetComponent<Animator>().SetInteger("Mood", moodLeader2);
 
             //Spawn Words
             wordList.Clear();
