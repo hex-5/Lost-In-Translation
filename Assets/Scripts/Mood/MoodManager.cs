@@ -60,25 +60,11 @@ public class MoodManager : MonoBehaviour
 
         if (currentMoodScore < angerThreshold)
         {
-            if (isOurLeader)
-            {
-                gameManager.leader1Pos.GetComponentInChildren<Animator>().SetInteger("Mood", 1);
-            }
-            else
-            {
-                gameManager.leader2Pos.GetComponentInChildren<Animator>().SetInteger("Mood", 1);
-            }
+            (isOurLeader ? gameManager.leader1Pos : gameManager.leader2Pos).GetComponentInChildren<Leader>().IsAngry = true;
         }
         else
         {
-            if (isOurLeader)
-            {
-                gameManager.leader1Pos.GetComponentInChildren<Animator>().SetInteger("Mood", 0);
-            }
-            else
-            {
-                gameManager.leader2Pos.GetComponentInChildren<Animator>().SetInteger("Mood", 0);
-            }
+            (isOurLeader ? gameManager.leader1Pos : gameManager.leader2Pos).GetComponentInChildren<Leader>().IsAngry = false;
         }
 
         if (currentMoodScore < 1)

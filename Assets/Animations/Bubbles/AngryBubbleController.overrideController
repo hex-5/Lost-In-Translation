@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AngryBubbleController
+  m_Controller: {fileID: 9100000, guid: 349118f7d622d924d90763106ac7ad6f, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 19ad19a6b66a603429670c7649f93826, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: bf8210d289523224aaa1ecc1c66728ea, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 2a36569c2df7ee442a0247805ad70023, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d9288923de7dba6439f553a9fb947d49, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 38dd4447de015784e896bbe85b5db099, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0bafa74e05548eb44a461919a777d2d7, type: 2}

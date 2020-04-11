@@ -1,16 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 
-public class BubbleControl : MonoBehaviour
+[RequireComponent(typeof(Animator),typeof(SpriteRenderer), typeof(SpriteSkin))]
+public class Bubble : MonoBehaviour
 {
-    private Animator ani;
+    private Animator animator;
     [SerializeField] private float scaleMultiplierMin = 1.5f;
     [SerializeField] private float scaleMultiplierMax = 3.0f;
     void Start()
     {
-        GameObject.FindObjectOfType<GameManager>().onNewCycle += onNewCycle;
-        ani = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
     
     void Update()
@@ -30,11 +31,19 @@ public class BubbleControl : MonoBehaviour
         }
         if(amount >= Words.WordManager.Instance.wordList.Count)
         {
-            ani.Play("close");
+            animator.SetBool("isOpen", false);
+            
         }
     }
-    public void onNewCycle(GameManager manager, bool newGame)
+
+    public void Open()
     {
-        ani.Play("open");
+        gameObject.SetActive(true);
+        animator.SetBool("isOpen", true);
+    }
+
+    public void onCloseFinished()
+    {
+        gameObject.SetActive(false);
     }
 }
