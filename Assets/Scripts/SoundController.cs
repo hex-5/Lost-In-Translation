@@ -54,6 +54,13 @@ public class SoundController : MonoBehaviour
     {
         audioSources[(int)id].Stop();
     }
+    public void StopSound()
+    {
+        foreach(var AS in audioSources)
+        {
+            AS.Stop();
+        }
+    }
 
     // Start is called before the first frame update
     void Start()

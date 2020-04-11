@@ -22,7 +22,7 @@ public class UIController : MonoBehaviour
         {
             gameManager.onGameSectionUpdated += OnGameSectionUpdated;
             //Todo: add to gameEnd delegate
-            //gameManager.onEndGame += OnEndGame;
+            gameManager.onEndGame += OnEndGame;
         }
         else
         {
