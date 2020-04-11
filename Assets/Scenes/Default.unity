@@ -323,6 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32f81485bc4b5fc4a8c9f3144689eb82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scaleMultiplier: 2
 --- !u!61 &263843209
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1387,12 +1388,12 @@ PrefabInstance:
     - target: {fileID: 3450419891342074863, guid: 9983e3d6b06c17e4084a3a60c308dcaf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 3450419891342074863, guid: 9983e3d6b06c17e4084a3a60c308dcaf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.86
       objectReference: {fileID: 0}
     - target: {fileID: 3450419891342074863, guid: 9983e3d6b06c17e4084a3a60c308dcaf,
         type: 3}
@@ -1438,6 +1439,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450419891342074863, guid: 9983e3d6b06c17e4084a3a60c308dcaf,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450419891342074863, guid: 9983e3d6b06c17e4084a3a60c308dcaf,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450419891342074863, guid: 9983e3d6b06c17e4084a3a60c308dcaf,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 4286572260116614467, guid: 9983e3d6b06c17e4084a3a60c308dcaf,
         type: 3}
