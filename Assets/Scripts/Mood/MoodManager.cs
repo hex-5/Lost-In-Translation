@@ -72,12 +72,12 @@ public class MoodManager : MonoBehaviour
             if (isOurLeader)
             {
                 currentMoodScore = 0;
-                gameManager.EndCurrentCycle(GameManager.RESULTS.BAD_ENDING_1);
+                gameManager.EndCurrentSection(GameManager.RESULTS.BAD_ENDING_1);
             }
             else
             {
                 currentMoodScore = 0;
-                gameManager.EndCurrentCycle(GameManager.RESULTS.BAD_ENDING_2);
+                gameManager.EndCurrentSection(GameManager.RESULTS.BAD_ENDING_2);
             }
 
         }

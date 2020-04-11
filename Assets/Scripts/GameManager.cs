@@ -5,7 +5,7 @@ using Words;
 
 public class GameManager : MonoBehaviour
 {
-    [field: SerializeField] public float SecondsPerCycle { get; } = 20.0f;
+    [field: SerializeField] public float SecondsPerSection { get; } = 20.0f;
 
     [SerializeField] public float TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue = 0.33333f;
 
@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     }
     //[SerializeField] ...
 
-    public class GameCycle
+    public class GameSection
     {
         public float Countdown
         {
@@ -29,34 +29,34 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public delegate void NewCycleDelegate(GameManager manager, bool newGame);
-    public delegate void GameCycleDelegate(GameManager manager, GameCycle cycle);
-    public delegate void EndCycleDelegate(GameManager manager, RESULTS result);
+    public delegate void NewSectionDelegate(GameManager manager, bool newGame);
+    public delegate void GameSectionDelegate(GameManager manager, GameSection Section);
+    public delegate void EndSectionDelegate(GameManager manager, RESULTS result);
 
-    GameCycle currentCycle;
-    public GameCycleDelegate onGameCycleUpdated;
-    public EndCycleDelegate onEndCycleUpdated;
-    public NewCycleDelegate onNewCycle;
+    GameSection currentSection;
+    public GameSectionDelegate onGameSectionUpdated;
+    public EndSectionDelegate onEndSectionUpdated;
+    public NewSectionDelegate onNewSection;
 
     public Transform leader1Pos;
     public Transform leader2Pos;
 
-    public void StartNewCycle()
+    public void StartNewSection()
     {
-        if(currentCycle == null)
+        if(currentSection == null)
         {
-            currentCycle = new GameCycle();
-            currentCycle.Countdown = SecondsPerCycle;
-            currentCycle.WordCountdown = TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue;
-            //currentCycle.Points = 0;
-            onGameCycleUpdated(this, currentCycle);
+            currentSection = new GameSection();
+            currentSection.Countdown = SecondsPerSection;
+            currentSection.WordCountdown = TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue;
+            //currentSection.Points = 0;
+            onGameSectionUpdated(this, currentSection);
         }
-        onNewCycle(this, true);
-        //Todo: Reset everything for a new cycle
+        onNewSection(this, true);
+        //Todo: Reset everything for a new Section
         WordManager.Instance.RestartConversaitons();
-        Debug.Log("Resetted everything and started a new cycle with new points.");
+        Debug.Log("Resetted everything and started a new Section with new points.");
     }
-    public void StartNextCycle()
+    public void StartNextSection()
     {
         if (!WordManager.Instance.CheckNextConversation())
         {
@@ -65,24 +65,24 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        onNewCycle(this, false);
+        onNewSection(this, false);
         //only reset countdown
-        currentCycle.Countdown = SecondsPerCycle;
-        currentCycle.WordCountdown = TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue;
+        currentSection.Countdown = SecondsPerSection;
+        currentSection.WordCountdown = TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue;
         //Todo: reset words
         WordManager.Instance.NextConversation();
-        Debug.Log("Resetted words and started a new cycle with existing points. [todo: getPointsFromSomewhere()]");
-        onGameCycleUpdated(this, currentCycle);
+        Debug.Log("Resetted words and started a new Section with existing points. [todo: getPointsFromSomewhere()]");
+        onGameSectionUpdated(this, currentSection);
     }
-    public void EndCurrentCycle(RESULTS result)
+    public void EndCurrentSection(RESULTS result)
     {
-        onEndCycleUpdated(this, result);
+        onEndSectionUpdated(this, result);
 
         // Start leader 2 talk animation
         leader2Pos.GetComponentInChildren<Animator>().SetTrigger("Talk");
         // Start leader 2 talk sound
 		SoundController.Instance.PlayRandomSound(SoundController.audio_id.ID_PUTIN_1, SoundController.audio_id.ID_PUTIN_5);
-        Debug.Log("Cycle ended with [todo: getPointsFromSomewhere()] Points.");
+        Debug.Log("Section ended with [todo: getPointsFromSomewhere()] Points.");
         switch (result)
         {
             case RESULTS.BAD_ENDING_1:
@@ -90,30 +90,30 @@ public class GameManager : MonoBehaviour
                 //Todo: Script Endings and reset to start
             case RESULTS.GOOD:
             default:
-                StartNextCycle();
+                StartNextSection();
                 break;
         }
     }
-    public void UpdateRunningCycle()
+    public void UpdateRunningSection()
     {
-        currentCycle.Countdown -= Time.deltaTime;
-        if(currentCycle.Countdown < 0)
+        currentSection.Countdown -= Time.deltaTime;
+        if(currentSection.Countdown < 0)
         {
-            //countdown is over, cycle isnt stopped anywhere else in the game, so it was successful.
-            currentCycle.Countdown = 0;
-            onGameCycleUpdated(this, currentCycle);
-            EndCurrentCycle(RESULTS.GOOD);
+            //countdown is over, Section isnt stopped anywhere else in the game, so it was successful.
+            currentSection.Countdown = 0;
+            onGameSectionUpdated(this, currentSection);
+            EndCurrentSection(RESULTS.GOOD);
             return;
         }
-        currentCycle.WordCountdown -= Time.deltaTime;
-        if (currentCycle.WordCountdown < 0)
+        currentSection.WordCountdown -= Time.deltaTime;
+        if (currentSection.WordCountdown < 0)
         {
-            currentCycle.WordCountdown = TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue;
+            currentSection.WordCountdown = TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue;
             SpawnWord();
         }
-        if (currentCycle.Countdown > 0)
+        if (currentSection.Countdown > 0)
         {
-            onGameCycleUpdated(this, currentCycle);
+            onGameSectionUpdated(this, currentSection);
         }
     }
 
@@ -133,12 +133,12 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartNewCycle();
+        StartNewSection();
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateRunningCycle();
+        UpdateRunningSection();
     }
 }

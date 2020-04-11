@@ -15,10 +15,10 @@ public class BubbleController : MonoBehaviour
     void Start()
     {
         _gameManager = managers.GetComponent<GameManager>();
-        _gameManager.onNewCycle += OnNewCycle;
+        _gameManager.onNewSection += OnNewSection;
     }
 
-    private void OnNewCycle(GameManager manager, bool newgame)
+    private void OnNewSection(GameManager manager, bool newgame)
     {
         foreach (Bubble bubble in IsAngryToBubbleMap)
         {
