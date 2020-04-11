@@ -6,7 +6,7 @@ using Words;
 
 public class GameManager : MonoBehaviour
 {
-    [field: SerializeField] public float SecondsPerSection { get; } = 20.0f;
+    [SerializeField] public float SecondsPerSection = 20f;
 
     [SerializeField] public float TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue = 0.33333f;
 
