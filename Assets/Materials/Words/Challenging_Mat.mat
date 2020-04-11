@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Plane_Outline 2
+  m_Name: Challenging_Mat
   m_Shader: {fileID: 4800000, guid: 9db7fa57e55e9ae48b5e89ec34bfc08d, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -24,8 +24,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AlphaIntensity_Fade_1: 0.73
-    - _AlphaIntensity_Fade_2: 0.21
+    - _AlphaIntensity_Fade_1: 0.35
+    - _AlphaIntensity_Fade_2: 3
     - _ColorMask: 15
     - _OperationBlend_Fade_1: 1
     - _SpriteFade: 1
@@ -36,4 +36,4 @@ Material:
     - _StencilWriteMask: 255
     m_Colors:
     - _TintRGBA_Color_1: {r: 1, g: 1, b: 1, a: 0}
-    - _TintRGBA_Color_2: {r: 311.49716, g: 0, b: 226.1613, a: 0.7372549}
+    - _TintRGBA_Color_2: {r: 34.29675, g: 3.4969234, b: 0, a: 0.7529412}

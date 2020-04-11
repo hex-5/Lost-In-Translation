@@ -379,6 +379,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
         type: 3}
+      propertyPath: ConnotationMats.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
+        type: 3}
       propertyPath: WordScale.m_Curve.Array.data[1].time
       value: 1
       objectReference: {fileID: 0}
@@ -439,6 +444,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: b85b155fabcc83b478ab65c1f5657ddb,
         type: 2}
+    - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
+        type: 3}
+      propertyPath: ConnotationMats.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fe63155b0cc3a7e4a8314d08beb486a6, type: 2}
+    - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
+        type: 3}
+      propertyPath: ConnotationMats.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4e98d239b40c78247a99fa39aa2f0a58, type: 2}
+    - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
+        type: 3}
+      propertyPath: ConnotationMats.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7b5cae245c8fb8a41bfd3e1dde0a70fa, type: 2}
+    - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
+        type: 3}
+      propertyPath: ConnotationMats.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4bc52de14921de04ab73d0c1b7b26085, type: 2}
     - target: {fileID: 8624425707250606995, guid: 85bd6a3c26556a640a2e141b3e83d929,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1364,6 +1389,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue: 1
+  leader1Pos: {fileID: 0}
+  leader2Pos: {fileID: 0}
 --- !u!1001 &3450419892482615336
 PrefabInstance:
   m_ObjectHideFlags: 0
