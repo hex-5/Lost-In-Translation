@@ -5,7 +5,7 @@ using Words;
 
 public class GameManager : MonoBehaviour
 {
-    [field: SerializeField] public float SecondsPerCycle { get; } = 60.0f;
+    [field: SerializeField] public float SecondsPerCycle { get; } = 20.0f;
 
     [SerializeField] public float TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue = 0.33333f;
 
@@ -38,6 +38,9 @@ public class GameManager : MonoBehaviour
     public EndCycleDelegate onEndCycleUpdated;
     public NewCycleDelegate onNewCycle;
 
+    public Transform leader1Pos;
+    public Transform leader2Pos;
+
     public void StartNewCycle()
     {
         if(currentCycle == null)
@@ -57,7 +60,7 @@ public class GameManager : MonoBehaviour
     {
         if (!WordManager.Instance.CheckNextConversation())
         {
-            WordManager.Instance.ResetWordsAndLeaders();
+            WordManager.Instance.ResetWords();
             Debug.Log("Letzte Conversation ist fertig!!!");
             return;
         }
@@ -111,8 +114,14 @@ public class GameManager : MonoBehaviour
 
     public void SpawnWord()
     {
-        Debug.Log("Spawned new word!");
-        WordManager.Instance.SpawnWord();
+        if (WordManager.Instance.SpawnWord())
+        {
+            // Starting leader1 talk animation
+            leader1Pos.GetComponentInChildren<Animator>().SetTrigger("Talk");
+            // Start talk sound
+
+            Debug.Log("Spawned new word!");
+        }
     }
 
     // Start is called before the first frame update
