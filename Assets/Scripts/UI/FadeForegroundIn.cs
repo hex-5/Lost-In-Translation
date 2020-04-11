@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class FadeForegroundIn : MonoBehaviour
 {
-    [SerializeField] GameManager gameManager;
+    [SerializeField] GameManager gameManager = null;
     SpriteRenderer foregroundRenderer;
     // Start is called before the first frame update
     void Start()
