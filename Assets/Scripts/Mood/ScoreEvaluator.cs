@@ -44,7 +44,7 @@ public class ScoreEvaluator : MonoBehaviour
 
         if (gameManager != null)
         {
-            gameManager.onEndCycleUpdated += OnEndCycleUpdated;
+            gameManager.onEndSectionUpdated += OnEndSectionUpdated;
         }
         else
         {
@@ -113,7 +113,7 @@ public class ScoreEvaluator : MonoBehaviour
     }
 
 
-    private void OnEndCycleUpdated(GameManager manager, GameManager.RESULTS result)
+    private void OnEndSectionUpdated(GameManager manager, GameManager.RESULTS result)
     {
         if(result == GameManager.RESULTS.GOOD)
         {
