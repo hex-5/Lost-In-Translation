@@ -5,7 +5,7 @@ using UnityEngine;
 public class BubbleControl : MonoBehaviour
 {
     private Animator ani;
-
+    [SerializeField] private float scaleMultiplier = 2.0f;
     void Start()
     {
         GameObject.FindObjectOfType<GameManager>().onNewCycle += onNewCycle;
@@ -20,7 +20,7 @@ public class BubbleControl : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         collision.isTrigger = false;
-
+        collision.transform.localScale = collision.transform.localScale * scaleMultiplier;
         int amount = 0;
         foreach(var word in Words.WordManager.Instance.wordList)
         {
