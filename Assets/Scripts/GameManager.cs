@@ -2,11 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Words;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] public float SecondsPerSection = 20f;
+    [field: SerializeField] public float SecondsPerSection { get; } = 5.0f;
 
     [SerializeField] public float TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue = 0.33333f;
 
@@ -51,6 +53,7 @@ public class GameManager : MonoBehaviour
     public GameObject firedEndAnimation;
     public GameObject nukeEndAnimation;
     public GameObject goodEndAnimation;
+    public GameObject backToMenuButton;
 
     public void StartNewSection()
     {
@@ -82,6 +85,31 @@ public class GameManager : MonoBehaviour
         WordManager.Instance.NextConversation();
         onGameSectionUpdated(this, currentSection);
     }
+    public void EndGame(RESULTS result)
+    {
+        lastResult = result;
+        switch (result)
+        {
+            case RESULTS.BAD_ENDING_1:
+                onEndGame(this, RESULTS.BAD_ENDING_1);
+                gameEnded = true;
+                break;
+            case RESULTS.BAD_ENDING_2:
+                onEndGame(this, RESULTS.BAD_ENDING_2);
+                gameEnded = true;
+                break;
+            case RESULTS.GOOD:
+                if (!WordManager.Instance.CheckNextConversation())
+                {
+                    onEndGame(this, RESULTS.GOOD);
+                    gameEnded = true;
+                }
+                break;
+            default:
+                Debug.LogError("This shouldnt happen.");
+                break;
+        }
+    }
     public void EndCurrentSection(RESULTS result)
     {
         onEndSectionUpdated(this, result);
@@ -91,38 +119,10 @@ public class GameManager : MonoBehaviour
         // Start leader 2 talk sound
         SoundController.Instance.PlayRandomSound(SoundController.audio_id.ID_PUTIN_1, SoundController.audio_id.ID_PUTIN_5);
 
-
-        lastResult = result;
-        switch (result)
-        {
-            case RESULTS.BAD_ENDING_1:
-                onEndGame(this, RESULTS.BAD_ENDING_1);
-                gameEnded = true;
-                break;
-            case RESULTS.BAD_ENDING_2:
-                onEndGame(this, RESULTS.BAD_ENDING_1);
-                gameEnded = true;
-                break;
-            //Todo: Script Endings and reset to start
-            case RESULTS.GOOD:
-                if (!WordManager.Instance.CheckNextConversation())
-                {
-                    onEndGame(this, RESULTS.GOOD);
-                    gameEnded = true;
-                }
-                else
-                {
-                    StartNextSection();
-                }
-                break;
-            default:
-                onEndGame(this, RESULTS.GOOD);
-                break;
-        }
+        if (!gameEnded) StartNextSection();
     }
     public void UpdateRunningSection()
     {
-        if (gameEnded) return;
         currentSection.Countdown -= Time.deltaTime;
         if (currentSection.Countdown < 0)
         {
@@ -156,7 +156,7 @@ public class GameManager : MonoBehaviour
 
     bool uiGone = false;
     bool gameGone = false;
-    // Start is called before the first frame update
+
     void Start()
     {
         uiGone = false;
@@ -189,9 +189,14 @@ public class GameManager : MonoBehaviour
     {
         if (uiGone && gameGone)
         {
+            backToMenuButton.SetActive(true);
+
+            backToMenuButton.GetComponent<Button>().onClick.AddListener(delegate () {
+                SceneManager.LoadScene(0);
+            });
+
             SoundController.Instance.StopSound();
             //Trigger ending here and go to menu after that.
-            //Todo: Script Endings and reset to main menu
             switch (lastResult)
             {
                 case RESULTS.BAD_ENDING_1:
