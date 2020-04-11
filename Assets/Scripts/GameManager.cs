@@ -6,7 +6,7 @@ using Words;
 
 public class GameManager : MonoBehaviour
 {
-    [field: SerializeField] public float SecondsPerSection { get; } = 20.0f;
+    [field: SerializeField] public float SecondsPerSection { get; } = 5.0f;
 
     [SerializeField] public float TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue = 0.33333f;
 
@@ -92,10 +92,9 @@ public class GameManager : MonoBehaviour
                 gameEnded = true;
                 break;
             case RESULTS.BAD_ENDING_2:
-                onEndGame(this, RESULTS.BAD_ENDING_1);
+                onEndGame(this, RESULTS.BAD_ENDING_2);
                 gameEnded = true;
                 break;
-            //Todo: Script Endings and reset to start
             case RESULTS.GOOD:
                 if (!WordManager.Instance.CheckNextConversation())
                 {
@@ -117,9 +116,7 @@ public class GameManager : MonoBehaviour
         // Start leader 2 talk sound
         SoundController.Instance.PlayRandomSound(SoundController.audio_id.ID_PUTIN_1, SoundController.audio_id.ID_PUTIN_5);
 
-        EndGame(RESULTS.GOOD);
-
-        if(!gameEnded) StartNextSection();
+        if (!gameEnded) StartNextSection();
     }
     public void UpdateRunningSection()
     {
@@ -156,7 +153,7 @@ public class GameManager : MonoBehaviour
 
     bool uiGone = false;
     bool gameGone = false;
-    // Start is called before the first frame update
+
     void Start()
     {
         uiGone = false;
@@ -189,9 +186,9 @@ public class GameManager : MonoBehaviour
     {
         if (uiGone && gameGone)
         {
+            //TODO Button back to menu
             SoundController.Instance.StopSound();
             //Trigger ending here and go to menu after that.
-            //Todo: Script Endings and reset to main menu
             switch (lastResult)
             {
                 case RESULTS.BAD_ENDING_1:
