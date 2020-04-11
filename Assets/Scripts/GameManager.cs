@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public float TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue = 0.33333f;
 
-    [SerializeField] UIController ui_controller;
-    [SerializeField] FadeForegroundIn fade_controller;
+    [SerializeField] UIController ui_controller = null;
+    [SerializeField] FadeForegroundIn fade_controller = null;
     private bool gameEnded = false;
     public enum RESULTS
     {
@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
         BAD_ENDING_1,
         BAD_ENDING_2
     }
+    RESULTS lastResult = RESULTS.GOOD;
     //[SerializeField] ...
 
     public class GameSection
@@ -47,6 +48,10 @@ public class GameManager : MonoBehaviour
     public Transform leader1Pos;
     public Transform leader2Pos;
 
+    public GameObject firedEndAnimation;
+    public GameObject nukeEndAnimation;
+    public GameObject goodEndAnimation;
+
     public void StartNewSection()
     {
         if (currentSection == null)
@@ -60,14 +65,12 @@ public class GameManager : MonoBehaviour
         onNewSection(this, true);
         //Todo: Reset everything for a new Section
         WordManager.Instance.RestartConversaitons();
-        Debug.Log("Resetted everything and started a new Section with new points.");
     }
     public void StartNextSection()
     {
         if (!WordManager.Instance.CheckNextConversation())
         {
             WordManager.Instance.ResetWords();
-            Debug.Log("Letzte Conversation ist fertig!!!");
             return;
         }
 
@@ -77,7 +80,6 @@ public class GameManager : MonoBehaviour
         currentSection.WordCountdown = TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue;
         //Todo: reset words
         WordManager.Instance.NextConversation();
-        Debug.Log("Resetted words and started a new Section with existing points. [todo: getPointsFromSomewhere()]");
         onGameSectionUpdated(this, currentSection);
     }
     public void EndCurrentSection(RESULTS result)
@@ -88,6 +90,9 @@ public class GameManager : MonoBehaviour
         leader2Pos.GetComponentInChildren<Animator>().SetTrigger("Talk");
         // Start leader 2 talk sound
         SoundController.Instance.PlayRandomSound(SoundController.audio_id.ID_PUTIN_1, SoundController.audio_id.ID_PUTIN_5);
+
+
+        lastResult = result;
         switch (result)
         {
             case RESULTS.BAD_ENDING_1:
@@ -160,21 +165,23 @@ public class GameManager : MonoBehaviour
         if (fade_controller == null)
             Debug.LogError("Bind the fade controller to the gamemanager");
 
-        ui_controller.onUICrossfaded += onUIIsGone;
-        fade_controller.onForegroundCrossfaded += onGameIsGone;
+        ui_controller.onUICrossfaded += OnUIIsGone;
+        fade_controller.onForegroundCrossfaded += OnGameIsGone;
 
         StartNewSection();
     }
 
 
-    private void onGameIsGone()
+    private void OnGameIsGone()
     {
         uiGone = true;
+        CheckOnEnding();
     }
 
-    private void onUIIsGone()
+    private void OnUIIsGone()
     {
         gameGone = true;
+        CheckOnEnding();
     }
 
     void CheckOnEnding()
@@ -183,6 +190,21 @@ public class GameManager : MonoBehaviour
         {
             SoundController.Instance.StopSound();
             //Trigger ending here and go to menu after that.
+            //Todo: Script Endings and reset to main menu
+            switch (lastResult)
+            {
+                case RESULTS.BAD_ENDING_1:
+                    firedEndAnimation.SetActive(true);
+                    break;
+                case RESULTS.BAD_ENDING_2:
+                    nukeEndAnimation.SetActive(true);
+                    break;
+                case RESULTS.GOOD:
+                    goodEndAnimation.SetActive(true);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 

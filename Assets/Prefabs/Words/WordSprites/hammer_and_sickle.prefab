@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4018775546696435168}
   - component: {fileID: 3340256096757190706}
   - component: {fileID: 6834618924321245342}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: hammer_and_sickle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e320176e976af89409e1fb60e3cba679, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -92,7 +92,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -108,19 +108,12 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0.03, y: 0.45999998}
-      - {x: 0.17, y: 0.31}
-      - {x: 0.26, y: 0.07}
-      - {x: 0.19999999, y: -0.11}
-      - {x: -0.089999996, y: 0.16}
-      - {x: 0.049999997, y: 0.29}
+      - {x: 0.089999996, y: 0.38}
+      - {x: -0.04, y: 0.29999998}
       - {x: -0.14, y: 0.32}
       - {x: -0.35999998, y: 0.099999994}
-      - {x: -0.26, y: 0}
-      - {x: -0.16, y: 0.089999996}
-      - {x: 0.11, y: -0.19}
-      - {x: -0.04, y: -0.21}
-      - {x: -0.16, y: -0.13}
-      - {x: -0.25, y: -0.17}
+      - {x: -0.31, y: 0.04}
+      - {x: -0.28, y: -0.19}
       - {x: -0.45, y: -0.34}
       - {x: -0.44, y: -0.42999998}
       - {x: -0.35, y: -0.41}

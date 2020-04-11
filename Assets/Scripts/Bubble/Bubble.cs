@@ -7,8 +7,7 @@ using UnityEngine.U2D.Animation;
 public class Bubble : MonoBehaviour
 {
     private Animator animator;
-    [SerializeField] private float scaleMultiplierMin = 1.5f;
-    [SerializeField] private float scaleMultiplierMax = 3.0f;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -21,19 +20,23 @@ public class Bubble : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        collision.isTrigger = false;
-        collision.transform.localScale = collision.transform.localScale * Random.Range(scaleMultiplierMin, scaleMultiplierMax);
-        int amount = 0;
-        foreach(var word in Words.WordManager.Instance.wordList)
-        {
-            if ((!word.GetComponentInChildren<Collider2D>().isTrigger))
-                amount++;
-        }
-        if(amount >= Words.WordManager.Instance.wordList.Count)
+        int amount = CountObjectsInside();
+        if(amount == 0)
         {
             animator.SetBool("isOpen", false);
-            
         }
+    }
+
+    private int CountObjectsInside()
+    {
+        int amount = 0;
+        foreach (var word in Words.WordManager.Instance.wordList)
+        {
+            if (word.gameObject.layer == LayerMask.NameToLayer("WordInBubble"))
+                amount++;
+        }
+
+        return amount;
     }
 
     public void Open()
@@ -46,4 +49,11 @@ public class Bubble : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+    void Update(float DeltaSeconds)
+    {
+        
+    }
+
+
 }

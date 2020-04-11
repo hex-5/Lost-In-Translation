@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 8386157407658076364}
   - component: {fileID: 6571037229075610075}
   - component: {fileID: 7214113266384872651}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: angryBubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
