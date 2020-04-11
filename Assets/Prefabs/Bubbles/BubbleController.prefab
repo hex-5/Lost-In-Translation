@@ -265,8 +265,8 @@ MonoBehaviour:
   managers: {fileID: 0}
   speakerLeader: {fileID: 0}
   IsAngryToBubbleMap:
-  - {fileID: 9007503862519058036}
-  - {fileID: 3523749840887140733}
+  - {fileID: 3601487525075733878}
+  - {fileID: 2349453762245893493}
 --- !u!1001 &4937988584676440510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -352,16 +352,16 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4937988584676440510}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3523749840887140733 stripped
+--- !u!114 &2349453762245893493 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8386157407658076355, guid: 253e2353f6452dc42a3666e63d12f68d,
+  m_CorrespondingSourceObject: {fileID: 7214113266384872651, guid: 253e2353f6452dc42a3666e63d12f68d,
     type: 3}
   m_PrefabInstance: {fileID: 4937988584676440510}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32f81485bc4b5fc4a8c9f3144689eb82, type: 3}
+  m_Script: {fileID: 11500000, guid: a8cd0ad104ff301458e5b0b56c71fc44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &7764066996015092677
@@ -474,15 +474,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7764066996015092677}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9007503862519058036 stripped
+--- !u!114 &3601487525075733878 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1638910892730490289, guid: 21c7eba4ba6c4d848a69319343f91188,
+  m_CorrespondingSourceObject: {fileID: 6504477824973512371, guid: 21c7eba4ba6c4d848a69319343f91188,
     type: 3}
   m_PrefabInstance: {fileID: 7764066996015092677}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32f81485bc4b5fc4a8c9f3144689eb82, type: 3}
+  m_Script: {fileID: 11500000, guid: a8cd0ad104ff301458e5b0b56c71fc44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

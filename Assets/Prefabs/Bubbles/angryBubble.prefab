@@ -73,8 +73,8 @@ GameObject:
   - component: {fileID: 8386157407658076366}
   - component: {fileID: 8386157407658076367}
   - component: {fileID: 8386157407658076364}
-  - component: {fileID: 8386157407658076355}
   - component: {fileID: 6571037229075610075}
+  - component: {fileID: 7214113266384872651}
   m_Layer: 2
   m_Name: angryBubble
   m_TagString: Untagged
@@ -187,20 +187,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8386157407658076355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8386157407658076360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32f81485bc4b5fc4a8c9f3144689eb82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scaleMultiplierMin: 1.5
-  scaleMultiplierMax: 3
 --- !u!60 &6571037229075610075
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -442,3 +428,17 @@ PolygonCollider2D:
       - {x: -1.86, y: -4.02}
       - {x: -1.7199999, y: -3.9299998}
       - {x: -1.67, y: -3.8899999}
+--- !u!114 &7214113266384872651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8386157407658076360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8cd0ad104ff301458e5b0b56c71fc44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleMultiplierMin: 1.5
+  scaleMultiplierMax: 3

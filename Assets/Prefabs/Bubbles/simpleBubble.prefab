@@ -73,8 +73,8 @@ GameObject:
   - component: {fileID: 1638910892730490300}
   - component: {fileID: 1638910892730490301}
   - component: {fileID: 1638910892730490302}
-  - component: {fileID: 1638910892730490289}
   - component: {fileID: 4516487028541551323}
+  - component: {fileID: 6504477824973512371}
   m_Layer: 2
   m_Name: simpleBubble
   m_TagString: Untagged
@@ -189,20 +189,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1638910892730490289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1638910892730490298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32f81485bc4b5fc4a8c9f3144689eb82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scaleMultiplierMin: 1.5
-  scaleMultiplierMax: 3
 --- !u!60 &4516487028541551323
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -307,6 +293,20 @@ PolygonCollider2D:
       - {x: -0.39, y: -3.3999999}
       - {x: -0.12, y: -3.26}
       - {x: 0.25, y: -3.1399999}
+--- !u!114 &6504477824973512371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638910892730490298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8cd0ad104ff301458e5b0b56c71fc44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleMultiplierMin: 1.5
+  scaleMultiplierMax: 3
 --- !u!1 &1861884743866906837
 GameObject:
   m_ObjectHideFlags: 0
