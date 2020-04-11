@@ -1487,10 +1487,5 @@ PrefabInstance:
       propertyPath: m_BoneTransforms.Array.data[0]
       value: 
       objectReference: {fileID: 1331772591}
-    - target: {fileID: 4597840566043957705, guid: 9983e3d6b06c17e4084a3a60c308dcaf,
-        type: 3}
-      propertyPath: m_BoneTransforms.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9983e3d6b06c17e4084a3a60c308dcaf, type: 3}
