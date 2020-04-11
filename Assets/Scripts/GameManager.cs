@@ -61,14 +61,12 @@ public class GameManager : MonoBehaviour
         onNewSection(this, true);
         //Todo: Reset everything for a new Section
         WordManager.Instance.RestartConversaitons();
-        Debug.Log("Resetted everything and started a new Section with new points.");
     }
     public void StartNextSection()
     {
         if (!WordManager.Instance.CheckNextConversation())
         {
             WordManager.Instance.ResetWords();
-            Debug.Log("Letzte Conversation ist fertig!!!");
             return;
         }
 
@@ -78,7 +76,6 @@ public class GameManager : MonoBehaviour
         currentSection.WordCountdown = TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue;
         //Todo: reset words
         WordManager.Instance.NextConversation();
-        Debug.Log("Resetted words and started a new Section with existing points. [todo: getPointsFromSomewhere()]");
         onGameSectionUpdated(this, currentSection);
     }
     public void EndCurrentSection(RESULTS result)
