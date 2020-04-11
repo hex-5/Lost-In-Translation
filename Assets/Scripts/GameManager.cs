@@ -48,6 +48,10 @@ public class GameManager : MonoBehaviour
     public Transform leader1Pos;
     public Transform leader2Pos;
 
+    public GameObject firedEndAnimation;
+    public GameObject nukeEndAnimation;
+    public GameObject goodEndAnimation;
+
     public void StartNewSection()
     {
         if (currentSection == null)
@@ -190,10 +194,13 @@ public class GameManager : MonoBehaviour
             switch (lastResult)
             {
                 case RESULTS.BAD_ENDING_1:
+                    firedEndAnimation.SetActive(true);
                     break;
                 case RESULTS.BAD_ENDING_2:
+                    nukeEndAnimation.SetActive(true);
                     break;
                 case RESULTS.GOOD:
+                    goodEndAnimation.SetActive(true);
                     break;
                 default:
                     break;
