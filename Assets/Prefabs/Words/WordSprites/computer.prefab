@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3563303739917435003}
   - component: {fileID: 2948753805623956905}
   - component: {fileID: 4019048536716974130}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: computer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

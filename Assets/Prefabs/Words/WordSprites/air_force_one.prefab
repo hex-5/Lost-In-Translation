@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8707080223583208219}
   - component: {fileID: 7010615318621198025}
   - component: {fileID: 1734963111803457928}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: air_force_one
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
