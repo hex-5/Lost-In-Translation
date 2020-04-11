@@ -1156,6 +1156,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5398584226648285897, guid: 56cf978df23af4845bc494dcbfdbe0cd,
+        type: 3}
+      propertyPath: m_Text
+      value: Donald J. Trump
+      objectReference: {fileID: 0}
     - target: {fileID: 6152061037610859009, guid: 56cf978df23af4845bc494dcbfdbe0cd,
         type: 3}
       propertyPath: m_AnchorMax.x

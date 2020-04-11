@@ -29,12 +29,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public delegate void NewCycleDelegate(GameManager manager, bool newGame);
     public delegate void GameCycleDelegate(GameManager manager, GameCycle cycle);
     public delegate void EndCycleDelegate(GameManager manager, RESULTS result);
 
     GameCycle currentCycle;
     public GameCycleDelegate onGameCycleUpdated;
     public EndCycleDelegate onEndCycleUpdated;
+    public NewCycleDelegate onNewCycle;
 
     public void StartNewCycle()
     {
@@ -46,6 +48,7 @@ public class GameManager : MonoBehaviour
             //currentCycle.Points = 0;
             onGameCycleUpdated(this, currentCycle);
         }
+        onNewCycle(this, true);
         //Todo: Reset everything for a new cycle
         WordManager.Instance.RestartConversaitons();
         Debug.Log("Resetted everything and started a new cycle with new points.");
@@ -59,6 +62,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        onNewCycle(this, false);
         //only reset countdown
         currentCycle.Countdown = SecondsPerCycle;
         currentCycle.WordCountdown = TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue;
