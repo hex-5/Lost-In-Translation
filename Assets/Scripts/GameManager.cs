@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
     {
         if (!WordManager.Instance.CheckNextConversation())
         {
-            WordManager.Instance.ResetWordsAndLeaders();
+            WordManager.Instance.ResetWords();
             Debug.Log("Letzte Conversation ist fertig!!!");
             return;
         }

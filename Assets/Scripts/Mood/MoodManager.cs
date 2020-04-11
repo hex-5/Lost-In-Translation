@@ -27,9 +27,6 @@ public class MoodManager : MonoBehaviour
     [SerializeField]
     private float interpolationSpeed = 1;
 
-    [Tooltip("0 = calm, 1 = angry")]
-    public int mood = 0;
-
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
@@ -65,22 +62,22 @@ public class MoodManager : MonoBehaviour
         {
             if (isOurLeader)
             {
-                Words.WordManager.Instance.moodLeader1 = 1;
+                gameManager.leader1Pos.GetComponentInChildren<Animator>().SetInteger("Mood", 1);
             }
             else
             {
-                Words.WordManager.Instance.moodLeader2 = 1;
+                gameManager.leader2Pos.GetComponentInChildren<Animator>().SetInteger("Mood", 1);
             }
         }
         else
         {
             if (isOurLeader)
             {
-                Words.WordManager.Instance.moodLeader1 = 0;
+                gameManager.leader1Pos.GetComponentInChildren<Animator>().SetInteger("Mood", 0);
             }
             else
             {
-                Words.WordManager.Instance.moodLeader2 = 0;
+                gameManager.leader2Pos.GetComponentInChildren<Animator>().SetInteger("Mood", 0);
             }
         }
 

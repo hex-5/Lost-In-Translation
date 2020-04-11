@@ -59,11 +59,9 @@ namespace Words
         private Vector3 initialWordScaleVector;
         private Vector3 targetWordScaleVector;
 
-        public int moodLeader1 = 0;
-        public int moodLeader2 = 0;
-
         void Start()
         {
+            SpawnLeaders(Conversations[currentConversation]);
             ConvertConversation(Conversations[currentConversation]);
             initialWordScaleVector = new Vector3(initialWordScale, initialWordScale, initialWordScale);
             targetWordScaleVector = new Vector3(targetWordScale, targetWordScale, targetWordScale);
@@ -110,12 +108,6 @@ namespace Words
 
         public void ConvertConversation(ConversationScriptableObject obj)
         {
-            //Spawn Leaders
-            speaker = Instantiate(obj.speaker, Leader1Pos);
-            speaker.GetComponent<Animator>().SetInteger("Mood", moodLeader1);
-            listener = Instantiate(obj.listener, Leader2Pos);
-            listener.GetComponent<Animator>().SetInteger("Mood", moodLeader2);
-
             //Spawn Words
             wordList.Clear();
             for (int i = 0; i < obj.conversationData.Length; i++)
@@ -124,6 +116,13 @@ namespace Words
                 wordList[i].spritePrefab.GetComponent<SpriteRenderer>().enabled = false;
             }
             //GetComponent<GameManager>().TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue = GetComponent<GameManager>().SecondsPerCycle / wordList.Count;
+        }
+
+        public void SpawnLeaders(ConversationScriptableObject obj)
+        {
+            //Spawn Leaders
+            speaker = Instantiate(obj.speaker, Leader1Pos);
+            listener = Instantiate(obj.listener, Leader2Pos);
         }
 
         public bool SpawnWord()
@@ -183,7 +182,7 @@ namespace Words
 
         public void NextConversation()
         {
-            ResetWordsAndLeaders();
+            ResetWords();
             currentConversation++;
             currentWord = 0;
             ConvertConversation(Conversations[currentConversation]);
@@ -191,13 +190,13 @@ namespace Words
 
         public void RestartConversaitons()
         {
-            ResetWordsAndLeaders();
+            ResetWords();
             currentConversation = 0;
             currentWord = 0;
             ConvertConversation(Conversations[currentConversation]);
         }
 
-        public void ResetWordsAndLeaders()
+        public void ResetWords()
         {
             if (wordList.Count > 0)
             {
@@ -209,7 +208,11 @@ namespace Words
                 }
                 wordList.Clear();
             }
-            if(speaker)
+        }
+
+        public void ResetLeaders()
+        {
+            if (speaker)
                 Destroy(speaker);
             if (listener)
                 Destroy(listener);
