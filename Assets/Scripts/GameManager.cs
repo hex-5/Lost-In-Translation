@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Words;
 
 public class GameManager : MonoBehaviour
@@ -51,6 +53,7 @@ public class GameManager : MonoBehaviour
     public GameObject firedEndAnimation;
     public GameObject nukeEndAnimation;
     public GameObject goodEndAnimation;
+    public GameObject backToMenuButton;
 
     public void StartNewSection()
     {
@@ -186,7 +189,12 @@ public class GameManager : MonoBehaviour
     {
         if (uiGone && gameGone)
         {
-            //TODO Button back to menu
+            backToMenuButton.SetActive(true);
+
+            backToMenuButton.GetComponent<Button>().onClick.AddListener(delegate () {
+                SceneManager.LoadScene(0);
+            });
+
             SoundController.Instance.StopSound();
             //Trigger ending here and go to menu after that.
             switch (lastResult)
