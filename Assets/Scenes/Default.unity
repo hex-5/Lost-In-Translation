@@ -2819,7 +2819,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0738b2eacb3ba2c4fad6c165bef745e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondsPerSection: 20
   TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue: 1
   ui_controller: {fileID: 329132065}
   fade_controller: {fileID: 245104188}
@@ -3070,6 +3069,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5773668811454075086, guid: 74c97e7af75e8ec4b9b4c49481fe00c8,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5773668811454075086, guid: 74c97e7af75e8ec4b9b4c49481fe00c8,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.693
       objectReference: {fileID: 0}
     - target: {fileID: 5773668811454075087, guid: 74c97e7af75e8ec4b9b4c49481fe00c8,
         type: 3}
