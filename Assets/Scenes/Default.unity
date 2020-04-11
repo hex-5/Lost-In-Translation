@@ -1364,6 +1364,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue: 1
+--- !u!4 &2097552311 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2612225481745681789, guid: 9983e3d6b06c17e4084a3a60c308dcaf,
+    type: 3}
+  m_PrefabInstance: {fileID: 3450419892482615336}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3450419892482615336
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1491,6 +1497,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_BoneTransforms.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2097552311}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9983e3d6b06c17e4084a3a60c308dcaf, type: 3}
