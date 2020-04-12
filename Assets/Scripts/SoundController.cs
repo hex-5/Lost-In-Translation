@@ -31,6 +31,10 @@ public class SoundController : MonoBehaviour
         ID_SFX_PICK_WORD,
         ID_SFX_DROP_WORD,
         ID_SFX_ROTATE_WORD,
+        ID_END_ANIMATION_FIRED_1,
+        ID_END_ANIMATION_NUKE_1,
+        ID_END_ANIMATION_NUKE_2,
+        ID_END_ANIMATION_GOOD_1,
         ID_AMOUNT
     }
     public static SoundController Instance { get; private set; }
