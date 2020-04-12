@@ -99,11 +99,8 @@ public class GameManager : MonoBehaviour
                 gameEnded = true;
                 break;
             case RESULTS.GOOD:
-                if (!WordManager.Instance.CheckNextConversation())
-                {
-                    onEndGame(this, RESULTS.GOOD);
-                    gameEnded = true;
-                }
+                onEndGame(this, RESULTS.GOOD);
+                gameEnded = true;
                 break;
             default:
                 Debug.LogError("This shouldnt happen.");
@@ -129,6 +126,10 @@ public class GameManager : MonoBehaviour
             //countdown is over, Section isnt stopped anywhere else in the game, so it was successful.
             currentSection.Countdown = 0;
             onGameSectionUpdated(this, currentSection);
+            if (!WordManager.Instance.CheckNextConversation())
+            {
+                EndGame(RESULTS.GOOD);
+            }
             EndCurrentSection(RESULTS.GOOD);
             return;
         }
@@ -189,12 +190,19 @@ public class GameManager : MonoBehaviour
     {
         if (uiGone && gameGone)
         {
-            backToMenuButton.SetActive(true);
+            if (backToMenuButton != null)
+            {
+                backToMenuButton.SetActive(true);
 
-            backToMenuButton.GetComponent<Button>().onClick.AddListener(delegate () {
-                SceneManager.LoadScene(0);
-            });
-
+                backToMenuButton.GetComponent<Button>().onClick.AddListener(delegate ()
+                {
+                    SceneManager.LoadScene(0);
+                });
+            } 
+            else
+            {
+                Debug.LogWarning("PLEASE ASSIGN THE BACK BUTTON IN GAMEMANAGER! ~Karen");
+            }
             SoundController.Instance.StopSound();
             //Trigger ending here and go to menu after that.
             switch (lastResult)
