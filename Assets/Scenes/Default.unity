@@ -294,11 +294,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
         type: 3}
-      propertyPath: Conversations.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
-        type: 3}
       propertyPath: ConnotationMats.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -349,12 +344,6 @@ PrefabInstance:
       objectReference: {fileID: 614494432}
     - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
         type: 3}
-      propertyPath: Conversations.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: c59804153194c7147a9d488f919dd295,
-        type: 2}
-    - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
-        type: 3}
       propertyPath: SpeechBubblePositions.Array.data[1]
       value: 
       objectReference: {fileID: 937394364}
@@ -363,12 +352,6 @@ PrefabInstance:
       propertyPath: SpeechBubblePositions.Array.data[2]
       value: 
       objectReference: {fileID: 2091500753}
-    - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
-        type: 3}
-      propertyPath: Conversations.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: b85b155fabcc83b478ab65c1f5657ddb,
-        type: 2}
     - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
         type: 3}
       propertyPath: ConnotationMats.Array.data[0]
