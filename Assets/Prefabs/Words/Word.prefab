@@ -50,8 +50,8 @@ MonoBehaviour:
   isEssential: 0
   LayerWhenInBubble: WordInBubble
   LayerWhenOutsideOfBubble: Word
-  scaleMultiplierMin: 3
-  scaleMultiplierMax: 3
+  scaleMultiplierMin: 2
+  scaleMultiplierMax: 2
 --- !u!50 &-958317557204690513
 Rigidbody2D:
   serializedVersion: 4
