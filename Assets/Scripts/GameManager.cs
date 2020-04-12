@@ -77,12 +77,12 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        WordManager.Instance.NextConversation();
         onNewSection(this, false);
         //only reset countdown
         currentSection.Countdown = SecondsPerSection;
         currentSection.WordCountdown = TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue;
         //Todo: reset words
-        WordManager.Instance.NextConversation();
         onGameSectionUpdated(this, currentSection);
     }
     public void EndGame(RESULTS result)

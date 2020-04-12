@@ -63,6 +63,7 @@ namespace Words
         private Vector3 initialWordScaleVector;
         private Vector3 targetWordScaleVector;
 
+        public bool allWordsSpawned = false;
 
         void Start()
         {
@@ -126,13 +127,14 @@ namespace Words
         public void ConvertConversation(ConversationScriptableObject obj)
         {
             //Spawn Words
-            wordList.Clear();
+            Instance.wordList.Clear();
             Transform wordPos = GetDeepestChild(GameObject.Find("BubbleController").GetComponent<BubbleController>().ActiveBubble.transform);
             for (int i = 0; i < obj.conversationData.Length; i++)
             {
-                wordList.Add(Instance.SpawnWord(obj.conversationData[i].connotation, obj.conversationData[i].spritePrefab, wordPos, speaker.transform, obj.conversationData[i].isEssential));
-                wordList[i].spritePrefab.GetComponent<SpriteRenderer>().enabled = false;
+                Instance.wordList.Add(Instance.SpawnWord(obj.conversationData[i].connotation, obj.conversationData[i].spritePrefab, wordPos, speaker.transform, obj.conversationData[i].isEssential));
+                Instance.wordList[i].spritePrefab.GetComponent<SpriteRenderer>().enabled = false;
             }
+            //Enable this for equally distributed Word-Spawn-Timings
             //GetComponent<GameManager>().TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue = GetComponent<GameManager>().SecondsPerCycle / wordList.Count;
         }
 
@@ -145,15 +147,17 @@ namespace Words
 
         public bool SpawnWord()
         {
-            if (wordList.Count > 0 && currentWord < wordList.Count)
+            if (Instance.wordList.Count > 0 && currentWord < Instance.wordList.Count)
             {
-                wordList[currentWord].spritePrefab.GetComponent<SpriteRenderer>().enabled = true;
-                StartCoroutine(ScaleWord(wordList[currentWord]));
-                StartCoroutine(MoveWord(wordList[currentWord]));
+                allWordsSpawned = false;
+                Instance.wordList[currentWord].spritePrefab.GetComponent<SpriteRenderer>().enabled = true;
+                StartCoroutine(ScaleWord(Instance.wordList[currentWord]));
+                StartCoroutine(MoveWord(Instance.wordList[currentWord]));
                 return true;
             }
             else
             {
+                allWordsSpawned = true;
                 //Debug.Log("Every Word was spawned // No Word in Wordlist");
                 return false;
             }
@@ -230,15 +234,15 @@ namespace Words
 
         public void ResetWords()
         {
-            if (wordList.Count > 0)
+            if (Instance.wordList.Count > 0)
             {
-                foreach (Word word in wordList)
+                foreach (Word word in Instance.wordList)
                 {
                     if(word != null)
-                        Destroy(word.gameObject);
+                        DestroyImmediate(word.gameObject);
                         //StartCoroutine(DissolveWord(word.gameObject));
                 }
-                wordList.Clear();
+                Instance.wordList.Clear();
             }
         }
 

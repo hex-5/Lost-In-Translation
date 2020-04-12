@@ -68,6 +68,7 @@ public class ScoreEvaluator : MonoBehaviour
         // Go through all objects that are within my trigger
         foreach (Collider2D c in collidersInside)
         {
+            Debug.LogWarning("I GOT AN EXCEPTION BECAUSE THE VALUE CONNOT BE NULL! FIX IT! ~Super Karen");
             // If they are not on the edge of my trigger, increment connotation values
             if (!Physics2D.IsTouching(c, edgeCollider))
             {
