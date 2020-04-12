@@ -28,6 +28,9 @@ public class SoundController : MonoBehaviour
         ID_PUTIN_3,
         ID_PUTIN_4,
         ID_PUTIN_5,
+        ID_SFX_PICK_WORD,
+        ID_SFX_DROP_WORD,
+        ID_SFX_ROTATE_WORD,
         ID_AMOUNT
     }
     public static SoundController Instance { get; private set; }

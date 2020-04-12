@@ -12,6 +12,7 @@ public class DragAndDrop : MonoBehaviour
     
     private void OnMouseDown()
     {
+        SoundController.Instance.PlaySound(SoundController.audio_id.ID_SFX_PICK_WORD, false);
         transform.parent = null;
         offset = cam.ScreenToWorldPoint(Input.mousePosition) - transform.localPosition;
         dragging = true;
@@ -22,6 +23,7 @@ public class DragAndDrop : MonoBehaviour
 
     private void OnMouseUp()
     {
+        SoundController.Instance.PlaySound(SoundController.audio_id.ID_SFX_DROP_WORD, false);
         dragging = false;
         rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
         GameObject.Find("all_seeing_eye").GetComponent<ShineBrightLikeADiamond>().dragging = false;
@@ -42,10 +44,12 @@ public class DragAndDrop : MonoBehaviour
 
     private void RotateLeft()
     {
+        SoundController.Instance.PlaySound(SoundController.audio_id.ID_SFX_ROTATE_WORD, false);
         transform.localRotation = Quaternion.AngleAxis(transform.localRotation.eulerAngles.z - rotationDegrees, Vector3.forward);
     }
     private void RotateRight()
     {
+        SoundController.Instance.PlaySound(SoundController.audio_id.ID_SFX_ROTATE_WORD, false);
         transform.localRotation = Quaternion.AngleAxis(transform.localRotation.eulerAngles.z + rotationDegrees, Vector3.forward);
     }
 
