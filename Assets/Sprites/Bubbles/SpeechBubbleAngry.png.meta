@@ -50,7 +50,7 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -135,7 +135,23 @@ TextureImporter:
     serializedVersion: 2
     sprites: []
     outline: []
-    physicsShape: []
+    physicsShape:
+    - - {x: 303, y: -17}
+      - {x: 341, y: 11}
+      - {x: 471, y: 84}
+      - {x: 398, y: 290}
+      - {x: 409, y: 383}
+      - {x: 73, y: 460}
+      - {x: -173, y: 457}
+      - {x: -416, y: 495}
+      - {x: -433, y: 463}
+      - {x: -345, y: 262}
+      - {x: -365, y: -5}
+      - {x: -200, y: -76}
+      - {x: -58, y: -89}
+      - {x: 39, y: -88}
+      - {x: 168, y: -80}
+      - {x: 273, y: -42}
     bones:
     - name: angry_bubble
       position: {x: 654.2985, y: -0.84366447, z: 1}

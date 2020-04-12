@@ -45,3 +45,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WordPrefab: {fileID: 5452050143125130152, guid: a131b3507fc56ba4497847de5e31be70,
     type: 3}
+  Conversations:
+  - {fileID: 11400000, guid: c59804153194c7147a9d488f919dd295, type: 2}
+  - {fileID: 11400000, guid: b85b155fabcc83b478ab65c1f5657ddb, type: 2}
+  - {fileID: 11400000, guid: 4d622541c37b02b4b8aa6dbc11a5033a, type: 2}
+  - {fileID: 11400000, guid: 322dfb4631d475b4885963fda84d305a, type: 2}
+  - {fileID: 11400000, guid: 0521c877e3e0f384f91e3ae9e988a283, type: 2}
+  - {fileID: 11400000, guid: 194d2a69db468bc4b8c9608cda9c1534, type: 2}
+  ConnotationMats: []
+  Leader1Pos: {fileID: 0}
+  Leader2Pos: {fileID: 0}
+  WordScale:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  WordMove:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  initialWordScale: 0
+  targetWordScale: 1
+  time: 0.5
+  SpeechBubblePositions: []
+  AngrySpeechBubblePositions: []
+  wordList: []
+  allWordsSpawned: 0

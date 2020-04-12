@@ -81,8 +81,8 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        WordManager.Instance.NextConversation();
         onNewSection(this, false);
+        WordManager.Instance.NextConversation();
         //only reset countdown
         currentSection.Countdown = SecondsPerSection;
         currentSection.WordCountdown = TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue;
@@ -169,9 +169,11 @@ public class GameManager : MonoBehaviour
 
     bool uiGone = false;
     bool gameGone = false;
+    bool firstrun = true;
 
     void Start()
     {
+        firstrun = true;
         uiGone = false;
         gameGone = false;
         if (ui_controller == null)
@@ -186,7 +188,7 @@ public class GameManager : MonoBehaviour
         fade_controller.onForegroundCrossfaded += OnGameIsGone;
         scoreEvaluator.onEvaluationFinshed += OnEvaluationFinshed;
 
-        StartNewSection();
+
     }
 
 
@@ -214,7 +216,7 @@ public class GameManager : MonoBehaviour
                 {
                     SceneManager.LoadScene(0);
                 });
-            } 
+            }
             else
             {
                 Debug.LogWarning("PLEASE ASSIGN THE BACK BUTTON IN GAMEMANAGER! ~Karen");
@@ -237,10 +239,14 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
     // Update is called once per frame
     void Update()
     {
-        if(!gameEnded) UpdateRunningSection();
+        if (firstrun)
+        {
+            StartNewSection();
+            firstrun = false;
+        }
+        if (!gameEnded) UpdateRunningSection();
     }
 }
