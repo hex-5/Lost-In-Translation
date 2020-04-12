@@ -5,6 +5,8 @@ using UnityEngine.Audio;
 
 public class SoundController : MonoBehaviour
 {
+    public IngameMusicController music_controller = null;
+
     public AudioMixer mixer = null;
     public AudioMixerGroup mixerGroup = null;
 
@@ -70,6 +72,7 @@ public class SoundController : MonoBehaviour
         {
             AS.Stop();
         }
+        music_controller.StopSounds(); 
     }
 
     // Start is called before the first frame update
