@@ -39,22 +39,29 @@ public class MoodManager : MonoBehaviour
 
     public void AdjustMood(ScoreEvaluator.ConnotationsCount connotations, int essentialsInside)
     {
-        int essentialsOutside = 0;
-
-        foreach (Words.Word w in wordManager.wordList)
+        if (isOurLeader)
         {
-            if (w.isEssential)
-            {
-                essentialsOutside++;
-            }
-        }
-        essentialsOutside -= essentialsInside;
+            int essentialsOutside = 0;
 
-        currentMoodScore += connotations.neutralCount * neutralValue;
-        currentMoodScore += connotations.insultingCount * insultingValue;
-        currentMoodScore += connotations.flatteringCount * flatteringValue;
-        currentMoodScore += connotations.challengingCount * challengingValue;
-        currentMoodScore += essentialsOutside * unusedEssentialPenaltyValue;
+            foreach (Words.Word w in wordManager.wordList)
+            {
+                if (w.isEssential)
+                {
+                    essentialsOutside++;
+                }
+            }
+            essentialsOutside -= essentialsInside;
+            currentMoodScore += essentialsOutside * unusedEssentialPenaltyValue;
+        }
+        else
+        {
+            currentMoodScore += connotations.neutralCount * neutralValue;
+            currentMoodScore += connotations.insultingCount * insultingValue;
+            currentMoodScore += connotations.flatteringCount * flatteringValue;
+            currentMoodScore += connotations.challengingCount * challengingValue;
+        }
+
+
 
         StartCoroutine("SliderInterpolation");
 
