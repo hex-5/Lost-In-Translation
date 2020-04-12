@@ -30,7 +30,7 @@ MonoBehaviour:
       type: 3}
     isEssential: 1
   - connotation: 1
-    spritePrefab: {fileID: 9191070969252321567, guid: 50e78ec5f5a0c6a4ca2bc5c981d13b69,
+    spritePrefab: {fileID: 5540795846038656887, guid: 0ac3fd91bff8ff341a939235a2745f8c,
       type: 3}
     isEssential: 0
   - connotation: 2

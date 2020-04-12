@@ -10,27 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f7797f97423a334786b535ecb84d022, type: 3}
-  m_Name: Level_1_Trump_6
+  m_Name: Level_1_Trump_7
   m_EditorClassIdentifier: 
   conversationData:
   - connotation: 1
-    spritePrefab: {fileID: 1106149516571525833, guid: f5a300fad53bc054d90a50cf470ae101,
-      type: 3}
-    isEssential: 1
-  - connotation: 1
-    spritePrefab: {fileID: 9191070969252321567, guid: 50e78ec5f5a0c6a4ca2bc5c981d13b69,
-      type: 3}
-    isEssential: 0
-  - connotation: 0
-    spritePrefab: {fileID: 6459848581847928811, guid: c42610b73de2f0a4a99162bd30158e54,
+    spritePrefab: {fileID: 5540795846038656887, guid: 0ac3fd91bff8ff341a939235a2745f8c,
       type: 3}
     isEssential: 1
   - connotation: 2
-    spritePrefab: {fileID: 1420786799842221074, guid: 755595e5a15d34d4d9b7535015733555,
+    spritePrefab: {fileID: 4632402304004834354, guid: a8d47143938603a4d8c89d486f9fa933,
+      type: 3}
+    isEssential: 0
+  - connotation: 0
+    spritePrefab: {fileID: 281728196138685841, guid: 2e657974c1258d145a2fc235f5fae443,
       type: 3}
     isEssential: 1
   - connotation: 1
     spritePrefab: {fileID: 9191070969252321567, guid: 50e78ec5f5a0c6a4ca2bc5c981d13b69,
+      type: 3}
+    isEssential: 1
+  - connotation: 1
+    spritePrefab: {fileID: 5540795846038656887, guid: 0ac3fd91bff8ff341a939235a2745f8c,
       type: 3}
     isEssential: 0
   - connotation: 2

@@ -316,6 +316,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
         type: 3}
+      propertyPath: Conversations.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
+        type: 3}
       propertyPath: WordScale.m_Curve.Array.data[1].time
       value: 1
       objectReference: {fileID: 0}
@@ -449,6 +454,12 @@ PrefabInstance:
       propertyPath: AngrySpeechBubblePositions.Array.data[2]
       value: 
       objectReference: {fileID: 452874609}
+    - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
+        type: 3}
+      propertyPath: Conversations.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2cbe68333fb341c4e854caaa22522aae,
+        type: 2}
     - target: {fileID: 8624425707250606995, guid: 85bd6a3c26556a640a2e141b3e83d929,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -22,7 +22,7 @@ MonoBehaviour:
       type: 3}
     isEssential: 1
   - connotation: 0
-    spritePrefab: {fileID: 5115934782998397353, guid: fbe481480a49a4543b6fbe63140f7afa,
+    spritePrefab: {fileID: 281728196138685841, guid: 2e657974c1258d145a2fc235f5fae443,
       type: 3}
     isEssential: 0
   - connotation: 2
