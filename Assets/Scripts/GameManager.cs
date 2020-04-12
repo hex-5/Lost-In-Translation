@@ -157,9 +157,11 @@ public class GameManager : MonoBehaviour
 
     bool uiGone = false;
     bool gameGone = false;
+    bool firstrun = true;
 
     void Start()
     {
+        firstrun = true;
         uiGone = false;
         gameGone = false;
         if (ui_controller == null)
@@ -170,7 +172,7 @@ public class GameManager : MonoBehaviour
         ui_controller.onUICrossfaded += OnUIIsGone;
         fade_controller.onForegroundCrossfaded += OnGameIsGone;
 
-        StartNewSection();
+
     }
 
 
@@ -198,7 +200,7 @@ public class GameManager : MonoBehaviour
                 {
                     SceneManager.LoadScene(0);
                 });
-            } 
+            }
             else
             {
                 Debug.LogWarning("PLEASE ASSIGN THE BACK BUTTON IN GAMEMANAGER! ~Karen");
@@ -221,10 +223,14 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
     // Update is called once per frame
     void Update()
     {
-        if(!gameEnded) UpdateRunningSection();
+        if (firstrun)
+        {
+            StartNewSection();
+            firstrun = false;
+        }
+        if (!gameEnded) UpdateRunningSection();
     }
 }
