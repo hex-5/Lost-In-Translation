@@ -234,6 +234,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &257217804 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5773668811454075087, guid: 74c97e7af75e8ec4b9b4c49481fe00c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1373566096}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9c1ca7d87d2534a8ef74a58184a8a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &329132063 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5398584225451589767, guid: 56cf978df23af4845bc494dcbfdbe0cd,
@@ -1466,6 +1478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 502adcd81484ca74c9806b1dd7153879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  music_controller: {fileID: 257217804}
   mixer: {fileID: 24100000, guid: ff9825325dbfd9f4ea8955a3a9178602, type: 2}
   mixerGroup: {fileID: 24300002, guid: ff9825325dbfd9f4ea8955a3a9178602, type: 2}
   audios:

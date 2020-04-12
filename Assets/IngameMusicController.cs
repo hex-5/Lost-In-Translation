@@ -52,4 +52,8 @@ public class IngameMusicController : MonoBehaviour
         _audioSource.clip = clipSection.clip;
         _audioSource.PlayScheduled(clipSection.from);
     }
+    public void StopSounds()
+    {
+        _audioSource.Stop();
+    }
 }
