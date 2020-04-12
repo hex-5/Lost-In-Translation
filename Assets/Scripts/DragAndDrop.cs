@@ -12,6 +12,7 @@ public class DragAndDrop : MonoBehaviour
     
     private void OnMouseDown()
     {
+        transform.parent = null;
         offset = cam.ScreenToWorldPoint(Input.mousePosition) - transform.localPosition;
         dragging = true;
         rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;

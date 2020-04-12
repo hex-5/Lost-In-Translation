@@ -51,7 +51,9 @@ namespace Words
         float time = 0.5f;
         [SerializeField]
         Transform[] SpeechBubblePositions = null;
-        
+        [SerializeField]
+        Transform[] AngrySpeechBubblePositions = null;
+
         private int currentConversation = 0;
         public List<Word> wordList = new List<Word>();
         private int currentWord = 0;
@@ -61,10 +63,10 @@ namespace Words
         private Vector3 initialWordScaleVector;
         private Vector3 targetWordScaleVector;
 
+
         void Start()
         {
             SpawnLeaders(Conversations[currentConversation]);
-            ConvertConversation(Conversations[currentConversation]);
             initialWordScaleVector = new Vector3(initialWordScale, initialWordScale, initialWordScale);
             targetWordScaleVector = new Vector3(targetWordScale, targetWordScale, targetWordScale);
         }
@@ -73,10 +75,19 @@ namespace Words
         {
         }
 
-        private Word SpawnWord(Connotation connotation, GameObject spritePrefab, GameObject parent, bool isEssential)
+        private Transform GetDeepestChild(Transform parent)
         {
-            Word wordComponent = Instantiate(WordPrefab).GetComponent<Word>();
-            wordComponent.transform.position = parent.transform.GetChild(0).transform.position;
+            if (parent.childCount > 0)
+                return (GetDeepestChild(parent.GetChild(0)));
+            else
+                return parent;
+        }
+
+        private Word SpawnWord(Connotation connotation, GameObject spritePrefab, Transform parent, Transform spawnPosition, bool isEssential)
+        {
+            Word wordComponent = Instantiate(WordPrefab, parent, true).GetComponent<Word>();
+            wordComponent.transform.position = spawnPosition.GetChild(0).transform.position;
+            wordComponent.gameObject.transform.localScale = Vector3.one;
 
             // Set Word Parameters
             wordComponent.connotation = connotation;
@@ -116,9 +127,10 @@ namespace Words
         {
             //Spawn Words
             wordList.Clear();
+            Transform wordPos = GetDeepestChild(GameObject.Find("BubbleController").GetComponent<BubbleController>().ActiveBubble.transform);
             for (int i = 0; i < obj.conversationData.Length; i++)
             {
-                wordList.Add(Instance.SpawnWord(obj.conversationData[i].connotation, obj.conversationData[i].spritePrefab, speaker, obj.conversationData[i].isEssential));
+                wordList.Add(Instance.SpawnWord(obj.conversationData[i].connotation, obj.conversationData[i].spritePrefab, wordPos, speaker.transform, obj.conversationData[i].isEssential));
                 wordList[i].spritePrefab.GetComponent<SpriteRenderer>().enabled = false;
             }
             //GetComponent<GameManager>().TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue = GetComponent<GameManager>().SecondsPerCycle / wordList.Count;
@@ -164,7 +176,7 @@ namespace Words
             currentWord++;
             float i = 0;
             float rate = 1 / time;
-            Vector3 targetPosition = SelectionFreeBubbleSpace().position;
+            Vector3 targetPosition = SelectionFreeBubbleSpace(GameObject.Find("BubbleController").GetComponent<BubbleController>().ActiveBubble.transform).position;
             while (i < 1)
             {
                 i += rate * Time.deltaTime;
@@ -173,10 +185,24 @@ namespace Words
             }
         }
 
-        private Transform SelectionFreeBubbleSpace()
+        private Transform SelectionFreeBubbleSpace(Transform activeBubble)
         {
-            int RandomOption = UnityEngine.Random.Range(0, SpeechBubblePositions.Length);
-            return SpeechBubblePositions[RandomOption];
+            int RandomOption = 0;
+            if (activeBubble.name.Contains("simple"))
+            {
+                RandomOption = UnityEngine.Random.Range(0, SpeechBubblePositions.Length);
+                return SpeechBubblePositions[RandomOption];
+            }
+            else if (activeBubble.name.Contains("angry"))
+            {
+                RandomOption = UnityEngine.Random.Range(0, AngrySpeechBubblePositions.Length);
+                return AngrySpeechBubblePositions[RandomOption];
+            }
+            else
+            {
+                Debug.LogError("No Speechbubble Existing!");
+                return null;
+            }
         }
 
         public bool CheckNextConversation()

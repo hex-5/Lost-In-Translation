@@ -11,9 +11,11 @@ public class BubbleController : MonoBehaviour
     private GameManager _gameManager;
     [SerializeField]
     public Bubble[] IsAngryToBubbleMap;
+    public Bubble ActiveBubble;
 
     void Start()
     {
+        ActiveBubble = IsAngryToBubbleMap[0];
         _gameManager = managers.GetComponent<GameManager>();
         _gameManager.onNewSection += OnNewSection;
     }
@@ -26,6 +28,7 @@ public class BubbleController : MonoBehaviour
         }
         speakerLeader = _gameManager.leader1Pos.gameObject.GetComponentInChildren<Leader>();
         IsAngryToBubbleMap[speakerLeader.IsAngry?1:0].Open();
+        ActiveBubble = IsAngryToBubbleMap[speakerLeader.IsAngry ? 1 : 0];
     }
 
     // Update is called once per frame

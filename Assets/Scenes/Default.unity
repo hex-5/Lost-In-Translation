@@ -556,6 +556,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378526268}
   m_CullTransparentMesh: 0
+--- !u!4 &452874609 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4922732695273129622, guid: d70e39f99116cc94dbff4b1b9154e44a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1764899254}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &463566150
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -590,6 +596,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
         type: 3}
+      propertyPath: AngrySpeechBubblePositions.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
+        type: 3}
       propertyPath: WordScale.m_Curve.Array.data[1].time
       value: 1
       objectReference: {fileID: 0}
@@ -611,7 +622,7 @@ PrefabInstance:
     - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
         type: 3}
       propertyPath: targetWordScale
-      value: 0.75
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
         type: 3}
@@ -720,6 +731,21 @@ PrefabInstance:
       propertyPath: ConnotationMats.Array.data[4]
       value: 
       objectReference: {fileID: 2100000, guid: 48e38e29871a49d4080f7dc512d59b47, type: 2}
+    - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
+        type: 3}
+      propertyPath: AngrySpeechBubblePositions.Array.data[0]
+      value: 
+      objectReference: {fileID: 1377036611}
+    - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
+        type: 3}
+      propertyPath: AngrySpeechBubblePositions.Array.data[1]
+      value: 
+      objectReference: {fileID: 889210779}
+    - target: {fileID: 8624425707250606994, guid: 85bd6a3c26556a640a2e141b3e83d929,
+        type: 3}
+      propertyPath: AngrySpeechBubblePositions.Array.data[2]
+      value: 
+      objectReference: {fileID: 452874609}
     - target: {fileID: 8624425707250606995, guid: 85bd6a3c26556a640a2e141b3e83d929,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1146,6 +1172,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 871469016}
   m_CullTransparentMesh: 0
+--- !u!4 &889210779 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2435796457892387208, guid: d70e39f99116cc94dbff4b1b9154e44a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1764899254}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &902314754
 GameObject:
   m_ObjectHideFlags: 0
@@ -1601,6 +1633,12 @@ PrefabInstance:
       objectReference: {fileID: 2030336394}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74c97e7af75e8ec4b9b4c49481fe00c8, type: 3}
+--- !u!4 &1377036611 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1209771817317419867, guid: d70e39f99116cc94dbff4b1b9154e44a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1764899254}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1400733058
 GameObject:
   m_ObjectHideFlags: 0
@@ -1717,7 +1755,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1424066818}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7, y: -2.5, z: 4.486382}
+  m_LocalPosition: {x: -7, y: -2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2212,26 +2250,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 95472641391057868, guid: d70e39f99116cc94dbff4b1b9154e44a,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3523749840887140723, guid: d70e39f99116cc94dbff4b1b9154e44a,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9007503862519058042, guid: d70e39f99116cc94dbff4b1b9154e44a,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9007503864294273088, guid: d70e39f99116cc94dbff4b1b9154e44a,
-        type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 2030336397}
     - target: {fileID: 9007503864294273088, guid: d70e39f99116cc94dbff4b1b9154e44a,
         type: 3}
       propertyPath: managers
@@ -2297,18 +2315,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9007503864294273095, guid: d70e39f99116cc94dbff4b1b9154e44a,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.9125
-      objectReference: {fileID: 0}
-    - target: {fileID: 9007503864294273095, guid: d70e39f99116cc94dbff4b1b9154e44a,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.71208006
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3523749840887140733, guid: d70e39f99116cc94dbff4b1b9154e44a, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d70e39f99116cc94dbff4b1b9154e44a, type: 3}
 --- !u!114 &1773443894 stripped
 MonoBehaviour:
