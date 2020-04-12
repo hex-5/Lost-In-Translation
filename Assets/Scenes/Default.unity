@@ -898,6 +898,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5773668811454075087, guid: 74c97e7af75e8ec4b9b4c49481fe00c8,
         type: 3}
+      propertyPath: losingSections.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5773668811454075087, guid: 74c97e7af75e8ec4b9b4c49481fe00c8,
+        type: 3}
+      propertyPath: intenseSections.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5773668811454075087, guid: 74c97e7af75e8ec4b9b4c49481fe00c8,
+        type: 3}
       propertyPath: managers
       value: 
       objectReference: {fileID: 2030336394}
