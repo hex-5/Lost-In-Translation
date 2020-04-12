@@ -121,6 +121,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &143915701 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3450419891342074848, guid: 9983e3d6b06c17e4084a3a60c308dcaf,
+    type: 3}
+  m_PrefabInstance: {fileID: 3450419892482615336}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee97f876703995b45bd82e2ef2c37848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &155310585 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1512290932324677394, guid: d70e39f99116cc94dbff4b1b9154e44a,
@@ -1484,6 +1496,7 @@ MonoBehaviour:
   TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue: 1
   ui_controller: {fileID: 329132065}
   fade_controller: {fileID: 245104188}
+  scoreEvaluator: {fileID: 143915701}
   leader1Pos: {fileID: 1424066819}
   leader2Pos: {fileID: 614494432}
   firedEndAnimation: {fileID: 1841887066}

@@ -14,6 +14,9 @@ public class ScoreEvaluator : MonoBehaviour
         public int challengingCount;
     }
 
+    public delegate void OnEvaluationFinshed(GameManager.RESULTS result);
+    public OnEvaluationFinshed onEvaluationFinshed;
+
     [Tooltip("Edge collider sitting on a different GameObject, e.g. on a child.")]
     public EdgeCollider2D edgeCollider;
 
@@ -22,6 +25,9 @@ public class ScoreEvaluator : MonoBehaviour
 
     public MoodManager moodManagerLeader1;
     public MoodManager moodManagerLeader2;
+
+    [SerializeField]
+    private float TimeBetweenEvaluations = 1.0F;
 
     private void Start()
     {
@@ -44,7 +50,7 @@ public class ScoreEvaluator : MonoBehaviour
 
         if (gameManager != null)
         {
-            gameManager.onEndSectionUpdated += OnEndSectionUpdated;
+            gameManager.onStartEvaluation += OnStartEvaluation;
         }
         else
         {
@@ -52,42 +58,94 @@ public class ScoreEvaluator : MonoBehaviour
         }
     }
 
-    public void CountBlocksInside()
+    //public void CountBlocksInside()
+    //{
+    //    ConnotationsCount connotationsCount = new ConnotationsCount();
+    //    int essentialsInside = 0;
+
+    //    // Go through all objects that are within my trigger
+    //    foreach (Collider2D c in collidersInside)
+    //    {
+    //        // If they are not on the edge of my trigger, increment connotation values
+    //        if (!Physics2D.IsTouching(c, edgeCollider))
+    //        {
+    //            Word word = c.GetComponentInParent<Word>();
+    //            if (word.isEssential) essentialsInside++;
+
+    //            switch (word.connotation)
+    //            {
+    //                case Connotation.Neutral:
+    //                    connotationsCount.neutralCount++;
+    //                    break;
+    //                case Connotation.Insulting:
+    //                    connotationsCount.insultingCount++;
+    //                    break;
+    //                case Connotation.Flattering:
+    //                    connotationsCount.flatteringCount++;
+    //                    break;
+    //                case Connotation.Challenging:
+    //                    connotationsCount.challengingCount++;
+    //                    break;
+    //            }
+    //        }
+    //    }
+
+    //    collidersInside.Clear();
+
+    //    moodManagerLeader1.AdjustMood(connotationsCount, essentialsInside);
+    //    moodManagerLeader2.AdjustMood(connotationsCount, essentialsInside);
+    //}
+    
+
+    private IEnumerator EvaluateScore(GameManager.RESULTS result)
     {
-        ConnotationsCount connotationsCount = new ConnotationsCount();
-        int essentialsInside = 0;
-
-        // Go through all objects that are within my trigger
-        foreach (Collider2D c in collidersInside)
+        //WaitForSeconds wait = new WaitForSeconds(TimeBetweenEvaluations);
+        bool inside = false;
+        foreach (Word w in WordManager.Instance.wordList)
         {
-            // If they are not on the edge of my trigger, increment connotation values
-            if (!Physics2D.IsTouching(c, edgeCollider))
+            Debug.Log("Word: " + w.transform.GetChild(0).name);
+            // Every Word
+            foreach(Collider2D coll in collidersInside)
             {
-                Word word = c.GetComponentInParent<Word>();
-                if (word.isEssential) essentialsInside++;
-
-                switch (word.connotation)
+                if (coll.gameObject == w.transform.GetChild(0).gameObject)
                 {
-                    case Connotation.Neutral:
-                        connotationsCount.neutralCount++;
-                        break;
-                    case Connotation.Insulting:
-                        connotationsCount.insultingCount++;
-                        break;
-                    case Connotation.Flattering:
-                        connotationsCount.flatteringCount++;
-                        break;
-                    case Connotation.Challenging:
-                        connotationsCount.challengingCount++;
-                        break;
+                    inside = true;
+                    break;
                 }
             }
+            if (inside)
+            {
+                // Word Inside Box
+                if (!Physics2D.IsTouching(w.transform.GetChild(0).GetComponent<Collider2D>(), edgeCollider))
+                {
+                    //Word Inside not on Line
+                    AdjustMoodForLeaders(w, true, w.isEssential);
+                }
+                else
+                {
+                    //Word "Outside" on Line
+                    AdjustMoodForLeaders(w, false, w.isEssential);
+                }
+            }
+            else
+            {
+                // Word not in Box
+                AdjustMoodForLeaders(w, false, w.isEssential);
+            }
+            inside = false;
         }
-
+        while (WordManager.Instance.wordList[WordManager.Instance.wordList.Count-1].transform.localScale != Vector3.zero)
+            yield return new WaitForSeconds(1F);
         collidersInside.Clear();
+        onEvaluationFinshed(result);
+    }
+        
+    
 
-        moodManagerLeader1.AdjustMood(connotationsCount, essentialsInside);
-        moodManagerLeader2.AdjustMood(connotationsCount, essentialsInside);
+    private void AdjustMoodForLeaders(Word word, bool isInside, bool isEssential)
+    {
+        moodManagerLeader1.AdjustMoodOnce(word, isInside, isEssential);
+        moodManagerLeader2.AdjustMoodOnce(word, isInside, isEssential);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -107,11 +165,11 @@ public class ScoreEvaluator : MonoBehaviour
     }
 
 
-    private void OnEndSectionUpdated(GameManager manager, GameManager.RESULTS result)
+    private void OnStartEvaluation(GameManager.RESULTS result)
     {
         if(result == GameManager.RESULTS.GOOD)
         {
-            CountBlocksInside();
+            StartCoroutine(EvaluateScore(result));
         }
     }
 }
