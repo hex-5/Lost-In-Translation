@@ -13,8 +13,6 @@ public class ShineBrightLikeADiamond : MonoBehaviour
     [SerializeField]
     [ColorUsage(true, true)]
     Color bad = new Color(0, 0, 0, 0);
-    [SerializeField]
-    GameManager gameManager;
 
     public bool dragging = false;
     public Collider2D currentCollider = null;
