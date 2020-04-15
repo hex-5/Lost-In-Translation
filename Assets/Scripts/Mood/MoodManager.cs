@@ -9,7 +9,7 @@ public class MoodManager : MonoBehaviour
     [SerializeField]
     private bool isOurLeader = true;
 
-    public float currentMoodScore;
+    private float currentMoodScore;
     private Slider moodSlider;
     private float initialMoodScore;
 
@@ -24,6 +24,7 @@ public class MoodManager : MonoBehaviour
 
     private GameManager gameManager;
 
+
     [SerializeField]
     private float interpolationSpeed = 1;
     [SerializeField]
@@ -33,6 +34,7 @@ public class MoodManager : MonoBehaviour
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+
 
         moodSlider = GetComponent<Slider>();
         initialMoodScore = moodSlider.value;
@@ -102,8 +104,8 @@ public class MoodManager : MonoBehaviour
             }
         }
     }
-
-    private IEnumerator MoveWordToLeader(Word word, Transform leaderBuzzer)
+        
+private IEnumerator MoveWordToLeader(Word word, Transform leaderBuzzer)
     {
         float i = 0;
         float rate = 1 / wordDissolveSpeed;
@@ -119,7 +121,6 @@ public class MoodManager : MonoBehaviour
             yield return 0;
         }
     }
-
     // For smooth movement of the finger from the old slider value to the new slider value.
     IEnumerator SliderInterpolation()
     {

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2207,9 +2207,10 @@ MonoBehaviour:
     the thoughts of one leader to the other by moving words into the shape in the
     middle. Words that are not inside the shape are not translated.
 
+    If you dont
+    translate essential words your leader gets mad.
 
-    Though,
-    words are color-coded.'
+'
 --- !u!222 &800075887
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3678,8 +3679,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hold Left-Click to move words. Right-click to rotate clockwise (Alternately,
-    rotate with Q and E).
+  m_Text: Hold Left-Click to move words. Right-click to rotate clockwise (Alternate
+    controls for rotatation are Q and E).
 --- !u!222 &1279255969
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4843,6 +4844,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Some words (shimmering in Rainbow colors) are essential and must be translated.
+    They have a surprised connotation.
 
 '
 --- !u!222 &1640174465
