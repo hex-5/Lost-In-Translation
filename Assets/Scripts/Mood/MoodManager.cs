@@ -91,6 +91,7 @@ public class MoodManager : MonoBehaviour
 
             if (currentMoodScore < 1)
             {
+                this.StopAllCoroutines();
                 if (isOurLeader)
                 {
                     currentMoodScore = 0;
