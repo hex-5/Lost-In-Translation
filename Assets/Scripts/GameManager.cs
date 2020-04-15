@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     }
     GAMESTATE currentGameState = GAMESTATE.INIT;
 
-    [field: SerializeField] public float SecondsPerSection { get; } = 6.0f;
+    [field: SerializeField] public float SecondsPerSection { get; } = 14.0f;
 
     [SerializeField] public float TimeBetweenWords = 0.33333f;
 

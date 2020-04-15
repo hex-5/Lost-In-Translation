@@ -58,45 +58,6 @@ public class ScoreEvaluator : MonoBehaviour
         }
     }
 
-    //public void CountBlocksInside()
-    //{
-    //    ConnotationsCount connotationsCount = new ConnotationsCount();
-    //    int essentialsInside = 0;
-
-    //    // Go through all objects that are within my trigger
-    //    foreach (Collider2D c in collidersInside)
-    //    {
-    //        // If they are not on the edge of my trigger, increment connotation values
-    //        if (!Physics2D.IsTouching(c, edgeCollider))
-    //        {
-    //            Word word = c.GetComponentInParent<Word>();
-    //            if (word.isEssential) essentialsInside++;
-
-    //            switch (word.connotation)
-    //            {
-    //                case Connotation.Neutral:
-    //                    connotationsCount.neutralCount++;
-    //                    break;
-    //                case Connotation.Insulting:
-    //                    connotationsCount.insultingCount++;
-    //                    break;
-    //                case Connotation.Flattering:
-    //                    connotationsCount.flatteringCount++;
-    //                    break;
-    //                case Connotation.Challenging:
-    //                    connotationsCount.challengingCount++;
-    //                    break;
-    //            }
-    //        }
-    //    }
-
-    //    collidersInside.Clear();
-
-    //    moodManagerLeader1.AdjustMood(connotationsCount, essentialsInside);
-    //    moodManagerLeader2.AdjustMood(connotationsCount, essentialsInside);
-    //}
-    
-
     private IEnumerator EvaluateScore(GameManager.RESULTS result)
     {
         //WaitForSeconds wait = new WaitForSeconds(TimeBetweenEvaluations);
@@ -135,8 +96,7 @@ public class ScoreEvaluator : MonoBehaviour
             inside = false;
             yield return new WaitForSeconds(1F);
         }
-        //while (WordManager.Instance.wordList[WordManager.Instance.wordList.Count-1].transform.localScale != Vector3.zero)
-        //    yield return new WaitForSeconds(1F);
+        yield return new WaitForSeconds(1F);
         collidersInside.Clear();
         onEvaluationFinshed(result);
     }
