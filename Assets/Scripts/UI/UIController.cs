@@ -13,14 +13,16 @@ public class UIController : MonoBehaviour
     public Color TimeProgressBadColor = Color.red;
     public Color TimeProgressGoodColor = Color.white;
 
+    private GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        GameManager gameManager = FindObjectOfType<GameManager>();
+        gameManager = FindObjectOfType<GameManager>();
 
         if (gameManager != null)
         {
-            gameManager.onGameSectionUpdated += OnGameSectionUpdated;
+            gameManager.onUpdateSection += OnGameSectionUpdated;
             //Todo: add to gameEnd delegate
             gameManager.onEndGame += OnEndGame;
         }
@@ -30,14 +32,14 @@ public class UIController : MonoBehaviour
         }
     }
 
-    private void OnEndGame(GameManager manager, GameManager.RESULTS result)
+    private void OnEndGame(GameManager.RESULTS result)
     {
         StartDestroyYourself();
     }
 
-    private void OnGameSectionUpdated(GameManager manager, GameManager.GameSection Section)
+    private void OnGameSectionUpdated(GameManager.GameSection Section)
     {
-        float progress = 1 - (Section.Countdown / manager.SecondsPerSection);
+        float progress = 1 - (Section.Countdown / gameManager.SecondsPerSection);
         ProgressBarObject.Progress = progress;
         ProgressBarObject.ProgressBarColor = Color.Lerp(TimeProgressGoodColor, TimeProgressBadColor, progress*progress);
         TimeRemainingTextObject.text = $"{Section.Countdown % 60:0.00}s";

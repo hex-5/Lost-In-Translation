@@ -19,7 +19,7 @@ public class FadeForegroundIn : MonoBehaviour
         gameManager.onEndGame += OnEndGame;
     }
     bool startFading = false;
-    private void OnEndGame(GameManager manager, GameManager.RESULTS result)
+    private void OnEndGame(GameManager.RESULTS result)
     {   
         startFading = true;
     }

@@ -8,15 +8,25 @@ using Words;
 
 public class GameManager : MonoBehaviour
 {
+    public enum GAMESTATE   
+    {
+        INIT,
+        START_SECTION,  // Only for Understanding
+        UPDATE_SECTION,
+        END_SECTION,    // Only for Understanding
+        EVALUATE_SECTION,   // Only for Understanding
+        END_GAME,
+    }
+    GAMESTATE currentGameState = GAMESTATE.INIT;
+
     [field: SerializeField] public float SecondsPerSection { get; } = 6.0f;
 
-    [SerializeField] public float TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue = 0.33333f;
+    [SerializeField] public float TimeBetweenWords = 0.33333f;
 
     [SerializeField] UIController ui_controller = null;
     [SerializeField] FadeForegroundIn fade_controller = null;
     [SerializeField] ScoreEvaluator scoreEvaluator = null;
-
-    private bool gameEnded = false;
+    
     public enum RESULTS
     {
         GOOD,
@@ -38,16 +48,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public delegate void NewSectionDelegate(GameManager manager, bool newGame);
-    public delegate void GameSectionDelegate(GameManager manager, GameSection Section);
+    public delegate void NewGameDelegate();
+    public delegate void NewSectionDelegate();
+    public delegate void UpdateSectionDelegate(GameSection Section);
     public delegate void StartEvaluationDelegate(RESULTS result);
-    public delegate void EndSectionDelegate(GameManager manager, RESULTS result);
-    public delegate void EndGameDelegate(GameManager manager, RESULTS result);
+    public delegate void EndSectionDelegate(RESULTS result);
+    public delegate void EndGameDelegate(RESULTS result);
 
     GameSection currentSection;
-    public GameSectionDelegate onGameSectionUpdated;
+    public UpdateSectionDelegate onUpdateSection;
     public EndSectionDelegate onEndSectionUpdated;
     public NewSectionDelegate onNewSection;
+    public NewGameDelegate onNewGame;
     public EndGameDelegate onEndGame;
     public StartEvaluationDelegate onStartEvaluation;
 
@@ -59,61 +71,67 @@ public class GameManager : MonoBehaviour
     public GameObject goodEndAnimation;
     public GameObject backToMenuButton;
 
+    public bool InputEnabled = true;
+
     public void StartNewSection()
     {
-        if (currentSection == null)
+        if (currentGameState == GAMESTATE.INIT)
         {
             currentSection = new GameSection();
             currentSection.Countdown = SecondsPerSection;
-            currentSection.WordCountdown = TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue;
-            //currentSection.Points = 0;
-            onGameSectionUpdated(this, currentSection);
+            currentSection.WordCountdown = TimeBetweenWords;
         }
-        onNewSection(this, true);
+        onNewGame?.Invoke();
+
         //Todo: Reset everything for a new Section
-        WordManager.Instance.RestartConversaitons();
+        WordManager.Instance.ResetInstance();
+
+        InputEnabled = true;
+        // Everything is Initialized -> Start Update
+        currentGameState = GAMESTATE.UPDATE_SECTION;
     }
     public void StartNextSection()
     {
-        if (!WordManager.Instance.CheckNextConversation())
-        {
-            WordManager.Instance.ResetWords();
-            return;
-        }
-
-        onNewSection(this, false);
+        currentGameState = GAMESTATE.START_SECTION;
+        onNewSection?.Invoke();
         WordManager.Instance.NextConversation();
         //only reset countdown
         currentSection.Countdown = SecondsPerSection;
-        currentSection.WordCountdown = TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue;
-        //Todo: reset words
-        onGameSectionUpdated(this, currentSection);
+        currentSection.WordCountdown = TimeBetweenWords;
+
+        InputEnabled = true;
+        // New Section is set-up -> Start Update
+        currentGameState = GAMESTATE.UPDATE_SECTION;
     }
     public void EndGame(RESULTS result)
     {
+        if (scoreEvaluator.IsInvoking())
+            scoreEvaluator.StopAllCoroutines();
+
+        currentGameState = GAMESTATE.END_GAME;
+        InputEnabled = false;
+
         lastResult = result;
         switch (result)
         {
             case RESULTS.BAD_ENDING_1:
-                onEndGame(this, RESULTS.BAD_ENDING_1);
-                gameEnded = true;
+                onEndGame?.Invoke(RESULTS.BAD_ENDING_1);
                 break;
             case RESULTS.BAD_ENDING_2:
-                onEndGame(this, RESULTS.BAD_ENDING_2);
-                gameEnded = true;
+                onEndGame?.Invoke(RESULTS.BAD_ENDING_2);
                 break;
             case RESULTS.GOOD:
-                onEndGame(this, RESULTS.GOOD);
-                gameEnded = true;
+                onEndGame?.Invoke(RESULTS.GOOD);
                 break;
             default:
                 Debug.LogError("This shouldnt happen.");
                 break;
         }
     }
-    public void EndCurrentSection(RESULTS result)
+    public void EvaluateCurrentSection(RESULTS result)
     {
-        onStartEvaluation(result);
+        currentGameState = GAMESTATE.EVALUATE_SECTION;
+        onStartEvaluation?.Invoke(result);
         // Start leader 2 talk animation
         leader2Pos.GetComponentInChildren<Animator>().SetTrigger("Talk");
         // Start leader 2 talk sound
@@ -121,39 +139,43 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void OnEvaluationFinshed(RESULTS result)
+    public void EndCurrentSection(RESULTS result)
     {
-        currentSection.Countdown = -1;
-        onEndSectionUpdated(this, result);
-        if (!gameEnded) StartNextSection();
+        if (currentGameState == GAMESTATE.END_GAME)
+            return;
+        currentGameState = GAMESTATE.END_SECTION;
+
+        onEndSectionUpdated?.Invoke(result);
+        StartNextSection();
     }
     
     public void UpdateRunningSection()
     {
         if (currentSection.Countdown < 0)
         {
+            InputEnabled = false;
+
             //countdown is over, Section isnt stopped anywhere else in the game, so it was successful.
-            onGameSectionUpdated(this, currentSection);
+            //onGameSectionUpdated(this, currentSection);
             if (!WordManager.Instance.CheckNextConversation())
             {
+                currentGameState = GAMESTATE.END_GAME;
                 EndGame(RESULTS.GOOD);
                 return;
             }
-            Debug.Log("DADADA");
-            EndCurrentSection(RESULTS.GOOD);
-            currentSection.Countdown = SecondsPerSection;
+            EvaluateCurrentSection(RESULTS.GOOD);
             return;
         }
         currentSection.Countdown -= Time.deltaTime;
         currentSection.WordCountdown -= Time.deltaTime;
         if (currentSection.WordCountdown < 0)
         {
-            currentSection.WordCountdown = TheAmountOfTimeInSecondsThatIsSleptBetweenEverySingleWordWhichAreSpawnedInThisIntervalNowFuckOffAndAcceptThisValue;
+            currentSection.WordCountdown = TimeBetweenWords;
             SpawnWord();
         }
         if (currentSection.Countdown > 0)
         {
-            onGameSectionUpdated(this, currentSection);
+            onUpdateSection?.Invoke(currentSection);
         }
     }
 
@@ -169,11 +191,9 @@ public class GameManager : MonoBehaviour
 
     bool uiGone = false;
     bool gameGone = false;
-    bool firstrun = true;
 
     void Start()
     {
-        firstrun = true;
         uiGone = false;
         gameGone = false;
         if (ui_controller == null)
@@ -186,9 +206,11 @@ public class GameManager : MonoBehaviour
 
         ui_controller.onUICrossfaded += OnUIIsGone;
         fade_controller.onForegroundCrossfaded += OnGameIsGone;
-        scoreEvaluator.onEvaluationFinshed += OnEvaluationFinshed;
+        scoreEvaluator.onEvaluationFinshed += EndCurrentSection;
 
-
+        currentGameState = GAMESTATE.INIT;
+        
+        StartNewSection();
     }
 
 
@@ -242,11 +264,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (firstrun)
-        {
-            StartNewSection();
-            firstrun = false;
-        }
-        if (!gameEnded) UpdateRunningSection();
+        if (currentGameState == GAMESTATE.UPDATE_SECTION) UpdateRunningSection();
     }
 }

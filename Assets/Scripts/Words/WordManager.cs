@@ -224,7 +224,7 @@ namespace Words
             ConvertConversation(Conversations[currentConversation]);
         }
 
-        public void RestartConversaitons()
+        public void ResetInstance()
         {
             ResetWords();
             currentConversation = 0;

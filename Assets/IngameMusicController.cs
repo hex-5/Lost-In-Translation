@@ -31,15 +31,12 @@ public class IngameMusicController : MonoBehaviour
     {
         _audioSource = GetComponent<AudioSource>();
 
-        managers.GetComponent<GameManager>().onNewSection += OnNewSection;
+        managers.GetComponent<GameManager>().onNewGame += OnNewGame;
     }
 
-    private void OnNewSection(GameManager manager, bool newgame)
+    private void OnNewGame()
     {
-        if (newgame)
-        {
-            PlayAudioClipSection(normalSections[0]);
-        }
+        PlayAudioClipSection(normalSections[0]);
     }
 
     // Update is called once per frame

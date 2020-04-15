@@ -133,9 +133,10 @@ public class ScoreEvaluator : MonoBehaviour
                 AdjustMoodForLeaders(w, false, w.isEssential);
             }
             inside = false;
-        }
-        while (WordManager.Instance.wordList[WordManager.Instance.wordList.Count-1].transform.localScale != Vector3.zero)
             yield return new WaitForSeconds(1F);
+        }
+        //while (WordManager.Instance.wordList[WordManager.Instance.wordList.Count-1].transform.localScale != Vector3.zero)
+        //    yield return new WaitForSeconds(1F);
         collidersInside.Clear();
         onEvaluationFinshed(result);
     }

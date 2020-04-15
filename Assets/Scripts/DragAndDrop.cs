@@ -9,9 +9,17 @@ public class DragAndDrop : MonoBehaviour
     bool dragging;
     Vector3 offset;
     Rigidbody2D rigidBody;
-    
+    GameManager gameManager;
+
+    private bool IsInputEnabled()
+    {
+        return gameManager.InputEnabled;
+    }
+
     private void OnMouseDown()
     {
+        if (!IsInputEnabled())
+            return;
         SoundController.Instance.PlaySound(SoundController.audio_id.ID_SFX_PICK_WORD, false);
         transform.parent = null;
         offset = cam.ScreenToWorldPoint(Input.mousePosition) - transform.localPosition;
@@ -23,13 +31,22 @@ public class DragAndDrop : MonoBehaviour
 
     private void OnMouseUp()
     {
-        SoundController.Instance.PlaySound(SoundController.audio_id.ID_SFX_DROP_WORD, false);
+        if (IsInputEnabled())
+            SoundController.Instance.PlaySound(SoundController.audio_id.ID_SFX_DROP_WORD, false);
         dragging = false;
         rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
         GameObject.Find("all_seeing_eye").GetComponent<ShineBrightLikeADiamond>().dragging = false;
     }
     private void OnMouseDrag()
     {
+        if (!IsInputEnabled())
+        {
+            if(dragging)
+            {
+                OnMouseUp();
+            }
+        }
+
         if (dragging)
         {
             if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.LeftArrow))
@@ -44,11 +61,15 @@ public class DragAndDrop : MonoBehaviour
 
     private void RotateLeft()
     {
+        if (!IsInputEnabled())
+            return;
         SoundController.Instance.PlaySound(SoundController.audio_id.ID_SFX_ROTATE_WORD, false);
         transform.localRotation = Quaternion.AngleAxis(transform.localRotation.eulerAngles.z - rotationDegrees, Vector3.forward);
     }
     private void RotateRight()
     {
+        if (!IsInputEnabled())
+            return;
         SoundController.Instance.PlaySound(SoundController.audio_id.ID_SFX_ROTATE_WORD, false);
         transform.localRotation = Quaternion.AngleAxis(transform.localRotation.eulerAngles.z + rotationDegrees, Vector3.forward);
     }
@@ -56,6 +77,7 @@ public class DragAndDrop : MonoBehaviour
     private Camera cam;
     public void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         cam = Camera.main;
         rigidBody = this.GetComponent<Rigidbody2D>();
         rigidBody.gravityScale = 0;

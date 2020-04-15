@@ -29,8 +29,6 @@ public class MoodManager : MonoBehaviour
     [SerializeField]
     private float wordDissolveSpeed = 1F;
 
-    private int essentialsOutside = 0;
-
 
     private void Start()
     {
@@ -40,52 +38,6 @@ public class MoodManager : MonoBehaviour
         initialMoodScore = moodSlider.value;
         currentMoodScore = initialMoodScore;
     }
-
-    //public void AdjustMood(ScoreEvaluator.ConnotationsCount connotations, int essentialsInside)
-    //{
-    //    int essentialsOutside = 0;
-
-    //    foreach (Words.Word w in wordManager.wordList)
-    //    {
-    //        if (w.isEssential)
-    //        {
-    //            essentialsOutside++;
-    //        }
-    //    }
-    //    essentialsOutside -= essentialsInside;
-
-    //    currentMoodScore += connotations.neutralCount * neutralValue;
-    //    currentMoodScore += connotations.insultingCount * insultingValue;
-    //    currentMoodScore += connotations.flatteringCount * flatteringValue;
-    //    currentMoodScore += connotations.challengingCount * challengingValue;
-    //    currentMoodScore += essentialsOutside * unusedEssentialPenaltyValue;
-
-    //    StartCoroutine("SliderInterpolation");
-
-    //    if (currentMoodScore < angerThreshold)
-    //    {
-    //        (isOurLeader ? gameManager.leader1Pos : gameManager.leader2Pos).GetComponentInChildren<Leader>().IsAngry = true;
-    //    }
-    //    else
-    //    {
-    //        (isOurLeader ? gameManager.leader1Pos : gameManager.leader2Pos).GetComponentInChildren<Leader>().IsAngry = false;
-    //    }
-
-    //    if (currentMoodScore < 1)
-    //    {
-    //        if (isOurLeader)
-    //        {
-    //            currentMoodScore = 0;
-    //            gameManager.EndGame(GameManager.RESULTS.BAD_ENDING_1);
-    //        }
-    //        else
-    //        {
-    //            currentMoodScore = 0;
-    //            gameManager.EndGame(GameManager.RESULTS.BAD_ENDING_2);
-    //        }
-
-    //    }
-    //}
 
     public void AdjustMoodOnce(Word w, bool isInside, bool isEssential)
     {

@@ -17,10 +17,11 @@ public class BubbleController : MonoBehaviour
     {
         ActiveBubble = IsAngryToBubbleMap[0];
         _gameManager = managers.GetComponent<GameManager>();
+        _gameManager.onNewGame += OnNewSection;
         _gameManager.onNewSection += OnNewSection;
     }
 
-    private void OnNewSection(GameManager manager, bool newgame)
+    private void OnNewSection()
     {
         foreach (Bubble bubble in IsAngryToBubbleMap)
         {
