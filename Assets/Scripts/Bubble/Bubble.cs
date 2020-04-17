@@ -7,19 +7,29 @@ using UnityEngine.U2D.Animation;
 public class Bubble : MonoBehaviour
 {
     private Animator animator;
+    private Transform mostDeepChild;
+    private GameManager gameManager;
+
+    private Transform GetDeepestChild(Transform parent)
+    {
+        if (parent.childCount > 0)
+            return (GetDeepestChild(parent.GetChild(0)));
+        else
+            return parent;
+    }
 
     void Start()
     {
+        mostDeepChild = GetDeepestChild(this.transform);
         animator = GetComponent<Animator>();
+        gameManager = FindObjectOfType<GameManager>();
+        gameManager.onUpdateSection += CheckForWordsInside;
     }
-    
-    void Update()
+
+    private void CheckForWordsInside(GameManager.GameSection Section)
     {
-        int amount = CountObjectsInside();
-        if (amount == 0)
-        {
+        if(mostDeepChild.childCount == 0)
             animator.SetBool("isOpen", false);
-        }
     }
 
     private int CountObjectsInside()
@@ -44,6 +54,4 @@ public class Bubble : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-
-
 }

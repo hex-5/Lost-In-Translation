@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8624425707250606995}
   - component: {fileID: 8624425707250606994}
-  m_Layer: 0
+  - component: {fileID: 2030336395}
+  - component: {fileID: 2030336397}
+  m_Layer: 11
   m_Name: WordManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,32 +47,146 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WordPrefab: {fileID: 5452050143125130152, guid: a131b3507fc56ba4497847de5e31be70,
     type: 3}
+  BubbleController: {fileID: 0}
   Conversations:
-  - {fileID: 11400000, guid: c59804153194c7147a9d488f919dd295, type: 2}
+  - {fileID: 11400000, guid: 75d2f6ef8adf5ba4ebd4b1cb8a963e70, type: 2}
   - {fileID: 11400000, guid: b85b155fabcc83b478ab65c1f5657ddb, type: 2}
   - {fileID: 11400000, guid: 4d622541c37b02b4b8aa6dbc11a5033a, type: 2}
   - {fileID: 11400000, guid: 322dfb4631d475b4885963fda84d305a, type: 2}
   - {fileID: 11400000, guid: 0521c877e3e0f384f91e3ae9e988a283, type: 2}
   - {fileID: 11400000, guid: 194d2a69db468bc4b8c9608cda9c1534, type: 2}
-  ConnotationMats: []
+  - {fileID: 11400000, guid: 2cbe68333fb341c4e854caaa22522aae, type: 2}
+  ConnotationMats:
+  - {fileID: 2100000, guid: fe63155b0cc3a7e4a8314d08beb486a6, type: 2}
+  - {fileID: 2100000, guid: 4e98d239b40c78247a99fa39aa2f0a58, type: 2}
+  - {fileID: 2100000, guid: 7b5cae245c8fb8a41bfd3e1dde0a70fa, type: 2}
+  - {fileID: 2100000, guid: 4bc52de14921de04ab73d0c1b7b26085, type: 2}
+  - {fileID: 2100000, guid: 48e38e29871a49d4080f7dc512d59b47, type: 2}
   Leader1Pos: {fileID: 0}
   Leader2Pos: {fileID: 0}
   WordScale:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   WordMove:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   initialWordScale: 0
-  targetWordScale: 1
+  targetWordScale: 1.5
   time: 0.5
-  SpeechBubblePositions: []
-  AngrySpeechBubblePositions: []
+  SpeechBubblePositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  AngrySpeechBubblePositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   wordList: []
   allWordsSpawned: 0
+--- !u!114 &2030336395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8624425707250606997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 502adcd81484ca74c9806b1dd7153879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  music_controller: {fileID: 0}
+  mixer: {fileID: 24100000, guid: ff9825325dbfd9f4ea8955a3a9178602, type: 2}
+  mixerGroup: {fileID: 24300002, guid: ff9825325dbfd9f4ea8955a3a9178602, type: 2}
+  audios:
+  - {fileID: 8300000, guid: faf0b0e2ff847134a86fcc9fa718bd51, type: 3}
+  - {fileID: 8300000, guid: cdde2940d4b1a74459d75eaddd64f029, type: 3}
+  - {fileID: 8300000, guid: f320bb802eb62ac4ea82e8cc9b2f64bc, type: 3}
+  - {fileID: 8300000, guid: df9da267e6dbd2045aea91e5fa264b0d, type: 3}
+  - {fileID: 8300000, guid: 5f22acbcd98559d459770651f3e773c7, type: 3}
+  - {fileID: 8300000, guid: 3e7e26a24877b78418c22e4dc7f884a0, type: 3}
+  - {fileID: 8300000, guid: 93f9a806ffd985547b4181512c560a9d, type: 3}
+  - {fileID: 8300000, guid: 415a8ebe8ee28434ca863826ee9fd55a, type: 3}
+  - {fileID: 8300000, guid: 9921f2b2993422349b1d38cfb3326b52, type: 3}
+  - {fileID: 8300000, guid: 98c3c72d5cdc2cc4b85c42624072ee96, type: 3}
+  - {fileID: 8300000, guid: ef45add7f527b58429051ec97169ec46, type: 3}
+  - {fileID: 8300000, guid: 11888bf5ed539bb4187e771bf23973a5, type: 3}
+  - {fileID: 8300000, guid: c20f565edee3c434dadea6563605a834, type: 3}
+  - {fileID: 8300000, guid: 3d6fdc82711043a4b87460f6ca09b1a9, type: 3}
+  - {fileID: 8300000, guid: a37351453f45a694a8838c9e47c82497, type: 3}
+  - {fileID: 8300000, guid: 9234ad7730b744e42aace24a8bb8d9e2, type: 3}
+  - {fileID: 8300000, guid: 60efd05eb1284644bb3883af5b61c8e4, type: 3}
+  - {fileID: 8300000, guid: bd4afe660db491949969cb6bfbc77050, type: 3}
+  - {fileID: 8300000, guid: 5cfaeeedbad590c41a5f7ef6bbee98af, type: 3}
+  - {fileID: 8300000, guid: d1dc922401464184393ee17faddc4b61, type: 3}
+  - {fileID: 8300000, guid: 725b24d1af7c57a49bbd51fc89131f34, type: 3}
+  - {fileID: 8300000, guid: e527931b7ca6c5b41b060ecef4200bc0, type: 3}
+  - {fileID: 8300000, guid: a444281fdbb7c344f9a16fdf7eedb583, type: 3}
+--- !u!114 &2030336397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8624425707250606997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0738b2eacb3ba2c4fad6c165bef745e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeBetweenWords: 0.33333
+  ui_controller: {fileID: 0}
+  fade_controller: {fileID: 0}
+  scoreEvaluator: {fileID: 0}
+  leader1Pos: {fileID: 0}
+  leader2Pos: {fileID: 0}
+  firedEndAnimation: {fileID: 0}
+  nukeEndAnimation: {fileID: 0}
+  goodEndAnimation: {fileID: 0}
+  backToMenuButton: {fileID: 0}
+  InputEnabled: 1

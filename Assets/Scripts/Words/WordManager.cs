@@ -32,6 +32,8 @@ namespace Words
         [SerializeField]
         GameObject WordPrefab = null;
         [SerializeField]
+        BubbleController BubbleController= null;
+        [SerializeField]
         ConversationScriptableObject[] Conversations = null;
         [SerializeField]
         List<Material> ConnotationMats = null;
@@ -128,7 +130,7 @@ namespace Words
         {
             //Spawn Words
             Instance.wordList.Clear();
-            Transform wordPos = GetDeepestChild(GameObject.Find("BubbleController").GetComponent<BubbleController>().ActiveBubble.transform);
+            Transform wordPos = GetDeepestChild(BubbleController.ActiveBubble.transform);
             for (int i = 0; i < obj.conversationData.Length; i++)
             {
                 Instance.wordList.Add(Instance.SpawnWord(obj.conversationData[i].connotation, obj.conversationData[i].spritePrefab, wordPos, speaker.transform, obj.conversationData[i].isEssential));
@@ -180,7 +182,7 @@ namespace Words
             currentWord++;
             float i = 0;
             float rate = 1 / time;
-            Vector3 targetPosition = SelectionFreeBubbleSpace(GameObject.Find("BubbleController").GetComponent<BubbleController>().ActiveBubble.transform).position;
+            Vector3 targetPosition = SelectionFreeBubbleSpace(BubbleController.ActiveBubble.transform).position;
             while (i < 1)
             {
                 i += rate * Time.deltaTime;
@@ -253,22 +255,5 @@ namespace Words
             if (listener)
                 Destroy(listener);
         }
-
-        //private IEnumerator DissolveWord(GameObject word)
-        //{
-        //    if (!word)
-        //        yield break;
-        //    Vector3 initialScale = word.transform.localScale;
-        //    float i = 0;
-        //    float rate = 1 / 0.3f;
-        //    while (i < 1)
-        //    {
-        //        i += rate * Time.deltaTime;
-        //        word.transform.localScale = Vector3.Lerp(initialScale, Vector3.zero, WordScale.Evaluate(i));
-        //        yield return 0;
-        //    }
-        //    Destroy(word.gameObject);
-        //    yield return 0;
-        //}
     }
 }

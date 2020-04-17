@@ -23,13 +23,20 @@ public class UIController : MonoBehaviour
         if (gameManager != null)
         {
             gameManager.onUpdateSection += OnGameSectionUpdated;
-            //Todo: add to gameEnd delegate
+            gameManager.onStartEvaluation += OnEvaluate;
             gameManager.onEndGame += OnEndGame;
         }
         else
         {
             Debug.LogWarning("UIController: Could not find GameManager.");
         }
+    }
+
+    private void OnEvaluate(GameManager.RESULTS result)
+    {
+        ProgressBarObject.Progress = 0;
+        ProgressBarObject.ProgressBarColor = new Color(ProgressBarObject.ProgressBarColor.r, ProgressBarObject.ProgressBarColor.g, ProgressBarObject.ProgressBarColor.b, 0);
+        TimeRemainingTextObject.text = "0.00s";
     }
 
     private void OnEndGame(GameManager.RESULTS result)

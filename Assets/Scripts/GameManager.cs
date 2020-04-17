@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour
         }
         onNewGame?.Invoke();
 
+
         //Todo: Reset everything for a new Section
         WordManager.Instance.ResetInstance();
 
@@ -209,10 +210,15 @@ public class GameManager : MonoBehaviour
         scoreEvaluator.onEvaluationFinshed += EndCurrentSection;
 
         currentGameState = GAMESTATE.INIT;
-        
-        StartNewSection();
+
+        StartCoroutine("WaitForInitFinish");
     }
 
+    private IEnumerator WaitForInitFinish()
+    {
+        yield return new WaitForEndOfFrame();
+        StartNewSection();
+    }
 
     private void OnGameIsGone()
     {
